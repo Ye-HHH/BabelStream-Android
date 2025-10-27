@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/vscode_bg_dark">
+
+    <!-- 状态栏 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingBottom="16dp">
+
+        <!-- 状态指示灯 -->
+        <View
+            android:id="@+id/status_indicator"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/vscode_border" />
+
+        <!-- 状态文本 -->
+        <TextView
+            android:id="@+id/status_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="待机中"
+            android:textSize="14sp"
+            android:textColor="@color/vscode_text_dim" />
+
+    </LinearLayout>
+
+    <!-- 音频电平条 -->
+    <ProgressBar
+        android:id="@+id/audio_level"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:progress="0"
+        android:max="100"
+        android:progressTint="@color/vscode_success"
+        android:indeterminate="false"
+        android:layout_marginBottom="8dp" />
+
+    <!-- 字幕显示区域 -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/vscode_bg_lighter"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/subtitle_transcript"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="等待识别..."
+                android:textSize="28sp"
+                android:textColor="@color/vscode_text"
+                android:lineSpacingMultiplier="1.1"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/subtitle_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="48sp"
+                android:textColor="@color/vscode_text_bright"
+                android:lineSpacingMultiplier="1.2"
+                android:gravity="center" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- 控制按钮 -->
+    <Button
+        android:id="@+id/start_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="开始"
+        android:textSize="18sp"
+        android:padding="16dp"
+        android:textColor="@color/vscode_text_bright"
+        android:background="@drawable/bg_button_accent" />
+
+    <Button
+        android:id="@+id/overlay_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="开启悬浮窗"
+        android:textSize="16sp"
+        android:padding="12dp"
+        android:textColor="@color/vscode_text_bright"
+        android:background="@drawable/bg_button_secondary" />
+
+    <Button
+        android:id="@+id/settings_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="设置"
+        android:textSize="16sp"
+        android:padding="12dp"
+        android:textColor="@color/vscode_text_bright"
+        android:background="@drawable/bg_button_secondary" />
+
+</LinearLayout>

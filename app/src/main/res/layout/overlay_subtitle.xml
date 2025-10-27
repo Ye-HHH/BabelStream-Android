@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    android:background="@color/overlay_bg">
+
+    <!-- 原文（转写） -->
+    <TextView
+        android:id="@+id/overlay_transcript_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/vscode_text"
+        android:textSize="28sp"
+        android:lineSpacingMultiplier="1.1"
+        android:text="等待识别…"/>
+
+    <!-- 译文（翻译） -->
+    <TextView
+        android:id="@+id/overlay_translation_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/vscode_text_bright"
+        android:textSize="36sp"
+        android:lineSpacingMultiplier="1.2"
+        android:text="字幕悬浮窗已启动"/>
+
+</LinearLayout>

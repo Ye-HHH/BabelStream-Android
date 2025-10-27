@@ -1,0 +1,24 @@
+# Gradle
+.gradle/
+build/
+*/build/
+
+# Android Studio
+.idea/
+*.iml
+local.properties
+captures/
+
+# Logs/OS junk
+*.log
+*.tmp
+*.DS_Store
+
+# Generated
+app/reports/
+app/outputs/
+
+# Keystores (placeholder; manage securely)
+*.jks
+*.keystore
+

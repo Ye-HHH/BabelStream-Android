@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BabelStream</string>
+    <string name="settings">设置</string>
+    <string name="start">开始</string>
+    <string name="stop">停止</string>
+    <string name="waiting">等待识别...</string>
+    <string name="recognizing">识别中...</string>
+    <string name="error">错误</string>
+</resources>

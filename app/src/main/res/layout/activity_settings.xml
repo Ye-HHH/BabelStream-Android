@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:theme="@style/ThemeOverlay.BabelStream.Settings">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- API Key -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="API Key"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/api_key_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入阿里云API Key"
+            android:inputType="textPassword"
+            android:layout_marginBottom="24dp" />
+
+        <!-- 字体大小 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="字体大小"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <Spinner
+            android:id="@+id/font_size_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp" />
+
+        <!-- 音频输入源 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="音频输入源"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <RadioGroup
+            android:id="@+id/audio_source_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="24dp">
+            <RadioButton
+                android:id="@+id/source_playback"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="系统音频(推荐)"
+                android:textColor="@color/vscode_text" />
+            <RadioButton
+                android:id="@+id/source_mic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="麦克风"
+                android:textColor="@color/vscode_text"
+                android:layout_marginStart="16dp" />
+        </RadioGroup>
+
+        <!-- 翻译设置 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="翻译设置"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <Switch
+            android:id="@+id/translation_switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="启用翻译"
+            android:textColor="@color/vscode_text"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="目标语言"
+            android:textSize="14sp"
+            android:layout_marginBottom="8dp" />
+
+        <Spinner
+            android:id="@+id/target_language_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp" />
+
+        <!-- 悬浮窗透明度设置 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="悬浮窗背景透明度"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+            <SeekBar
+                android:id="@+id/bg_alpha_seek"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="100" />
+            <TextView
+                android:id="@+id/bg_alpha_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="50%"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="字幕文字透明度"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="24dp">
+            <SeekBar
+                android:id="@+id/text_alpha_seek"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="100" />
+            <TextView
+                android:id="@+id/text_alpha_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100%"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+        <!-- 保存按钮 -->
+        <Button
+            android:id="@+id/save_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="保存设置"
+            android:textSize="16sp" />
+
+        <!-- 开始悬浮识别按钮 -->
+        <Button
+            android:id="@+id/start_floating_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="开始悬浮字幕识别"
+            android:textSize="18sp" />
+
+        <!-- 主界面预览与显示模式 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="主界面预览"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"/>
+
+        <Switch
+            android:id="@+id/preview_dual_switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="原文/译文双行预览"
+            android:textColor="@color/vscode_text" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="显示模式"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp"/>
+
+        <RadioGroup
+            android:id="@+id/display_mode_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/mode_both"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="双行"
+                android:textColor="@color/vscode_text"/>
+            <RadioButton
+                android:id="@+id/mode_translation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="仅译文"
+                android:textColor="@color/vscode_text"
+                android:layout_marginStart="12dp"/>
+            <RadioButton
+                android:id="@+id/mode_transcript"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="仅原文"
+                android:textColor="@color/vscode_text"
+                android:layout_marginStart="12dp"/>
+        </RadioGroup>
+
+        <!-- 悬浮窗样式：圆角/内边距/阴影/位置/边距 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="悬浮窗样式"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="圆角半径"
+            android:textSize="14sp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <SeekBar
+                android:id="@+id/corner_seek"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="32" />
+            <TextView
+                android:id="@+id/corner_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="8dp"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="内边距"
+            android:textSize="14sp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <SeekBar
+                android:id="@+id/padding_seek"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="32" />
+            <TextView
+                android:id="@+id/padding_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="8dp"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="阴影高度（Elevation）"
+            android:textSize="14sp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <SeekBar
+                android:id="@+id/overlay_elevation_seek"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="16" />
+            <TextView
+                android:id="@+id/elevation_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4dp"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="位置"
+            android:textSize="14sp"/>
+        <Spinner
+            android:id="@+id/position_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="顶/底部外边距"
+            android:textSize="14sp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="12dp">
+            <SeekBar
+                android:id="@+id/margin_seek"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="200" />
+            <TextView
+                android:id="@+id/margin_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100dp"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

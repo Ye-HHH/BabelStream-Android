@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- VSCode style palette -->
+    <color name="vscode_bg_dark">#1e1e1e</color>
+    <color name="vscode_bg_darker">#252526</color>
+    <color name="vscode_bg_lighter">#2d2d30</color>
+    <color name="vscode_border">#3e3e42</color>
+    <color name="vscode_text">#cccccc</color>
+    <color name="vscode_text_dim">#858585</color>
+    <color name="vscode_text_bright">#ffffff</color>
+    <color name="vscode_accent">#007acc</color>
+    <color name="vscode_accent_hover">#1c97ea</color>
+    <color name="vscode_success">#4ec9b0</color>
+    <color name="vscode_warning">#dcdcaa</color>
+    <color name="vscode_error">#f48771</color>
+
+    <!-- Overlay background -->
+    <color name="overlay_bg">#80000000</color>
+</resources>

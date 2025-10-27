@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.BabelStream" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/vscode_accent</item>
+        <item name="colorSecondary">@color/vscode_accent</item>
+        <item name="android:statusBarColor">@color/vscode_bg_darker</item>
+        <item name="android:navigationBarColor">@color/vscode_bg_darker</item>
+        <item name="android:colorBackground">@color/vscode_bg_dark</item>
+        <item name="android:textColor">@color/vscode_text</item>
+        <!-- Ensure Material components and platform widgets use light text on dark bg -->
+        <item name="android:textColorPrimary">@color/vscode_text</item>
+        <item name="android:textColorSecondary">@color/vscode_text_dim</item>
+        <item name="colorOnBackground">@color/vscode_text</item>
+        <item name="colorOnSurface">@color/vscode_text</item>
+        <item name="android:editTextColor">@color/vscode_text_bright</item>
+        <item name="android:textColorHint">@color/vscode_text_dim</item>
+    </style>
+
+    <!-- 局部覆盖：在设置页内强制浅色文字与提示色，避免个别控件出现黑字 -->
+    <style name="ThemeOverlay.BabelStream.Settings" parent="">
+        <item name="android:textColor">@color/vscode_text</item>
+        <item name="android:textColorPrimary">@color/vscode_text</item>
+        <item name="android:textColorSecondary">@color/vscode_text_dim</item>
+        <item name="android:editTextColor">@color/vscode_text_bright</item>
+        <item name="android:textColorHint">@color/vscode_text_dim</item>
+        <item name="colorOnBackground">@color/vscode_text</item>
+        <item name="colorOnSurface">@color/vscode_text</item>
+    </style>
+</resources>
