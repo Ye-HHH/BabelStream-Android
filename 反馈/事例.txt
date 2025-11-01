@@ -1,0 +1,1422 @@
+**Go**
+```
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"io"
+	"log"
+	"net/http"
+	"os"
+	"time"
+
+	"github.com/google/uuid"
+	"github.com/gorilla/websocket"
+)
+
+const (
+	wsURL     = "wss://dashscope.aliyuncs.com/api-ws/v1/inference/" // WebSocket服务器地址
+	audioFile = "asr_example.wav"                                   // 替换为您的音频文件路径
+)
+
+var dialer = websocket.DefaultDialer
+
+func main() {
+	// 若没有将API Key配置到环境变量，可将下行替换为：apiKey := "your_api_key"。不建议在生产环境中直接将API Key硬编码到代码中，以减少API Key泄露风险。
+	apiKey := os.Getenv("DASHSCOPE_API_KEY")
+
+	// 连接WebSocket服务
+	conn, err := connectWebSocket(apiKey)
+	if err != nil {
+		log.Fatal("连接WebSocket失败：", err)
+	}
+	defer closeConnection(conn)
+
+	// 启动一个goroutine来接收结果
+	taskStarted := make(chan bool)
+	taskDone := make(chan bool)
+	startResultReceiver(conn, taskStarted, taskDone)
+
+	// 发送run-task指令
+	taskID, err := sendRunTaskCmd(conn)
+	if err != nil {
+		log.Fatal("发送run-task指令失败：", err)
+	}
+
+	// 等待task-started事件
+	waitForTaskStarted(taskStarted)
+
+	// 发送待识别音频文件流
+	if err := sendAudioData(conn); err != nil {
+		log.Fatal("发送音频失败：", err)
+	}
+
+	// 发送finish-task指令
+	if err := sendFinishTaskCmd(conn, taskID); err != nil {
+		log.Fatal("发送finish-task指令失败：", err)
+	}
+
+	// 等待任务完成或失败
+	<-taskDone
+}
+
+// 定义结构体来表示JSON数据
+type Header struct {
+	Action       string                 `json:"action"`
+	TaskID       string                 `json:"task_id"`
+	Streaming    string                 `json:"streaming"`
+	Event        string                 `json:"event"`
+	ErrorCode    string                 `json:"error_code,omitempty"`
+	ErrorMessage string                 `json:"error_message,omitempty"`
+	Attributes   map[string]interface{} `json:"attributes"`
+}
+
+type Output struct {
+	Translations  []Translation `json:"translations"`
+	Transcription Transcription `json:"transcription"`
+}
+
+type Translation struct {
+	SentenceID   int    `json:"sentence_id"`
+	BeginTime    int64  `json:"begin_time"`
+	EndTime      int64  `json:"end_time"`
+	Text         string `json:"text"`
+	Lang         string `json:"lang"`
+	PreEndFailed bool   `json:"pre_end_failed"`
+	Words        []Word `json:"words"`
+	SentenceEnd  bool   `json:"sentence_end"`
+}
+
+type Transcription struct {
+	SentenceID   int    `json:"sentence_id"`
+	BeginTime    int64  `json:"begin_time"`
+	EndTime      int64  `json:"end_time"`
+	Text         string `json:"text"`
+	Words        []Word `json:"words"`
+	SentenceEnd  bool   `json:"sentence_end"`
+}
+
+type Word struct {
+	BeginTime   int64  `json:"begin_time"`
+	EndTime     int64  `json:"end_time"`
+	Text        string `json:"text"`
+	Punctuation string `json:"punctuation"`
+	Fixed       bool   `json:"fixed"`
+	SpeakerID   *int   `json:"speaker_id"`
+}
+
+type Payload struct {
+	TaskGroup  string     `json:"task_group"`
+	Task       string     `json:"task"`
+	Function   string     `json:"function"`
+	Model      string     `json:"model"`
+	Parameters Params     `json:"parameters"`
+	Input      Input      `json:"input"`
+	Output     *Output    `json:"output,omitempty"`
+}
+
+type Params struct {
+	Format                     string   `json:"format"`
+	SampleRate                 int      `json:"sample_rate"`
+	VocabularyID               string   `json:"vocabulary_id,omitempty"`
+	TranslationTargetLanguages []string `json:"translation_target_languages,omitempty"`
+	TranscriptionEnabled       bool     `json:"transcription_enabled,omitempty"`
+	TranslationEnabled         bool     `json:"translation_enabled,omitempty"`
+}
+
+type Input struct {
+}
+
+type Event struct {
+	Header  Header  `json:"header"`
+	Payload Payload `json:"payload"`
+}
+
+// 连接WebSocket服务
+func connectWebSocket(apiKey string) (*websocket.Conn, error) {
+	header := make(http.Header)
+	header.Add("X-DashScope-DataInspection", "enable")
+	header.Add("Authorization", fmt.Sprintf("bearer %s", apiKey))
+	conn, _, err := dialer.Dial(wsURL, header)
+	return conn, err
+}
+
+// 启动一个goroutine异步接收WebSocket消息
+func startResultReceiver(conn *websocket.Conn, taskStarted chan<- bool, taskDone chan<- bool) {
+	go func() {
+		for {
+			_, message, err := conn.ReadMessage()
+			if err != nil {
+				log.Println("解析服务器消息失败：", err)
+				return
+			}
+			var event Event
+			err = json.Unmarshal(message, &event)
+			if err != nil {
+				log.Println("解析事件失败：", err)
+				continue
+			}
+			if handleEvent(conn, event, taskStarted, taskDone) {
+				return
+			}
+		}
+	}()
+}
+
+// 发送run-task指令
+func sendRunTaskCmd(conn *websocket.Conn) (string, error) {
+	runTaskCmd, taskID, err := generateRunTaskCmd()
+	if err != nil {
+		return "", err
+	}
+	err = conn.WriteMessage(websocket.TextMessage, []byte(runTaskCmd))
+	return taskID, err
+}
+
+// 生成run-task指令
+func generateRunTaskCmd() (string, string, error) {
+	taskID := uuid.New().String()
+	runTaskCmd := Event{
+		Header: Header{
+			Action:    "run-task",
+			TaskID:    taskID,
+			Streaming: "duplex",
+		},
+		Payload: Payload{
+			TaskGroup: "audio",
+			Task:      "asr",
+			Function:  "recognition",
+			Model:     "gummy-realtime-v1",
+			Parameters: Params{
+				Format:                     "wav",
+				SampleRate:                 16000,
+				TranscriptionEnabled:       true,
+				TranslationEnabled:         true,
+				TranslationTargetLanguages: []string{"en"},
+			},
+			Input: Input{},
+		},
+	}
+	runTaskCmdJSON, err := json.Marshal(runTaskCmd)
+	return string(runTaskCmdJSON), taskID, err
+}
+
+// 等待task-started事件
+func waitForTaskStarted(taskStarted chan bool) {
+	select {
+	case <-taskStarted:
+		fmt.Println("任务开启成功")
+	case <-time.After(10 * time.Second):
+		log.Fatal("等待task-started超时，任务开启失败")
+	}
+}
+
+// 发送音频数据
+func sendAudioData(conn *websocket.Conn) error {
+	file, err := os.Open(audioFile)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	buf := make([]byte, 1024) // 假设100ms的音频数据大约为1024字节
+	for {
+		n, err := file.Read(buf)
+		if n == 0 {
+			break
+		}
+		if err != nil && err != io.EOF {
+			return err
+		}
+		err = conn.WriteMessage(websocket.BinaryMessage, buf[:n])
+		if err != nil {
+			return err
+		}
+		time.Sleep(100 * time.Millisecond)
+	}
+	return nil
+}
+
+// 发送finish-task指令
+func sendFinishTaskCmd(conn *websocket.Conn, taskID string) error {
+	finishTaskCmd, err := generateFinishTaskCmd(taskID)
+	if err != nil {
+		return err
+	}
+	err = conn.WriteMessage(websocket.TextMessage, []byte(finishTaskCmd))
+	return err
+}
+
+// 生成finish-task指令
+func generateFinishTaskCmd(taskID string) (string, error) {
+	finishTaskCmd := Event{
+		Header: Header{
+			Action:    "finish-task",
+			TaskID:    taskID,
+			Streaming: "duplex",
+		},
+		Payload: Payload{
+			Input: Input{},
+		},
+	}
+	finishTaskCmdJSON, err := json.Marshal(finishTaskCmd)
+	return string(finishTaskCmdJSON), err
+}
+
+// 处理事件
+func handleEvent(conn *websocket.Conn, event Event, taskStarted chan<- bool, taskDone chan<- bool) bool {
+	switch event.Header.Event {
+	case "task-started":
+		fmt.Println("收到task-started事件")
+		taskStarted <- true
+	case "result-generated":
+		fmt.Println("服务器返回结果：")
+		// 解析 Translations 和 Transcription
+		if event.Payload.Output != nil {
+			for _, translation := range event.Payload.Output.Translations {
+				fmt.Printf("	翻译结果 - Sentence ID：%d, Text：%s\n", translation.SentenceID, translation.Text)
+				for _, word := range translation.Words {
+					fmt.Printf("	  Word - Begin Time：%d, End Time：%d, Text：%s\n", word.BeginTime, word.EndTime, word.Text)
+				}
+			}
+
+			transcription := event.Payload.Output.Transcription
+			fmt.Printf("	识别结果 - Sentence ID：%d, Text：%s\n", transcription.SentenceID, transcription.Text)
+			for _, word := range transcription.Words {
+				fmt.Printf("	  Word - Begin Time：%d, End Time：%d, Text：%s\n", word.BeginTime, word.EndTime, word.Text)
+			}
+		}
+	case "task-finished":
+		fmt.Println("任务完成")
+		taskDone <- true
+		return true
+	case "task-failed":
+		handleTaskFailed(event, conn)
+		taskDone <- true
+		return true
+	default:
+		log.Printf("预料之外的事件：%v", event)
+	}
+	return false
+}
+
+// 处理任务失败事件
+func handleTaskFailed(event Event, conn *websocket.Conn) {
+	if event.Header.ErrorMessage != "" {
+		log.Fatalf("任务失败：%s", event.Header.ErrorMessage)
+	} else {
+		log.Fatal("未知原因导致任务失败")
+	}
+}
+
+// 关闭连接
+func closeConnection(conn *websocket.Conn) {
+	if conn != nil {
+		conn.Close()
+	}
+}
+```
+
+**C#**
+```
+using System.Net.WebSockets;
+using System.Text;
+using System.Text.Json;
+using System.Text.Json.Nodes;
+
+class Program
+{
+    private static ClientWebSocket _webSocket = new ClientWebSocket();
+    private static readonly CancellationTokenSource _cancellationTokenSource = new();
+    // 使用TaskCompletionSource替代轮询等待
+    private static TaskCompletionSource<bool> _taskStartedTcs = new();
+    private static TaskCompletionSource<bool> _taskFinishedTcs = new();
+
+    // 从环境变量获取API密钥（请确保已设置DASHSCOPE_API_KEY）
+    // 若没有将API Key配置到环境变量，可将下行替换为：private const string ApiKey="your_api_key"。不建议在生产环境中直接将API Key硬编码到代码中，以减少API Key泄露风险。
+    private static readonly string ApiKey = Environment.GetEnvironmentVariable("DASHSCOPE_API_KEY")
+        ?? throw new InvalidOperationException("未找到环境变量DASHSCOPE_API_KEY，请先设置API密钥");
+    
+    // WebSocket服务器地址
+    private const string WebSocketUrl = "wss://dashscope.aliyuncs.com/api-ws/v1/inference/";
+    // 音频文件路径（请确保文件存在）
+    private const string AudioFilePath = "asr_example.wav";
+
+    static async Task Main(string[] args)
+    {
+        Task? receiveTask = null; // Moved outside try block
+        try
+        {
+            Console.WriteLine("开始建立WebSocket连接...");
+
+            _webSocket.Options.SetRequestHeader("Authorization", ApiKey);
+            _webSocket.Options.SetRequestHeader("X-DashScope-DataInspection", "enable");
+
+            await _webSocket.ConnectAsync(new Uri(WebSocketUrl), _cancellationTokenSource.Token);
+            Console.WriteLine("WebSocket连接成功");
+
+            receiveTask = ReceiveMessagesAsync(); // Assigned to outer variable
+
+            var taskId = Guid.NewGuid().ToString("N");
+            var runTaskJson = GenerateRunTaskJson(taskId);
+            await SendAsync(runTaskJson);
+            Console.WriteLine("已发送run-task指令");
+
+            if (!await _taskStartedTcs.Task.WaitAsync(TimeSpan.FromSeconds(10)))
+            {
+                Console.WriteLine("等待task-started事件超时");
+                _cancellationTokenSource.Cancel();
+                return;
+            }
+
+            if (!await SendAudioStreamAsync(AudioFilePath))
+            {
+                Console.WriteLine("音频流发送失败");
+                return;
+            }
+
+            var finishTaskJson = GenerateFinishTaskJson(taskId);
+            await SendAsync(finishTaskJson);
+            Console.WriteLine("已发送finish-task指令");
+
+            if (!await _taskFinishedTcs.Task.WaitAsync(TimeSpan.FromSeconds(30)))
+            {
+                Console.WriteLine("任务未在规定时间内完成");
+                _cancellationTokenSource.Cancel();
+                return;
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"发生异常: {ex.Message}");
+        }
+        finally
+        {
+            try
+            {
+                if (_webSocket.State == WebSocketState.Open)
+                {
+                    await _webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "正常关闭", _cancellationTokenSource.Token);
+                    Console.WriteLine("WebSocket连接已关闭");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"关闭连接时出错: {ex.Message}");
+            }
+            finally
+            {
+                _cancellationTokenSource.Cancel();
+                if (receiveTask != null) // Null check added
+                {
+                    try
+                    {
+                        await receiveTask.ConfigureAwait(false); // Safe await with ConfigureAwait
+                    }
+                    catch (OperationCanceledException)
+                    {
+                        // Ignore cancellation
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"等待接收任务完成时出错: {ex.Message}");
+                    }
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// 接收并处理WebSocket消息
+    /// </summary>
+    private static async Task ReceiveMessagesAsync()
+    {
+        try
+        {
+            while (_webSocket.State == WebSocketState.Open && !_cancellationTokenSource.IsCancellationRequested)
+            {
+                var message = await ReceiveMessageAsync(_cancellationTokenSource.Token);
+                if (message != null)
+                {
+                    var eventValue = message["header"]?["event"]?.GetValue<string>();
+                    switch (eventValue)
+                    {
+                        case "task-started":
+                            Console.WriteLine("收到任务开始事件");
+                            _taskStartedTcs.TrySetResult(true);
+                            break;
+                        case "result-generated":
+                            ParseResultGenerated(message);
+                            break;
+                        case "task-finished":
+                            Console.WriteLine("收到任务完成事件");
+                            _taskFinishedTcs.TrySetResult(true);
+                            break;
+                        case "task-failed":
+                            Console.WriteLine($"任务失败: {message["header"]?["error_message"]?.GetValue<string>()}");
+                            _taskFinishedTcs.TrySetResult(true);
+                            _cancellationTokenSource.Cancel();
+                            break;
+                    }
+                }
+            }
+        }
+        catch (OperationCanceledException)
+        {
+            Console.WriteLine("消息接收任务已取消");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"接收消息时出错: {ex.Message}");
+        }
+    }
+
+    /// <summary>
+    /// 接收单条WebSocket消息
+    /// </summary>
+    private static async Task<JsonNode?> ReceiveMessageAsync(CancellationToken cancellationToken)
+    {
+        var buffer = new byte[8192]; // 增大缓冲区提高效率
+        var result = await _webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), cancellationToken);
+
+        if (result.MessageType == WebSocketMessageType.Close)
+        {
+            Console.WriteLine("服务器要求关闭连接");
+            return null;
+        }
+
+        // 处理多段消息拼接
+        var messageBuilder = new StringBuilder();
+        while (true)
+        {
+            var segment = new ArraySegment<byte>(buffer, 0, result.Count);
+            messageBuilder.Append(Encoding.UTF8.GetString(segment.Array!, segment.Offset, segment.Count));
+            
+            if (result.EndOfMessage)
+            {
+                break;
+            }
+            
+            result = await _webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), cancellationToken);
+        }
+
+        return JsonNode.Parse(messageBuilder.ToString());
+    }
+
+    /// <summary>
+    /// 发送音频流数据
+    /// </summary>
+    private static async Task<bool> SendAudioStreamAsync(string filePath)
+    {
+        var fullPath = Path.Combine(AppContext.BaseDirectory, filePath);
+        if (!File.Exists(fullPath))
+        {
+            Console.WriteLine($"音频文件不存在: {fullPath}");
+            return false;
+        }
+
+        try
+        {
+            using var audioStream = File.OpenRead(fullPath);
+            var buffer = new byte[4096]; // 使用4KB缓冲区
+            
+            // 计算发送间隔（基于16kHz 16bit mono音频）
+            // 16000样本/秒 × 2字节/样本 = 32000字节/秒
+            // 4096字节 ≈ 125ms音频数据
+            const int intervalMs = 125;
+
+            int bytesRead;
+            while ((bytesRead = await audioStream.ReadAsync(buffer, 0, buffer.Length, _cancellationTokenSource.Token)) > 0)
+            {
+                await _webSocket.SendAsync(new ArraySegment<byte>(buffer, 0, bytesRead), 
+                                          WebSocketMessageType.Binary, 
+                                          true, 
+                                          _cancellationTokenSource.Token);
+                await Task.Delay(intervalMs, _cancellationTokenSource.Token);
+            }
+            Console.WriteLine("音频流发送完成");
+            return true;
+        }
+        catch (OperationCanceledException)
+        {
+            Console.WriteLine("音频发送被取消");
+            return false;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"音频发送出错: {ex.Message}");
+            return false;
+        }
+    }
+
+    /// <summary>
+    /// 解析并打印识别结果
+    /// </summary>
+    private static void ParseResultGenerated(JsonNode message)
+    {
+        // 提取翻译结果
+        var translations = message["payload"]?["output"]?["translations"]?.AsArray();
+        if (translations != null)
+        {
+            foreach (var translation in translations)
+            {
+                if (translation == null) continue;
+
+                if (translation["sentence_id"] is JsonValue sentenceIdValue && sentenceIdValue.TryGetValue(out int sentenceId) &&
+                    translation["begin_time"] is JsonValue beginTimeValue && beginTimeValue.TryGetValue(out int beginTime) &&
+                    translation["end_time"] is JsonValue endTimeValue && endTimeValue.TryGetValue(out int endTime) &&
+                    translation["text"] is JsonValue textValue && textValue.TryGetValue(out string? text) &&
+                    translation["lang"] is JsonValue langValue && langValue.TryGetValue(out string? lang) &&
+                    translation["words"] is JsonArray words)
+                {
+                    Console.WriteLine($"\n翻译结果：");
+                    Console.WriteLine($"句子ID：{sentenceId}");
+                    Console.WriteLine($"时间范围：{beginTime}ms - {endTime}ms");
+                    Console.WriteLine($"翻译文本：{text ?? "未知"}");
+                    Console.WriteLine($"语言：{lang ?? "未知"}");
+
+                    Console.WriteLine("单词级信息：");
+                    foreach (var word in words)
+                    {
+                        if (word == null) continue;
+
+                        if (word["begin_time"] is JsonValue wordBeginTimeValue && wordBeginTimeValue.TryGetValue(out int wordBeginTime) &&
+                            word["end_time"] is JsonValue wordEndTimeValue && wordEndTimeValue.TryGetValue(out int wordEndTime) &&
+                            word["text"] is JsonValue wordTextValue && wordTextValue.TryGetValue(out string? wordText))
+                        {
+                            Console.WriteLine($"  {wordText} ({wordBeginTime}ms-{wordEndTime}ms)");
+                        }
+                    }
+                }
+            }
+        }
+
+        // 提取识别结果
+        var transcription = message["payload"]?["output"]?["transcription"];
+        if (transcription != null)
+        {
+            if (transcription["sentence_id"] is JsonValue sentenceIdValue && sentenceIdValue.TryGetValue(out int sentenceId) &&
+                transcription["begin_time"] is JsonValue beginTimeValue && beginTimeValue.TryGetValue(out int beginTime) &&
+                transcription["end_time"] is JsonValue endTimeValue && endTimeValue.TryGetValue(out int endTime) &&
+                transcription["text"] is JsonValue textValue && textValue.TryGetValue(out string? text) &&
+                transcription["words"] is JsonArray words)
+            {
+                Console.WriteLine($"\n原声识别结果：");
+                Console.WriteLine($"句子ID：{sentenceId}");
+                Console.WriteLine($"时间范围：{beginTime}ms - {endTime}ms");
+                Console.WriteLine($"识别文本：{text ?? "未知"}");
+
+                Console.WriteLine("单词级信息：");
+                foreach (var word in words)
+                {
+                    if (word == null) continue;
+
+                    if (word["begin_time"] is JsonValue wordBeginTimeValue && wordBeginTimeValue.TryGetValue(out int wordBeginTime) &&
+                        word["end_time"] is JsonValue wordEndTimeValue && wordEndTimeValue.TryGetValue(out int wordEndTime) &&
+                        word["text"] is JsonValue wordTextValue && wordTextValue.TryGetValue(out string? wordText))
+                    {
+                        Console.WriteLine($"  {wordText} ({wordBeginTime}ms-{wordEndTime}ms)");
+                    }
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// 发送JSON消息到WebSocket
+    /// </summary>
+    private static async Task SendAsync(string message)
+    {
+        var buffer = Encoding.UTF8.GetBytes(message);
+        var segment = new ArraySegment<byte>(buffer);
+        await _webSocket.SendAsync(segment, WebSocketMessageType.Text, true, _cancellationTokenSource.Token);
+        Console.WriteLine($"已发送消息: {message.Substring(0, Math.Min(100, message.Length))}...");
+    }
+
+    /// <summary>
+    /// 生成run-task指令的JSON
+    /// </summary>
+    private static string GenerateRunTaskJson(string taskId)
+    {
+        var runTask = new JsonObject {
+            ["header"] = new JsonObject {
+                ["action"] = "run-task",
+                ["task_id"] = taskId,
+                ["streaming"] = "duplex"
+            },
+            ["payload"] = new JsonObject {
+                ["task_group"] = "audio",
+                ["task"] = "asr",
+                ["function"] = "recognition",
+                ["model"] = "gummy-realtime-v1",
+                ["parameters"] = new JsonObject {
+                    ["format"] = "wav",
+                    ["sample_rate"] = 16000,
+                    ["transcription_enabled"] = true,
+                    ["translation_enabled"] = true,
+                    ["translation_target_languages"] = new JsonArray {
+                        "en"
+                    }
+                },
+                ["input"] = new JsonObject()
+            }
+        };
+        return JsonSerializer.Serialize(runTask);
+    }
+
+    /// <summary>
+    /// 生成finish-task指令的JSON
+    /// </summary>
+    private static string GenerateFinishTaskJson(string taskId)
+    {
+        var finishTask = new JsonObject {
+            ["header"] = new JsonObject {
+                ["action"] = "finish-task",
+                ["task_id"] = taskId,
+                ["streaming"] = "duplex"
+            },
+            ["payload"] = new JsonObject {
+                ["input"] = new JsonObject()
+            }
+        };
+        return JsonSerializer.Serialize(finishTask);
+    }
+}
+```
+
+**PHP**
+```
+using System.Net.WebSockets;
+using System.Text;
+using System.Text.Json;
+using System.Text.Json.Nodes;
+
+class Program
+{
+    private static ClientWebSocket _webSocket = new ClientWebSocket();
+    private static readonly CancellationTokenSource _cancellationTokenSource = new();
+    // 使用TaskCompletionSource替代轮询等待
+    private static TaskCompletionSource<bool> _taskStartedTcs = new();
+    private static TaskCompletionSource<bool> _taskFinishedTcs = new();
+
+    // 从环境变量获取API密钥（请确保已设置DASHSCOPE_API_KEY）
+    // 若没有将API Key配置到环境变量，可将下行替换为：private const string ApiKey="your_api_key"。不建议在生产环境中直接将API Key硬编码到代码中，以减少API Key泄露风险。
+    private static readonly string ApiKey = Environment.GetEnvironmentVariable("DASHSCOPE_API_KEY")
+        ?? throw new InvalidOperationException("未找到环境变量DASHSCOPE_API_KEY，请先设置API密钥");
+    
+    // WebSocket服务器地址
+    private const string WebSocketUrl = "wss://dashscope.aliyuncs.com/api-ws/v1/inference/";
+    // 音频文件路径（请确保文件存在）
+    private const string AudioFilePath = "asr_example.wav";
+
+    static async Task Main(string[] args)
+    {
+        Task? receiveTask = null; // Moved outside try block
+        try
+        {
+            Console.WriteLine("开始建立WebSocket连接...");
+
+            _webSocket.Options.SetRequestHeader("Authorization", ApiKey);
+            _webSocket.Options.SetRequestHeader("X-DashScope-DataInspection", "enable");
+
+            await _webSocket.ConnectAsync(new Uri(WebSocketUrl), _cancellationTokenSource.Token);
+            Console.WriteLine("WebSocket连接成功");
+
+            receiveTask = ReceiveMessagesAsync(); // Assigned to outer variable
+
+            var taskId = Guid.NewGuid().ToString("N");
+            var runTaskJson = GenerateRunTaskJson(taskId);
+            await SendAsync(runTaskJson);
+            Console.WriteLine("已发送run-task指令");
+
+            if (!await _taskStartedTcs.Task.WaitAsync(TimeSpan.FromSeconds(10)))
+            {
+                Console.WriteLine("等待task-started事件超时");
+                _cancellationTokenSource.Cancel();
+                return;
+            }
+
+            if (!await SendAudioStreamAsync(AudioFilePath))
+            {
+                Console.WriteLine("音频流发送失败");
+                return;
+            }
+
+            var finishTaskJson = GenerateFinishTaskJson(taskId);
+            await SendAsync(finishTaskJson);
+            Console.WriteLine("已发送finish-task指令");
+
+            if (!await _taskFinishedTcs.Task.WaitAsync(TimeSpan.FromSeconds(30)))
+            {
+                Console.WriteLine("任务未在规定时间内完成");
+                _cancellationTokenSource.Cancel();
+                return;
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"发生异常: {ex.Message}");
+        }
+        finally
+        {
+            try
+            {
+                if (_webSocket.State == WebSocketState.Open)
+                {
+                    await _webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "正常关闭", _cancellationTokenSource.Token);
+                    Console.WriteLine("WebSocket连接已关闭");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"关闭连接时出错: {ex.Message}");
+            }
+            finally
+            {
+                _cancellationTokenSource.Cancel();
+                if (receiveTask != null) // Null check added
+                {
+                    try
+                    {
+                        await receiveTask.ConfigureAwait(false); // Safe await with ConfigureAwait
+                    }
+                    catch (OperationCanceledException)
+                    {
+                        // Ignore cancellation
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"等待接收任务完成时出错: {ex.Message}");
+                    }
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// 接收并处理WebSocket消息
+    /// </summary>
+    private static async Task ReceiveMessagesAsync()
+    {
+        try
+        {
+            while (_webSocket.State == WebSocketState.Open && !_cancellationTokenSource.IsCancellationRequested)
+            {
+                var message = await ReceiveMessageAsync(_cancellationTokenSource.Token);
+                if (message != null)
+                {
+                    var eventValue = message["header"]?["event"]?.GetValue<string>();
+                    switch (eventValue)
+                    {
+                        case "task-started":
+                            Console.WriteLine("收到任务开始事件");
+                            _taskStartedTcs.TrySetResult(true);
+                            break;
+                        case "result-generated":
+                            ParseResultGenerated(message);
+                            break;
+                        case "task-finished":
+                            Console.WriteLine("收到任务完成事件");
+                            _taskFinishedTcs.TrySetResult(true);
+                            break;
+                        case "task-failed":
+                            Console.WriteLine($"任务失败: {message["header"]?["error_message"]?.GetValue<string>()}");
+                            _taskFinishedTcs.TrySetResult(true);
+                            _cancellationTokenSource.Cancel();
+                            break;
+                    }
+                }
+            }
+        }
+        catch (OperationCanceledException)
+        {
+            Console.WriteLine("消息接收任务已取消");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"接收消息时出错: {ex.Message}");
+        }
+    }
+
+    /// <summary>
+    /// 接收单条WebSocket消息
+    /// </summary>
+    private static async Task<JsonNode?> ReceiveMessageAsync(CancellationToken cancellationToken)
+    {
+        var buffer = new byte[8192]; // 增大缓冲区提高效率
+        var result = await _webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), cancellationToken);
+
+        if (result.MessageType == WebSocketMessageType.Close)
+        {
+            Console.WriteLine("服务器要求关闭连接");
+            return null;
+        }
+
+        // 处理多段消息拼接
+        var messageBuilder = new StringBuilder();
+        while (true)
+        {
+            var segment = new ArraySegment<byte>(buffer, 0, result.Count);
+            messageBuilder.Append(Encoding.UTF8.GetString(segment.Array!, segment.Offset, segment.Count));
+            
+            if (result.EndOfMessage)
+            {
+                break;
+            }
+            
+            result = await _webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), cancellationToken);
+        }
+
+        return JsonNode.Parse(messageBuilder.ToString());
+    }
+
+    /// <summary>
+    /// 发送音频流数据
+    /// </summary>
+    private static async Task<bool> SendAudioStreamAsync(string filePath)
+    {
+        var fullPath = Path.Combine(AppContext.BaseDirectory, filePath);
+        if (!File.Exists(fullPath))
+        {
+            Console.WriteLine($"音频文件不存在: {fullPath}");
+            return false;
+        }
+
+        try
+        {
+            using var audioStream = File.OpenRead(fullPath);
+            var buffer = new byte[4096]; // 使用4KB缓冲区
+            
+            // 计算发送间隔（基于16kHz 16bit mono音频）
+            // 16000样本/秒 × 2字节/样本 = 32000字节/秒
+            // 4096字节 ≈ 125ms音频数据
+            const int intervalMs = 125;
+
+            int bytesRead;
+            while ((bytesRead = await audioStream.ReadAsync(buffer, 0, buffer.Length, _cancellationTokenSource.Token)) > 0)
+            {
+                await _webSocket.SendAsync(new ArraySegment<byte>(buffer, 0, bytesRead), 
+                                          WebSocketMessageType.Binary, 
+                                          true, 
+                                          _cancellationTokenSource.Token);
+                await Task.Delay(intervalMs, _cancellationTokenSource.Token);
+            }
+            Console.WriteLine("音频流发送完成");
+            return true;
+        }
+        catch (OperationCanceledException)
+        {
+            Console.WriteLine("音频发送被取消");
+            return false;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"音频发送出错: {ex.Message}");
+            return false;
+        }
+    }
+
+    /// <summary>
+    /// 解析并打印识别结果
+    /// </summary>
+    private static void ParseResultGenerated(JsonNode message)
+    {
+        // 提取翻译结果
+        var translations = message["payload"]?["output"]?["translations"]?.AsArray();
+        if (translations != null)
+        {
+            foreach (var translation in translations)
+            {
+                if (translation == null) continue;
+
+                if (translation["sentence_id"] is JsonValue sentenceIdValue && sentenceIdValue.TryGetValue(out int sentenceId) &&
+                    translation["begin_time"] is JsonValue beginTimeValue && beginTimeValue.TryGetValue(out int beginTime) &&
+                    translation["end_time"] is JsonValue endTimeValue && endTimeValue.TryGetValue(out int endTime) &&
+                    translation["text"] is JsonValue textValue && textValue.TryGetValue(out string? text) &&
+                    translation["lang"] is JsonValue langValue && langValue.TryGetValue(out string? lang) &&
+                    translation["words"] is JsonArray words)
+                {
+                    Console.WriteLine($"\n翻译结果：");
+                    Console.WriteLine($"句子ID：{sentenceId}");
+                    Console.WriteLine($"时间范围：{beginTime}ms - {endTime}ms");
+                    Console.WriteLine($"翻译文本：{text ?? "未知"}");
+                    Console.WriteLine($"语言：{lang ?? "未知"}");
+
+                    Console.WriteLine("单词级信息：");
+                    foreach (var word in words)
+                    {
+                        if (word == null) continue;
+
+                        if (word["begin_time"] is JsonValue wordBeginTimeValue && wordBeginTimeValue.TryGetValue(out int wordBeginTime) &&
+                            word["end_time"] is JsonValue wordEndTimeValue && wordEndTimeValue.TryGetValue(out int wordEndTime) &&
+                            word["text"] is JsonValue wordTextValue && wordTextValue.TryGetValue(out string? wordText))
+                        {
+                            Console.WriteLine($"  {wordText} ({wordBeginTime}ms-{wordEndTime}ms)");
+                        }
+                    }
+                }
+            }
+        }
+
+        // 提取识别结果
+        var transcription = message["payload"]?["output"]?["transcription"];
+        if (transcription != null)
+        {
+            if (transcription["sentence_id"] is JsonValue sentenceIdValue && sentenceIdValue.TryGetValue(out int sentenceId) &&
+                transcription["begin_time"] is JsonValue beginTimeValue && beginTimeValue.TryGetValue(out int beginTime) &&
+                transcription["end_time"] is JsonValue endTimeValue && endTimeValue.TryGetValue(out int endTime) &&
+                transcription["text"] is JsonValue textValue && textValue.TryGetValue(out string? text) &&
+                transcription["words"] is JsonArray words)
+            {
+                Console.WriteLine($"\n原声识别结果：");
+                Console.WriteLine($"句子ID：{sentenceId}");
+                Console.WriteLine($"时间范围：{beginTime}ms - {endTime}ms");
+                Console.WriteLine($"识别文本：{text ?? "未知"}");
+
+                Console.WriteLine("单词级信息：");
+                foreach (var word in words)
+                {
+                    if (word == null) continue;
+
+                    if (word["begin_time"] is JsonValue wordBeginTimeValue && wordBeginTimeValue.TryGetValue(out int wordBeginTime) &&
+                        word["end_time"] is JsonValue wordEndTimeValue && wordEndTimeValue.TryGetValue(out int wordEndTime) &&
+                        word["text"] is JsonValue wordTextValue && wordTextValue.TryGetValue(out string? wordText))
+                    {
+                        Console.WriteLine($"  {wordText} ({wordBeginTime}ms-{wordEndTime}ms)");
+                    }
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// 发送JSON消息到WebSocket
+    /// </summary>
+    private static async Task SendAsync(string message)
+    {
+        var buffer = Encoding.UTF8.GetBytes(message);
+        var segment = new ArraySegment<byte>(buffer);
+        await _webSocket.SendAsync(segment, WebSocketMessageType.Text, true, _cancellationTokenSource.Token);
+        Console.WriteLine($"已发送消息: {message.Substring(0, Math.Min(100, message.Length))}...");
+    }
+
+    /// <summary>
+    /// 生成run-task指令的JSON
+    /// </summary>
+    private static string GenerateRunTaskJson(string taskId)
+    {
+        var runTask = new JsonObject {
+            ["header"] = new JsonObject {
+                ["action"] = "run-task",
+                ["task_id"] = taskId,
+                ["streaming"] = "duplex"
+            },
+            ["payload"] = new JsonObject {
+                ["task_group"] = "audio",
+                ["task"] = "asr",
+                ["function"] = "recognition",
+                ["model"] = "gummy-realtime-v1",
+                ["parameters"] = new JsonObject {
+                    ["format"] = "wav",
+                    ["sample_rate"] = 16000,
+                    ["transcription_enabled"] = true,
+                    ["translation_enabled"] = true,
+                    ["translation_target_languages"] = new JsonArray {
+                        "en"
+                    }
+                },
+                ["input"] = new JsonObject()
+            }
+        };
+        return JsonSerializer.Serialize(runTask);
+    }
+
+    /// <summary>
+    /// 生成finish-task指令的JSON
+    /// </summary>
+    private static string GenerateFinishTaskJson(string taskId)
+    {
+        var finishTask = new JsonObject {
+            ["header"] = new JsonObject {
+                ["action"] = "finish-task",
+                ["task_id"] = taskId,
+                ["streaming"] = "duplex"
+            },
+            ["payload"] = new JsonObject {
+                ["input"] = new JsonObject()
+            }
+        };
+        return JsonSerializer.Serialize(finishTask);
+    }
+}
+
+```
+
+**Node.js**
+```
+using System.Net.WebSockets;
+using System.Text;
+using System.Text.Json;
+using System.Text.Json.Nodes;
+
+class Program
+{
+    private static ClientWebSocket _webSocket = new ClientWebSocket();
+    private static readonly CancellationTokenSource _cancellationTokenSource = new();
+    // 使用TaskCompletionSource替代轮询等待
+    private static TaskCompletionSource<bool> _taskStartedTcs = new();
+    private static TaskCompletionSource<bool> _taskFinishedTcs = new();
+
+    // 从环境变量获取API密钥（请确保已设置DASHSCOPE_API_KEY）
+    // 若没有将API Key配置到环境变量，可将下行替换为：private const string ApiKey="your_api_key"。不建议在生产环境中直接将API Key硬编码到代码中，以减少API Key泄露风险。
+    private static readonly string ApiKey = Environment.GetEnvironmentVariable("DASHSCOPE_API_KEY")
+        ?? throw new InvalidOperationException("未找到环境变量DASHSCOPE_API_KEY，请先设置API密钥");
+    
+    // WebSocket服务器地址
+    private const string WebSocketUrl = "wss://dashscope.aliyuncs.com/api-ws/v1/inference/";
+    // 音频文件路径（请确保文件存在）
+    private const string AudioFilePath = "asr_example.wav";
+
+    static async Task Main(string[] args)
+    {
+        Task? receiveTask = null; // Moved outside try block
+        try
+        {
+            Console.WriteLine("开始建立WebSocket连接...");
+
+            _webSocket.Options.SetRequestHeader("Authorization", ApiKey);
+            _webSocket.Options.SetRequestHeader("X-DashScope-DataInspection", "enable");
+
+            await _webSocket.ConnectAsync(new Uri(WebSocketUrl), _cancellationTokenSource.Token);
+            Console.WriteLine("WebSocket连接成功");
+
+            receiveTask = ReceiveMessagesAsync(); // Assigned to outer variable
+
+            var taskId = Guid.NewGuid().ToString("N");
+            var runTaskJson = GenerateRunTaskJson(taskId);
+            await SendAsync(runTaskJson);
+            Console.WriteLine("已发送run-task指令");
+
+            if (!await _taskStartedTcs.Task.WaitAsync(TimeSpan.FromSeconds(10)))
+            {
+                Console.WriteLine("等待task-started事件超时");
+                _cancellationTokenSource.Cancel();
+                return;
+            }
+
+            if (!await SendAudioStreamAsync(AudioFilePath))
+            {
+                Console.WriteLine("音频流发送失败");
+                return;
+            }
+
+            var finishTaskJson = GenerateFinishTaskJson(taskId);
+            await SendAsync(finishTaskJson);
+            Console.WriteLine("已发送finish-task指令");
+
+            if (!await _taskFinishedTcs.Task.WaitAsync(TimeSpan.FromSeconds(30)))
+            {
+                Console.WriteLine("任务未在规定时间内完成");
+                _cancellationTokenSource.Cancel();
+                return;
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"发生异常: {ex.Message}");
+        }
+        finally
+        {
+            try
+            {
+                if (_webSocket.State == WebSocketState.Open)
+                {
+                    await _webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "正常关闭", _cancellationTokenSource.Token);
+                    Console.WriteLine("WebSocket连接已关闭");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"关闭连接时出错: {ex.Message}");
+            }
+            finally
+            {
+                _cancellationTokenSource.Cancel();
+                if (receiveTask != null) // Null check added
+                {
+                    try
+                    {
+                        await receiveTask.ConfigureAwait(false); // Safe await with ConfigureAwait
+                    }
+                    catch (OperationCanceledException)
+                    {
+                        // Ignore cancellation
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"等待接收任务完成时出错: {ex.Message}");
+                    }
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// 接收并处理WebSocket消息
+    /// </summary>
+    private static async Task ReceiveMessagesAsync()
+    {
+        try
+        {
+            while (_webSocket.State == WebSocketState.Open && !_cancellationTokenSource.IsCancellationRequested)
+            {
+                var message = await ReceiveMessageAsync(_cancellationTokenSource.Token);
+                if (message != null)
+                {
+                    var eventValue = message["header"]?["event"]?.GetValue<string>();
+                    switch (eventValue)
+                    {
+                        case "task-started":
+                            Console.WriteLine("收到任务开始事件");
+                            _taskStartedTcs.TrySetResult(true);
+                            break;
+                        case "result-generated":
+                            ParseResultGenerated(message);
+                            break;
+                        case "task-finished":
+                            Console.WriteLine("收到任务完成事件");
+                            _taskFinishedTcs.TrySetResult(true);
+                            break;
+                        case "task-failed":
+                            Console.WriteLine($"任务失败: {message["header"]?["error_message"]?.GetValue<string>()}");
+                            _taskFinishedTcs.TrySetResult(true);
+                            _cancellationTokenSource.Cancel();
+                            break;
+                    }
+                }
+            }
+        }
+        catch (OperationCanceledException)
+        {
+            Console.WriteLine("消息接收任务已取消");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"接收消息时出错: {ex.Message}");
+        }
+    }
+
+    /// <summary>
+    /// 接收单条WebSocket消息
+    /// </summary>
+    private static async Task<JsonNode?> ReceiveMessageAsync(CancellationToken cancellationToken)
+    {
+        var buffer = new byte[8192]; // 增大缓冲区提高效率
+        var result = await _webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), cancellationToken);
+
+        if (result.MessageType == WebSocketMessageType.Close)
+        {
+            Console.WriteLine("服务器要求关闭连接");
+            return null;
+        }
+
+        // 处理多段消息拼接
+        var messageBuilder = new StringBuilder();
+        while (true)
+        {
+            var segment = new ArraySegment<byte>(buffer, 0, result.Count);
+            messageBuilder.Append(Encoding.UTF8.GetString(segment.Array!, segment.Offset, segment.Count));
+            
+            if (result.EndOfMessage)
+            {
+                break;
+            }
+            
+            result = await _webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), cancellationToken);
+        }
+
+        return JsonNode.Parse(messageBuilder.ToString());
+    }
+
+    /// <summary>
+    /// 发送音频流数据
+    /// </summary>
+    private static async Task<bool> SendAudioStreamAsync(string filePath)
+    {
+        var fullPath = Path.Combine(AppContext.BaseDirectory, filePath);
+        if (!File.Exists(fullPath))
+        {
+            Console.WriteLine($"音频文件不存在: {fullPath}");
+            return false;
+        }
+
+        try
+        {
+            using var audioStream = File.OpenRead(fullPath);
+            var buffer = new byte[4096]; // 使用4KB缓冲区
+            
+            // 计算发送间隔（基于16kHz 16bit mono音频）
+            // 16000样本/秒 × 2字节/样本 = 32000字节/秒
+            // 4096字节 ≈ 125ms音频数据
+            const int intervalMs = 125;
+
+            int bytesRead;
+            while ((bytesRead = await audioStream.ReadAsync(buffer, 0, buffer.Length, _cancellationTokenSource.Token)) > 0)
+            {
+                await _webSocket.SendAsync(new ArraySegment<byte>(buffer, 0, bytesRead), 
+                                          WebSocketMessageType.Binary, 
+                                          true, 
+                                          _cancellationTokenSource.Token);
+                await Task.Delay(intervalMs, _cancellationTokenSource.Token);
+            }
+            Console.WriteLine("音频流发送完成");
+            return true;
+        }
+        catch (OperationCanceledException)
+        {
+            Console.WriteLine("音频发送被取消");
+            return false;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"音频发送出错: {ex.Message}");
+            return false;
+        }
+    }
+
+    /// <summary>
+    /// 解析并打印识别结果
+    /// </summary>
+    private static void ParseResultGenerated(JsonNode message)
+    {
+        // 提取翻译结果
+        var translations = message["payload"]?["output"]?["translations"]?.AsArray();
+        if (translations != null)
+        {
+            foreach (var translation in translations)
+            {
+                if (translation == null) continue;
+
+                if (translation["sentence_id"] is JsonValue sentenceIdValue && sentenceIdValue.TryGetValue(out int sentenceId) &&
+                    translation["begin_time"] is JsonValue beginTimeValue && beginTimeValue.TryGetValue(out int beginTime) &&
+                    translation["end_time"] is JsonValue endTimeValue && endTimeValue.TryGetValue(out int endTime) &&
+                    translation["text"] is JsonValue textValue && textValue.TryGetValue(out string? text) &&
+                    translation["lang"] is JsonValue langValue && langValue.TryGetValue(out string? lang) &&
+                    translation["words"] is JsonArray words)
+                {
+                    Console.WriteLine($"\n翻译结果：");
+                    Console.WriteLine($"句子ID：{sentenceId}");
+                    Console.WriteLine($"时间范围：{beginTime}ms - {endTime}ms");
+                    Console.WriteLine($"翻译文本：{text ?? "未知"}");
+                    Console.WriteLine($"语言：{lang ?? "未知"}");
+
+                    Console.WriteLine("单词级信息：");
+                    foreach (var word in words)
+                    {
+                        if (word == null) continue;
+
+                        if (word["begin_time"] is JsonValue wordBeginTimeValue && wordBeginTimeValue.TryGetValue(out int wordBeginTime) &&
+                            word["end_time"] is JsonValue wordEndTimeValue && wordEndTimeValue.TryGetValue(out int wordEndTime) &&
+                            word["text"] is JsonValue wordTextValue && wordTextValue.TryGetValue(out string? wordText))
+                        {
+                            Console.WriteLine($"  {wordText} ({wordBeginTime}ms-{wordEndTime}ms)");
+                        }
+                    }
+                }
+            }
+        }
+
+        // 提取识别结果
+        var transcription = message["payload"]?["output"]?["transcription"];
+        if (transcription != null)
+        {
+            if (transcription["sentence_id"] is JsonValue sentenceIdValue && sentenceIdValue.TryGetValue(out int sentenceId) &&
+                transcription["begin_time"] is JsonValue beginTimeValue && beginTimeValue.TryGetValue(out int beginTime) &&
+                transcription["end_time"] is JsonValue endTimeValue && endTimeValue.TryGetValue(out int endTime) &&
+                transcription["text"] is JsonValue textValue && textValue.TryGetValue(out string? text) &&
+                transcription["words"] is JsonArray words)
+            {
+                Console.WriteLine($"\n原声识别结果：");
+                Console.WriteLine($"句子ID：{sentenceId}");
+                Console.WriteLine($"时间范围：{beginTime}ms - {endTime}ms");
+                Console.WriteLine($"识别文本：{text ?? "未知"}");
+
+                Console.WriteLine("单词级信息：");
+                foreach (var word in words)
+                {
+                    if (word == null) continue;
+
+                    if (word["begin_time"] is JsonValue wordBeginTimeValue && wordBeginTimeValue.TryGetValue(out int wordBeginTime) &&
+                        word["end_time"] is JsonValue wordEndTimeValue && wordEndTimeValue.TryGetValue(out int wordEndTime) &&
+                        word["text"] is JsonValue wordTextValue && wordTextValue.TryGetValue(out string? wordText))
+                    {
+                        Console.WriteLine($"  {wordText} ({wordBeginTime}ms-{wordEndTime}ms)");
+                    }
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// 发送JSON消息到WebSocket
+    /// </summary>
+    private static async Task SendAsync(string message)
+    {
+        var buffer = Encoding.UTF8.GetBytes(message);
+        var segment = new ArraySegment<byte>(buffer);
+        await _webSocket.SendAsync(segment, WebSocketMessageType.Text, true, _cancellationTokenSource.Token);
+        Console.WriteLine($"已发送消息: {message.Substring(0, Math.Min(100, message.Length))}...");
+    }
+
+    /// <summary>
+    /// 生成run-task指令的JSON
+    /// </summary>
+    private static string GenerateRunTaskJson(string taskId)
+    {
+        var runTask = new JsonObject {
+            ["header"] = new JsonObject {
+                ["action"] = "run-task",
+                ["task_id"] = taskId,
+                ["streaming"] = "duplex"
+            },
+            ["payload"] = new JsonObject {
+                ["task_group"] = "audio",
+                ["task"] = "asr",
+                ["function"] = "recognition",
+                ["model"] = "gummy-realtime-v1",
+                ["parameters"] = new JsonObject {
+                    ["format"] = "wav",
+                    ["sample_rate"] = 16000,
+                    ["transcription_enabled"] = true,
+                    ["translation_enabled"] = true,
+                    ["translation_target_languages"] = new JsonArray {
+                        "en"
+                    }
+                },
+                ["input"] = new JsonObject()
+            }
+        };
+        return JsonSerializer.Serialize(runTask);
+    }
+
+    /// <summary>
+    /// 生成finish-task指令的JSON
+    /// </summary>
+    private static string GenerateFinishTaskJson(string taskId)
+    {
+        var finishTask = new JsonObject {
+            ["header"] = new JsonObject {
+                ["action"] = "finish-task",
+                ["task_id"] = taskId,
+                ["streaming"] = "duplex"
+            },
+            ["payload"] = new JsonObject {
+                ["input"] = new JsonObject()
+            }
+        };
+        return JsonSerializer.Serialize(finishTask);
+    }
+}
+```
+

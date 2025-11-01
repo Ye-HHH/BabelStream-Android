@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_wakeup_demo"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="mit.alibaba.nuidemo.WakeupAndSpeechRecognizerActivity">
+
+    <Button
+        android:id="@+id/button_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:enabled="false"
+        android:text="开始"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp" />
+
+    <Button
+        android:id="@+id/button_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button_start"
+        android:layout_alignBottom="@+id/button_start"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"
+        android:enabled="true"
+        android:text="停止"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp" />
+
+    <Switch
+        android:id="@+id/loop_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_start"
+        android:layout_alignLeft="@+id/button_start"
+        android:layout_marginTop="10dp"
+        android:text="循环" />
+
+    <Switch
+        android:id="@+id/save_audio_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button_cancel"
+        android:layout_alignRight="@id/button_cancel"
+        android:layout_marginTop="10dp"
+        android:text="音频保存" />
+
+    <TextView
+        android:id="@+id/kws_set"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/loop_switch"
+        android:layout_alignStart="@+id/button_start"
+        android:layout_alignEnd="@+id/button_cancel"
+        android:layout_alignRight="@+id/button_cancel"
+        android:layout_marginTop="10dp"
+        android:text="自定义唤醒词，多个词用 ; 分割"
+        android:layout_alignLeft="@+id/button_start" />
+
+    <EditText
+        android:id="@+id/editKwsEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/kws_set"
+        android:layout_alignStart="@+id/button_start"
+        android:layout_alignEnd="@+id/button_cancel"
+        android:layout_alignRight="@+id/button_cancel"
+        android:ems="10"
+        android:inputType="textLongMessage|textMultiLine"
+        android:text="wakeup words"
+        android:layout_alignLeft="@+id/button_start" />
+
+    <TextView
+        android:id="@+id/kws_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/button_start"
+        android:layout_alignEnd="@+id/button_cancel"
+        android:layout_alignRight="@+id/button_cancel"
+        android:layout_marginTop="10dp"
+        android:text="唤醒事件"
+        android:textSize="14sp"
+        android:layout_below="@id/editKwsEdit"
+        android:layout_alignLeft="@+id/button_start" />
+
+
+    <TextView
+        android:id="@+id/asr_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/kws_text"
+        android:layout_alignStart="@+id/button_start"
+        android:layout_alignLeft="@+id/button_start"
+        android:layout_alignEnd="@+id/button_cancel"
+        android:layout_alignRight="@+id/button_cancel"
+        android:layout_marginTop="5dp"
+        android:text="识别内容" />
+
+    <TextView
+        android:id="@+id/detail_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/asr_text"
+        android:layout_alignStart="@+id/button_start"
+        android:layout_alignLeft="@+id/button_start"
+        android:layout_alignEnd="@+id/button_cancel"
+        android:layout_alignRight="@+id/button_cancel"
+        android:scrollbars="vertical"
+        android:layout_marginTop="5dp"
+        android:text="详细" />
+
+</RelativeLayout>

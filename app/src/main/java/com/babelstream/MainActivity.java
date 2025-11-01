@@ -13,6 +13,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.HorizontalScrollView;
+import android.animation.ValueAnimator;
+import android.view.animation.LinearInterpolator;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -31,6 +34,7 @@ import android.content.Context;
  * 显示实时字幕和控制录音
  */
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
     private static final int REQUEST_RECORD_AUDIO = 1;
     private static final int REQUEST_SETTINGS = 2;
 
@@ -38,11 +42,16 @@ public class MainActivity extends AppCompatActivity {
     private TextView subtitleText;
     private TextView subtitleTranscript;
     private TextView statusText;
+    private HorizontalScrollView transcriptScroll;
+    private HorizontalScrollView textScroll;
     private Button startButton;
     private Button overlayButton;
     private Button settingsButton;
     private View statusIndicator;
     private ProgressBar levelBar;
+    private TextView levelText;
+    private ValueAnimator transcriptAnimator;
+    private ValueAnimator textAnimator;
 
     // 核心组件
     private ConfigManager configManager;
@@ -61,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        android.util.Log.i(TAG, "onCreate");
 
         // 初始化配置管理器
         configManager = new ConfigManager(this);
@@ -87,21 +97,34 @@ public class MainActivity extends AppCompatActivity {
                 if (RecognitionService.ACTION_TEXT.equals(action)) {
                     String text = intent.getStringExtra("text");
                     subtitleText.setText(text);
+                    stickToRight(textScroll, subtitleText);
                 } else if (RecognitionService.ACTION_TRANSLATION.equals(action)) {
                     String text = intent.getStringExtra("text");
                     subtitleText.setText(text);
+                    stickToRight(textScroll, subtitleText);
                 } else if (RecognitionService.ACTION_TRANSCRIPT.equals(action)) {
                     String text = intent.getStringExtra("text");
                     if (subtitleTranscript != null) subtitleTranscript.setText(text);
+                    if (transcriptScroll != null && subtitleTranscript != null) {
+                        stickToRight(transcriptScroll, subtitleTranscript);
+                    }
                     if (!configManager.isTranslationEnabled() && text != null) {
                         subtitleText.setText(text);
+                        stickToRight(textScroll, subtitleText);
                     }
                 } else if (RecognitionService.ACTION_STATUS.equals(action)) {
                     String status = intent.getStringExtra("status");
                     updateStatus(status);
                 } else if (RecognitionService.ACTION_LEVEL.equals(action)) {
                     int level = intent.getIntExtra("level", 0);
-                    if (levelBar != null) levelBar.setProgress(level);
+                    if (levelBar != null) {
+                        if (Build.VERSION.SDK_INT >= 24) {
+                            levelBar.setProgress(level, true);
+                        } else {
+                            levelBar.setProgress(level);
+                        }
+                    }
+                    if (levelText != null) levelText.setText("电平: " + level + "%");
                 }
             }
         };
@@ -118,15 +141,37 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        android.util.Log.i(TAG, "onStart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        android.util.Log.i(TAG, "onResume");
+        try {
+            Intent i = new Intent(RecognitionService.ACTION_STATUS);
+            i.putExtra("status", "App进入前台 MainActivity onResume");
+            sendBroadcast(i);
+        } catch (Throwable ignore) {}
+    }
+
     private void initViews() {
         subtitleText = findViewById(R.id.subtitle_text);
         subtitleTranscript = findViewById(R.id.subtitle_transcript);
+        transcriptScroll = findViewById(R.id.scroll_subtitle_transcript);
+        textScroll = findViewById(R.id.scroll_subtitle_text);
         statusText = findViewById(R.id.status_text);
         startButton = findViewById(R.id.start_button);
         overlayButton = findViewById(R.id.overlay_button);
         settingsButton = findViewById(R.id.settings_button);
         statusIndicator = findViewById(R.id.status_indicator);
         levelBar = findViewById(R.id.audio_level);
+        levelText = findViewById(R.id.audio_level_text);
+
+        // 自定义滚动替代跑马灯，不再依赖 selected/marquee
 
         // 应用字体大小设置
         int fontSize = configManager.getFontSizePixels();
@@ -186,6 +231,50 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "未授予屏幕捕获权限，无法获取系统音频", Toast.LENGTH_LONG).show();
             }
         }
+    }
+
+    private void animateScrollToEnd(HorizontalScrollView scroll, TextView tv, float pxPerSec, long maxDurationMs) {
+        if (scroll == null || tv == null) return;
+        scroll.post(() -> {
+            int viewW = scroll.getWidth();
+            if (viewW <= 0) return;
+            CharSequence cs = tv.getText();
+            if (cs == null) return;
+            float contentWf = tv.getPaint().measureText(cs.toString());
+            int contentW = (int) Math.ceil(contentWf);
+            int target = Math.max(0, contentW - viewW);
+            int current = scroll.getScrollX();
+            if (target <= current) return;
+
+            long duration = (long) Math.min(maxDurationMs, ((target - current) / pxPerSec) * 1000L);
+            ValueAnimator animator = ValueAnimator.ofInt(current, target);
+            animator.setInterpolator(new LinearInterpolator());
+            animator.setDuration(Math.max(80, duration));
+            animator.addUpdateListener(a -> scroll.scrollTo((int) a.getAnimatedValue(), 0));
+
+            if (scroll == transcriptScroll) {
+                if (transcriptAnimator != null) transcriptAnimator.cancel();
+                transcriptAnimator = animator;
+                transcriptAnimator.start();
+            } else {
+                if (textAnimator != null) textAnimator.cancel();
+                textAnimator = animator;
+                textAnimator.start();
+            }
+        });
+    }
+
+    private void stickToRight(HorizontalScrollView scroll, TextView tv) {
+        if (scroll == null || tv == null) return;
+        scroll.post(() -> {
+            int viewW = scroll.getWidth();
+            if (viewW <= 0) return;
+            CharSequence cs = tv.getText();
+            if (cs == null) return;
+            float w = tv.getPaint().measureText(cs.toString());
+            int target = (int) Math.max(0, Math.ceil(w) - viewW);
+            scroll.scrollTo(target, 0);
+        });
     }
 
     private void checkPermissions() {
@@ -350,6 +439,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+        android.util.Log.i(TAG, "onPause");
         // 可选: 后台时暂停识别
         // stopRecognition();
     }

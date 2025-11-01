@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">NuiSdkDemo</string>
+    <string name="tts_model">模型-请于官网查看更新模型</string>
+    <string name="tts_font">说话人-请于官网查看更多说话人</string>
+    <string name="tts_speed">语速</string>
+    <string name="tts_volume">音量</string>
+    <string name="tts_pitch">语调</string>
+    <string name="tts_bit_rate">音频码率</string>
+    <string name="tts_seed">随机数种子</string>
+    <string name="tts_style">调整风格</string>
+    <string name="tts_language_hints">合成语种</string>
+    <string name="tts_instruction">情感值</string>
+    <string name="file_trans_sample_rate">采样率</string>
+    <string name="file_trans_format">音频编码格式</string>
+    <string name="speech_trans_format">模型名称</string>
+    <string name="trans_src_language">源语言</string>
+    <string name="trans_dst_language">翻译目标语言</string>
+</resources>

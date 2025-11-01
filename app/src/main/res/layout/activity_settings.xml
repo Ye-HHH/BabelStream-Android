@@ -175,6 +175,21 @@
             android:text="开始悬浮字幕识别"
             android:textSize="18sp" />
 
+        <!-- 高级：自定义服务地址（可选） -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="高级：自定义服务地址（留空使用默认）"
+            android:textSize="14sp"
+            android:layout_marginTop="16dp" />
+        <EditText
+            android:id="@+id/ws_endpoint_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="例如 wss://dashscope.aliyuncs.com/api-ws/v1/realtime"
+            android:inputType="textUri"
+            android:layout_marginBottom="16dp" />
+
         <!-- 主界面预览与显示模式 -->
         <TextView
             android:layout_width="match_parent"

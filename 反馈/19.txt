@@ -1,0 +1,117 @@
+2025-11-01 07:46:12.410 15502-15502 RealtimeRecognizer      com.babelstream                      I  ws url=wss://dashscope.aliyuncs.com/api-ws/v1/inference, sr=16000, model=gummy-realtime-v1
+2025-11-01 07:46:12.730 15502-30451 RealtimeRecognizer      com.babelstream                      I  sent start cfg: {"header":{"event":"start","action":"setup","task_id":"98451c7e-de49-4e22-a48e-813cd45a4901"},"payload":{"model":"gummy-realtime-v1","task_group":"speech_translation","function":"translate","audio":{"format":"pcm_s16le","sample_rate":16000,"channels":1},"input_audio_format":{"format":"pcm_s16le","sample_rate":16000,"channels":1},"input":{"format":"pcm_s16le","sample_rate":16000,"channels":1},"transcription":{"enabled":true,"source_language":"auto"},"translation_languages":["zh"],"translation":{"enabled":true}}}
+2025-11-01 07:46:12.780 15502-30451 RealtimeRecognizer      com.babelstream                      I  recv: {"header":{"task_id":"98451c7e-de49-4e22-a48e-813cd45a4901","event":"task-failed","error_code":"InvalidParameter","error_message":"Invalid action('setup') for the first message! Please follow the protocol!","attributes":{}},"payload":{}}
+2025-11-01 07:46:13.113 15502-30466 RealtimeRecognizer      com.babelstream                      I  sent start cfg: {"header":{"event":"start","action":"create","task_id":"f4eae5aa-7804-4de0-87d7-b0cf144c810b"},"payload":{"model":"gummy-realtime-v1","task_group":"speech_translation","function":"translate","audio":{"format":"pcm_s16le","sample_rate":16000,"channels":1},"input_audio_format":{"format":"pcm_s16le","sample_rate":16000,"channels":1},"input":{"format":"pcm_s16le","sample_rate":16000,"channels":1},"transcription":{"enabled":true,"source_language":"auto"},"translation_languages":["zh"],"translation":{"enabled":true}}}
+2025-11-01 07:46:13.180 15502-30466 RealtimeRecognizer      com.babelstream                      I  recv: {"header":{"task_id":"f4eae5aa-7804-4de0-87d7-b0cf144c810b","event":"task-failed","error_code":"InvalidParameter","error_message":"Missing required parameter 'payload.task_group'! Please follow the protocol!","attributes":{}},"payload":{}}
+2025-11-01 07:46:13.407 15502-30452 RealtimeRecognizer      com.babelstream                      I  sent flush
+2025-11-01 07:46:13.407 15502-30452 RealtimeRecognizer      com.babelstream                      I  sent start_output
+2025-11-01 07:46:14.106 15502-30452 RealtimeRecognizer      com.babelstream                      I  sent flush
+2025-11-01 07:46:14.788 15502-30452 RealtimeRecognizer      com.babelstream                      I  sent flush
+2025-11-01 07:46:15.473 15502-30452 RealtimeRecognizer      com.babelstream                      I  sent flush
+2025-11-01 07:46:16.147 15502-30452 RealtimeRecognizer      com.babelstream                      I  sent flush
+2025-11-01 07:46:16.747 15502-30452 RealtimeRecognizer      com.babelstream                      I  sent flush
+
+
+
+
+
+
+
+2025-11-01 07:46:33.030  2313-9479  ActivityManager         system_server                        I  Background started FGS: Allowed [callingPackage: com.babelstream; callingUid: 10431; uidState: TOP ; uidBFSL: [BFSL]; intent: Intent { act=com.babelstream.RECOGNITION_START cmp=com.babelstream/.RecognitionService }; code:PROC_STATE_TOP; tempAllowListReason:<null>; targetSdkVersion:34; callerTargetSdkVersion:34; startForegroundCount:0; bindFromPackage:null: isBindService:false]
+2025-11-01 07:46:33.041 15502-15502 RecognitionService      com.babelstream                      I  startPipeline: useMic=true, cfgSampleRate=16000, model=gummy-realtime-v1, wsEndpoint=
+2025-11-01 07:46:33.042 15502-15502 RecognitionService      com.babelstream                      I  micMuted(before)=false, audioMode=0
+2025-11-01 07:46:33.043 15502-15502 RecognitionService      com.babelstream                      I  micPrivacyBlocked=false
+2025-11-01 07:46:33.177 15502-15502 RecognitionService      com.babelstream                      I  startPipeline: captureStarted=true, useMic=true
+2025-11-01 07:46:33.178 15502-15502 RecognitionService      com.babelstream                      I  ACTION_STATUS: 麦克风采集已启动: 48000Hz
+2025-11-01 07:46:33.178 15502-15502 RecognitionService      com.babelstream                      I  startPipeline: creating recognizer
+2025-11-01 07:46:33.178 15502-15502 RecognitionService      com.babelstream                      I  status=连接识别服务: wss://dashscope.aliyuncs.com/api-ws/v1/inference
+2025-11-01 07:46:33.178 15502-15502 RecognitionService      com.babelstream                      I  ACTION_STATUS: 连接识别服务: wss://dashscope.aliyuncs.com/api-ws/v1/inference
+2025-11-01 07:46:33.179 15502-15502 RecognitionService      com.babelstream                      I  status=连接识别服务...
+2025-11-01 07:46:33.179 15502-15502 RecognitionService      com.babelstream                      I  ACTION_STATUS: 连接识别服务...
+2025-11-01 07:46:33.180 15502-15502 RecognitionService      com.babelstream                      I  recognizer.start returned=true
+2025-11-01 07:46:33.182 15502-15502 RecognitionService      com.babelstream                      I  ACTION_STATUS: 识别中...
+2025-11-01 07:46:33.333 15502-30584 RecognitionService      com.babelstream                      I  level=0
+2025-11-01 07:46:33.487 15502-30585 RecognitionService      com.babelstream                      I  status=已连接识别服务
+2025-11-01 07:46:33.488 15502-30585 RecognitionService      com.babelstream                      I  ACTION_STATUS: 已连接识别服务
+2025-11-01 07:46:33.489 15502-30585 RecognitionService      com.babelstream                      I  status=已发送启动配置
+2025-11-01 07:46:33.490 15502-30585 RecognitionService      com.babelstream                      I  ACTION_STATUS: 已发送启动配置
+2025-11-01 07:46:33.547 15502-30585 RecognitionService      com.babelstream                      I  status=切换首动作为: create（因:Invalid action('setup') for the first message! Please follow the protocol!)
+2025-11-01 07:46:33.548 15502-30585 RecognitionService      com.babelstream                      I  ACTION_STATUS: 切换首动作为: create（因:Invalid action('setup') for the first message! Please follow the protocol!)
+2025-11-01 07:46:33.550 15502-30585 RecognitionService      com.babelstream                      I  status=连接关闭中: 1007/Invalid payload data
+2025-11-01 07:46:33.551 15502-30585 RecognitionService      com.babelstream                      I  ACTION_STATUS: 连接关闭中: 1007/Invalid payload data
+2025-11-01 07:46:33.551 15502-30585 RecognitionService      com.babelstream                      I  status=连接已关闭: 1007/Invalid payload data
+2025-11-01 07:46:33.552 15502-30585 RecognitionService      com.babelstream                      I  ACTION_STATUS: 连接已关闭: 1007/Invalid payload data
+2025-11-01 07:46:33.896 15502-30603 RecognitionService      com.babelstream                      I  status=已连接识别服务
+2025-11-01 07:46:33.898 15502-30603 RecognitionService      com.babelstream                      I  ACTION_STATUS: 已连接识别服务
+2025-11-01 07:46:33.900 15502-30603 RecognitionService      com.babelstream                      I  status=已发送启动配置
+2025-11-01 07:46:33.901 15502-30603 RecognitionService      com.babelstream                      I  ACTION_STATUS: 已发送启动配置
+2025-11-01 07:46:33.943 15502-30603 RecognitionService      com.babelstream                      E  error=Missing required parameter 'payload.task_group'! Please follow the protocol!
+2025-11-01 07:46:33.945 15502-30603 RecognitionService      com.babelstream                      I  ACTION_STATUS: Missing required parameter 'payload.task_group'! Please follow the protocol!
+2025-11-01 07:46:33.945 15502-30603 RecognitionService      com.babelstream                      I  status=连接关闭中: 1007/Invalid payload data
+2025-11-01 07:46:33.947 15502-30603 RecognitionService      com.babelstream                      I  ACTION_STATUS: 连接关闭中: 1007/Invalid payload data
+2025-11-01 07:46:33.948 15502-30464 RecognitionService      com.babelstream                      I  status=连接已关闭: 1007/Invalid payload data
+2025-11-01 07:46:33.949 15502-30464 RecognitionService      com.babelstream                      I  ACTION_STATUS: 连接已关闭: 1007/Invalid payload data
+2025-11-01 07:46:34.172 15502-30587 RecognitionService      com.babelstream                      I  status=已请求生成响应
+2025-11-01 07:46:34.173 15502-30587 RecognitionService      com.babelstream                      I  ACTION_STATUS: 已请求生成响应
+2025-11-01 07:46:34.433 15502-30584 RecognitionService      com.babelstream                      I  level=51
+2025-11-01 07:46:35.558 15502-30584 RecognitionService      com.babelstream                      I  level=42
+2025-11-01 07:46:36.657 15502-30584 RecognitionService      com.babelstream                      I  level=54
+2025-11-01 07:46:37.681 15502-30584 RecognitionService      com.babelstream                      I  level=44
+2025-11-01 07:46:38.820 15502-15502 RecognitionService      com.babelstream                      I  status=识别已停止
+2025-11-01 07:46:38.824 15502-15502 RecognitionService      com.babelstream                      I  ACTION_STATUS: 识别已停止
+2025-11-01 07:46:38.830  1726-1726  vendor.qti...dl-service ven...re.servicetrackeraidl-service  I  destroyService is called for service : com.babelstream/.RecognitionService
+
+
+
+
+
+2025-11-01 07:46:58.765 15502-15502 RecognitionService      com.babelstream                      I  ACTION_STATUS: 麦克风采集已启动: 48000Hz
+2025-11-01 07:46:58.766 15502-15502 RecognitionService      com.babelstream                      I  ACTION_STATUS: 连接识别服务: wss://dashscope.aliyuncs.com/api-ws/v1/inference
+2025-11-01 07:46:58.767 15502-15502 RecognitionService      com.babelstream                      I  ACTION_STATUS: 连接识别服务...
+2025-11-01 07:46:58.769 15502-15502 RecognitionService      com.babelstream                      I  ACTION_STATUS: 识别中...
+2025-11-01 07:46:59.072 15502-30728 RecognitionService      com.babelstream                      I  ACTION_STATUS: 已连接识别服务
+2025-11-01 07:46:59.074 15502-30728 RecognitionService      com.babelstream                      I  ACTION_STATUS: 已发送启动配置
+2025-11-01 07:46:59.141 15502-30728 RecognitionService      com.babelstream                      I  ACTION_STATUS: 切换首动作为: create（因:Invalid action('setup') for the first message! Please follow the protocol!)
+2025-11-01 07:46:59.145 15502-30728 RecognitionService      com.babelstream                      I  ACTION_STATUS: 连接关闭中: 1007/Invalid payload data
+2025-11-01 07:46:59.146 15502-30728 RecognitionService      com.babelstream                      I  ACTION_STATUS: 连接已关闭: 1007/Invalid payload data
+2025-11-01 07:46:59.523 15502-30743 RecognitionService      com.babelstream                      I  ACTION_STATUS: 已连接识别服务
+2025-11-01 07:46:59.527 15502-30743 RecognitionService      com.babelstream                      I  ACTION_STATUS: 已发送启动配置
+2025-11-01 07:46:59.623 15502-30743 RecognitionService      com.babelstream                      I  ACTION_STATUS: Missing required parameter 'payload.task_group'! Please follow the protocol!
+2025-11-01 07:46:59.625 15502-30743 RecognitionService      com.babelstream                      I  ACTION_STATUS: 连接关闭中: 1007/Invalid payload data
+2025-11-01 07:46:59.626 15502-30602 RecognitionService      com.babelstream                      I  ACTION_STATUS: 连接已关闭: 1007/Invalid payload data
+2025-11-01 07:46:59.769 15502-30729 RecognitionService      com.babelstream                      I  ACTION_STATUS: 已请求生成响应
+2025-11-01 07:47:03.984 15502-15502 RecognitionService      com.babelstream                      I  ACTION_STATUS: 识别已停止
+
+
+
+
+2025-11-01 07:47:30.877 15502-30886 RealtimeRecognizer      com.babelstream                      I  sent start cfg: {"header":{"event":"start","action":"setup","task_id":"ef6d2736-7111-4048-bf00-dcba926b3abf"},"payload":{"model":"gummy-realtime-v1","task_group":"speech_translation","function":"translate","audio":{"format":"pcm_s16le","sample_rate":16000,"channels":1},"input_audio_format":{"format":"pcm_s16le","sample_rate":16000,"channels":1},"input":{"format":"pcm_s16le","sample_rate":16000,"channels":1},"transcription":{"enabled":true,"source_language":"auto"},"translation_languages":["zh"],"translation":{"enabled":true}}}
+2025-11-01 07:47:31.333 15502-30951 RealtimeRecognizer      com.babelstream                      I  sent start cfg: {"header":{"event":"start","action":"create","task_id":"0ef7b758-ef01-41f3-a99a-f5e30bfa555a"},"payload":{"model":"gummy-realtime-v1","task_group":"speech_translation","function":"translate","audio":{"format":"pcm_s16le","sample_rate":16000,"channels":1},"input_audio_format":{"format":"pcm_s16le","sample_rate":16000,"channels":1},"input":{"format":"pcm_s16le","sample_rate":16000,"channels":1},"transcription":{"enabled":true,"source_language":"auto"},"translation_languages":["zh"],"translation":{"enabled":true}}}
+
+
+
+
+
+
+
+
+
+
+2025-11-01 07:47:58.022 15502-31157 RealtimeRecognizer      com.babelstream                      I  recv: {"header":{"task_id":"765ccd56-a67b-45cc-966e-5f0fbbe9c0d6","event":"task-failed","error_code":"InvalidParameter","error_message":"Invalid action('setup') for the first message! Please follow the protocol!","attributes":{}},"payload":{}}
+2025-11-01 07:47:58.444 15502-31175 RealtimeRecognizer      com.babelstream                      I  recv: {"header":{"task_id":"972a6929-2f84-408d-8cfd-6bc1cac47643","event":"task-failed","error_code":"InvalidParameter","error_message":"Missing required parameter 'payload.task_group'! Please follow the protocol!","attributes":{}},"payload":{}}
+
+
+
+
+
+2025-11-01 07:49:06.694 15502-32130 RealtimeRecognizer      com.babelstream                      I  recv: {"header":{"task_id":"8d88a687-56e5-4ae7-b68c-373a0973765d","event":"task-failed","error_code":"InvalidParameter","error_message":"Missing required parameter 'payload.task_group'! Please follow the protocol!","attributes":{}},"payload":{}}
+2025-11-01 07:49:06.695 15502-32130 RecognitionService      com.babelstream                      E  error=Missing required parameter 'payload.task_group'! Please follow the protocol!
+2025-11-01 07:49:06.697 15502-32130 RecognitionService      com.babelstream                      I  ACTION_STATUS: Missing required parameter 'payload.task_group'! Please follow the protocol!
+
+
+
+
+
+2025-11-01 07:49:33.985 15502-15502 RecognitionService      com.babelstream                      I  startPipeline: useMic=true, cfgSampleRate=16000, model=gummy-realtime-v1, wsEndpoint=
+2025-11-01 07:49:34.142 15502-15502 RecognitionService      com.babelstream                      I  startPipeline: captureStarted=true, useMic=true
+2025-11-01 07:49:34.143 15502-15502 RecognitionService      com.babelstream                      I  startPipeline: creating recognizer

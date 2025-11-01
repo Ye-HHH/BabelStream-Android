@@ -1,0 +1,122 @@
+2025-11-01 05:36:40.344 24407-24407 RealtimeRecognizer      com.babelstream                      I  ws url=wss://dashscope.aliyuncs.com/api-ws/v1/inference, sr=16000, model=gummy-realtime-v1
+2025-11-01 05:36:40.702 24407-30305 RealtimeRecognizer      com.babelstream                      I  sent start cfg: {"type":"start","model":"gummy-realtime-v1","audio":{"format":"pcm_s16le","sample_rate":16000,"channels":1},"transcription":{"enabled":true,"source_language":"auto"},"translation_languages":["zh"]}
+2025-11-01 05:36:40.767 24407-30305 RealtimeRecognizer      com.babelstream                      I  recv: {"header":{"event":"task-failed","error_code":"InvalidParameter","error_message":"Missing required parameter 'header'! Please follow the protocol!","attributes":{}},"payload":{}}
+2025-11-01 05:36:41.433 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:36:41.434 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent response.create
+2025-11-01 05:36:42.116 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:36:42.852 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:36:43.566 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:36:44.305 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:36:45.049 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:36:45.788 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:36:46.524 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:36:47.265 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:36:48.029 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:36:48.771 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:36:49.505 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:36:50.249 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:36:50.986 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:36:51.726 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:36:52.467 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:36:53.232 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:36:53.967 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:36:54.704 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:36:55.447 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:36:56.187 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:36:56.927 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:36:57.688 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:36:58.428 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:36:59.167 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:36:59.908 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:37:00.646 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:37:01.384 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:37:02.128 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:37:02.907 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:37:04.431 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:37:05.172 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:37:05.913 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:37:06.693 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:37:07.500 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:37:08.159 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:37:08.805 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:37:09.460 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:37:10.089 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:37:10.774 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:37:11.449 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:37:12.051 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:37:12.731 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:37:13.334 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:37:14.010 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:37:14.613 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:37:15.290 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:37:15.973 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:37:16.651 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:37:17.451 24407-30306 RealtimeRecognizer      com.babelstream                      I  sent commit
+2025-11-01 05:38:13.973 13856-13856 UniClipUni...aPublisher com.milink.crossdeviceservice        D  onPrimaryClipChanged label RealtimeRecognizer
+2025-11-01 05:38:13.973 30676-30676 Taplus.Cli...rdReceiver com.miui.contentextension            I  clip date description:ClipDescription { text/plain hasLabel(18) hasExtras <11-01 05:38:13.967> }--label: RealtimeRecognizer
+2025-11-01 05:38:13.987 13856-13856 UniClipUni...aPublisher com.milink.crossdeviceservice        D  onPrimaryClipChanged label RealtimeRecognizer
+
+
+
+
+2025-11-01 05:36:49.866 24407-30303 RecognitionService      com.babelstream                      I  level=16
+2025-11-01 05:36:50.988 24407-30303 RecognitionService      com.babelstream                      I  level=0
+2025-11-01 05:36:52.109 24407-30303 RecognitionService      com.babelstream                      I  level=53
+2025-11-01 05:36:53.231 24407-30303 RecognitionService      com.babelstream                      I  level=52
+2025-11-01 05:36:54.327 24407-30303 RecognitionService      com.babelstream                      I  level=40
+2025-11-01 05:36:55.448 24407-30303 RecognitionService      com.babelstream                      I  level=40
+2025-11-01 05:36:56.569 24407-30303 RecognitionService      com.babelstream                      I  level=6
+2025-11-01 05:36:57.692 24407-30303 RecognitionService      com.babelstream                      I  level=0
+2025-11-01 05:36:58.788 24407-30303 RecognitionService      com.babelstream                      I  level=42
+2025-11-01 05:36:59.909 24407-30303 RecognitionService      com.babelstream                      I  level=42
+2025-11-01 05:37:01.028 24407-30303 RecognitionService      com.babelstream                      I  level=0
+2025-11-01 05:37:02.130 24407-30303 RecognitionService      com.babelstream                      I  level=0
+2025-11-01 05:37:04.434 24407-30303 RecognitionService      com.babelstream                      I  level=0
+2025-11-01 05:37:04.437 24407-30303 RecognitionService      com.babelstream                      I  ACTION_STATUS: 捕获到静音，可能被系统禁用录制或被其它应用占用
+2025-11-01 05:37:05.555 24407-30303 RecognitionService      com.babelstream                      I  level=0
+2025-11-01 05:37:07.505 24407-30303 RecognitionService      com.babelstream                      I  level=0
+2025-11-01 05:37:08.519 24407-30303 RecognitionService      com.babelstream                      I  level=0
+2025-11-01 05:37:09.835 24407-30303 RecognitionService      com.babelstream                      I  level=0
+2025-11-01 05:37:10.935 24407-30303 RecognitionService      com.babelstream                      I  level=14
+2025-11-01 05:37:12.053 24407-30303 RecognitionService      com.babelstream                      I  level=14
+2025-11-01 05:37:13.072 24407-30303 RecognitionService      com.babelstream                      I  level=14
+2025-11-01 05:37:14.092 24407-30303 RecognitionService      com.babelstream                      I  level=12
+2025-11-01 05:37:15.112 24407-30303 RecognitionService      com.babelstream                      I  level=15
+2025-11-01 05:37:16.234 24407-30303 RecognitionService      com.babelstream                      I  level=17
+2025-11-01 05:37:17.451 24407-24407 RecognitionService      com.babelstream                      I  status=识别已停止
+2025-11-01 05:37:17.454 24407-24407 RecognitionService      com.babelstream                      I  ACTION_STATUS: 识别已停止
+2025-11-01 05:37:17.460  1726-1726  vendor.qti...dl-service ven...re.servicetrackeraidl-service  I  destroyService is called for service : com.babelstream/.RecognitionService
+2025-11-01 05:37:38.492 13856-13856 UniClipUni...aPublisher com.milink.crossdeviceservice        D  onPrimaryClipChanged label RecognitionService
+2025-11-01 05:37:38.516 13856-13856 UniClipUni...aPublisher com.milink.crossdeviceservice        D  onPrimaryClipChanged label RecognitionService
+2025-11-01 05:37:38.684 30676-30676 Taplus.Cli...rdReceiver com.miui.contentextension            I  clip date description:ClipDescription { text/plain hasLabel(18) hasExtras <11-01 05:37:38.487> }--label: RecognitionService
+2025-11-01 05:39:10.411 13856-13856 UniClipUni...aPublisher com.milink.crossdeviceservice        D  onPrimaryClipChanged label RecognitionService
+2025-11-01 05:39:10.411 30676-30676 Taplus.Cli...rdReceiver com.miui.contentextension            I  clip date description:ClipDescription { text/plain hasLabel(18) hasExtras <11-01 05:39:10.407> }--label: RecognitionService
+2025-11-01 05:39:10.419 13856-13856 UniClipUni...aPublisher com.milink.crossdeviceservice        D  onPrimaryClipChanged label RecognitionService
+
+
+
+
+
+
+025-11-01 05:43:58.776 24407-24407 RecognitionService      com.babelstream                      I  ACTION_STATUS: 麦克风采集已启动: 48000Hz
+2025-11-01 05:43:58.777 24407-24407 RecognitionService      com.babelstream                      I  ACTION_STATUS: 连接识别服务: wss://dashscope.aliyuncs.com/api-ws/v1/inference
+2025-11-01 05:43:58.778 24407-24407 RecognitionService      com.babelstream                      I  ACTION_STATUS: 连接识别服务...
+2025-11-01 05:43:58.779 24407-24407 RecognitionService      com.babelstream                      I  ACTION_STATUS: 识别中...
+2025-11-01 05:43:59.141 24407-31725 RecognitionService      com.babelstream                      I  ACTION_STATUS: 已连接识别服务
+2025-11-01 05:43:59.143 24407-31725 RecognitionService      com.babelstream                      I  ACTION_STATUS: 已发送启动配置
+2025-11-01 05:43:59.198 24407-31725 RecognitionService      com.babelstream                      I  ACTION_STATUS: 连接关闭中: 1007/Invalid payload data
+2025-11-01 05:43:59.199 24407-31743 RecognitionService      com.babelstream                      I  ACTION_STATUS: 连接已关闭: 1007/Invalid payload data
+2025-11-01 05:43:59.870 24407-31727 RecognitionService      com.babelstream                      I  ACTION_STATUS: 已请求生成响应
+2025-11-01 05:44:06.351 24407-31724 RecognitionService      com.babelstream                      I  ACTION_STATUS: 捕获到静音，可能被系统禁用录制或被其它应用占用
+2025-11-01 05:44:16.645 24407-24407 RecognitionService      com.babelstream                      I  ACTION_STATUS: 识别已停止
+2025-11-01 05:44:27.951 30676-30676 Taplus.Cli...rdReceiver com.miui.contentextension            I  clip date description:ClipDescription { text/plain hasLabel(13) hasExtras <11-01 05:44:27.949> }--label: ACTION_STATUS
+
+
+
+025-11-01 05:43:59.197 24407-31725 RealtimeRecognizer      com.babelstream                      I  recv: {"header":{"event":"task-failed","error_code":"InvalidParameter","error_message":"Missing required parameter 'header'! Please follow the protocol!","attributes":{}},"payload":{}}
+
+2025-11-01 05:45:39.767 24407-32191 RealtimeRecognizer      com.babelstream                      I  sent response.create
+
+2025-11-01 05:45:38.608 24407-24407 RecognitionService      com.babelstream                      I  startPipeline: useMic=true, cfgSampleRate=16000, model=gummy-realtime-v1, wsEndpoint=
+2025-11-01 05:45:38.768 24407-24407 RecognitionService      com.babelstream                      I  startPipeline: captureStarted=true, useMic=true
+2025-11-01 05:45:38.769 24407-24407 RecognitionService      com.babelstream                      I  startPipeline: creating recognizer

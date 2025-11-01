@@ -1,0 +1,138 @@
+Executing tasks: [:app:assembleDebug] in project E:\WPSDrive\WPS云盘\BabelStream-Android
+
+Starting Gradle Daemon...
+Gradle Daemon started in 925 ms
+
+> Configure project :app
+AGPBI: {"kind":"warning","text":"The option setting 'android.overridePathCheck=true' is experimental.\nThe current default is 'false'.","sources":[{}]}
+
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest
+> Task :app:processDebugManifest
+> Task :app:mergeDebugShaders UP-TO-DATE
+> Task :app:compileDebugShaders NO-SOURCE
+> Task :app:generateDebugAssets UP-TO-DATE
+> Task :app:mergeDebugAssets UP-TO-DATE
+> Task :app:compressDebugAssets UP-TO-DATE
+> Task :app:desugarDebugFileDependencies UP-TO-DATE
+> Task :app:processDebugJavaRes NO-SOURCE
+> Task :app:mergeDebugJavaResource UP-TO-DATE
+> Task :app:checkDebugDuplicateClasses UP-TO-DATE
+> Task :app:mergeDebugStartupProfile UP-TO-DATE
+> Task :app:mergeExtDexDebug UP-TO-DATE
+> Task :app:mergeLibDexDebug UP-TO-DATE
+> Task :app:mergeDebugJniLibFolders UP-TO-DATE
+> Task :app:mergeDebugNativeLibs NO-SOURCE
+> Task :app:stripDebugDebugSymbols NO-SOURCE
+> Task :app:validateSigningDebug UP-TO-DATE
+> Task :app:writeDebugAppMetadata UP-TO-DATE
+> Task :app:writeDebugSigningConfigVersions UP-TO-DATE
+> Task :app:processDebugManifestForPackage
+> Task :app:processDebugResources
+> Task :app:compileDebugJavaWithJavac UP-TO-DATE
+> Task :app:dexBuilderDebug UP-TO-DATE
+> Task :app:mergeDebugGlobalSynthetics UP-TO-DATE
+
+> Task :app:mergeProjectDexDebug FAILED
+AGPBI: {"kind":"error","text":"Type androidx.lifecycle.viewmodel.savedstate.R is defined multiple times: E:\\WPSDrive\\WPS云盘\\BabelStream-Android\\app\\build\\intermediates\\project_dex_archive\\debug\\dexBuilderDebug\\out\\6e75f5c79b4524e623ad29983eb7ec840c369694a22702ef94f0827b1cf3a5fe_0.jar:classes.dex, E:\\WPSDrive\\WPS云盘\\BabelStream-Android\\app\\build\\intermediates\\project_dex_archive\\debug\\dexBuilderDebug\\out\\e4b6a374841329b1ceb6487009177d67aafc6f1c2b2607b6bed052dc113fb8ec_0.jar:classes.dex","sources":[{"file":"E:\\WPSDrive\\WPS云盘\\BabelStream-Android\\app\\build\\intermediates\\project_dex_archive\\debug\\dexBuilderDebug\\out\\6e75f5c79b4524e623ad29983eb7ec840c369694a22702ef94f0827b1cf3a5fe_0.jar"}],"tool":"D8"}
+com.android.builder.dexing.DexArchiveMergerException: Error while merging dex archives: 
+Learn how to resolve the issue at https://developer.android.com/studio/build/dependencies#duplicate_classes.
+Type androidx.lifecycle.viewmodel.savedstate.R is defined multiple times: E:\WPSDrive\WPS云盘\BabelStream-Android\app\build\intermediates\project_dex_archive\debug\dexBuilderDebug\out\6e75f5c79b4524e623ad29983eb7ec840c369694a22702ef94f0827b1cf3a5fe_0.jar:classes.dex, E:\WPSDrive\WPS云盘\BabelStream-Android\app\build\intermediates\project_dex_archive\debug\dexBuilderDebug\out\e4b6a374841329b1ceb6487009177d67aafc6f1c2b2607b6bed052dc113fb8ec_0.jar:classes.dex
+	at com.android.builder.dexing.D8DexArchiveMerger.getMergingExceptionToRethrow(D8DexArchiveMerger.java:220)
+	at com.android.builder.dexing.D8DexArchiveMerger.mergeDexArchives(D8DexArchiveMerger.java:208)
+	at com.android.build.gradle.internal.tasks.DexMergingWorkAction.merge(DexMergingTask.kt:893)
+	at com.android.build.gradle.internal.tasks.DexMergingWorkAction.run(DexMergingTask.kt:845)
+	at com.android.build.gradle.internal.profile.ProfileAwareWorkAction.execute(ProfileAwareWorkAction.kt:74)
+	at org.gradle.workers.internal.DefaultWorkerServer.execute(DefaultWorkerServer.java:63)
+	at org.gradle.workers.internal.NoIsolationWorkerFactory$1$1.create(NoIsolationWorkerFactory.java:66)
+	at org.gradle.workers.internal.NoIsolationWorkerFactory$1$1.create(NoIsolationWorkerFactory.java:62)
+	at org.gradle.internal.classloader.ClassLoaderUtils.executeInClassloader(ClassLoaderUtils.java:100)
+	at org.gradle.workers.internal.NoIsolationWorkerFactory$1.lambda$execute$0(NoIsolationWorkerFactory.java:62)
+	at org.gradle.workers.internal.AbstractWorker$1.call(AbstractWorker.java:44)
+	at org.gradle.workers.internal.AbstractWorker$1.call(AbstractWorker.java:41)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:199)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)
+	at org.gradle.workers.internal.AbstractWorker.executeWrappedInBuildOperation(AbstractWorker.java:41)
+	at org.gradle.workers.internal.NoIsolationWorkerFactory$1.execute(NoIsolationWorkerFactory.java:59)
+	at org.gradle.workers.internal.DefaultWorkerExecutor.lambda$submitWork$0(DefaultWorkerExecutor.java:170)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.runExecution(DefaultConditionalExecutionQueue.java:187)
+	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.access$700(DefaultConditionalExecutionQueue.java:120)
+	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner$1.run(DefaultConditionalExecutionQueue.java:162)
+	at org.gradle.internal.Factories$1.create(Factories.java:31)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:264)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:128)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:133)
+	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.runBatch(DefaultConditionalExecutionQueue.java:157)
+	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.run(DefaultConditionalExecutionQueue.java:126)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: com.android.tools.r8.CompilationFailedException: Compilation failed to complete, origin: E:\WPSDrive\WPS云盘\BabelStream-Android\app\build\intermediates\project_dex_archive\debug\dexBuilderDebug\out\6e75f5c79b4524e623ad29983eb7ec840c369694a22702ef94f0827b1cf3a5fe_0.jar:classes.dex
+	at Version.fakeStackEntry(Version_8.4.26.java:0)
+	at com.android.tools.r8.Q.a(R8_8.4.26_77dfd09faba626680cedf50ad7c68fca6a451f7fcded90f98512e36c79c34d81:5)
+	at com.android.tools.r8.internal.qo.a(R8_8.4.26_77dfd09faba626680cedf50ad7c68fca6a451f7fcded90f98512e36c79c34d81:82)
+	at com.android.tools.r8.internal.qo.a(R8_8.4.26_77dfd09faba626680cedf50ad7c68fca6a451f7fcded90f98512e36c79c34d81:32)
+	at com.android.tools.r8.internal.qo.a(R8_8.4.26_77dfd09faba626680cedf50ad7c68fca6a451f7fcded90f98512e36c79c34d81:31)
+	at com.android.tools.r8.internal.qo.b(R8_8.4.26_77dfd09faba626680cedf50ad7c68fca6a451f7fcded90f98512e36c79c34d81:2)
+	at com.android.tools.r8.D8.run(R8_8.4.26_77dfd09faba626680cedf50ad7c68fca6a451f7fcded90f98512e36c79c34d81:11)
+	at com.android.builder.dexing.D8DexArchiveMerger.mergeDexArchives(D8DexArchiveMerger.java:206)
+	... 38 more
+Caused by: com.android.tools.r8.internal.g: Type androidx.lifecycle.viewmodel.savedstate.R is defined multiple times: E:\WPSDrive\WPS云盘\BabelStream-Android\app\build\intermediates\project_dex_archive\debug\dexBuilderDebug\out\6e75f5c79b4524e623ad29983eb7ec840c369694a22702ef94f0827b1cf3a5fe_0.jar:classes.dex, E:\WPSDrive\WPS云盘\BabelStream-Android\app\build\intermediates\project_dex_archive\debug\dexBuilderDebug\out\e4b6a374841329b1ceb6487009177d67aafc6f1c2b2607b6bed052dc113fb8ec_0.jar:classes.dex
+	at com.android.tools.r8.internal.R40.a(R8_8.4.26_77dfd09faba626680cedf50ad7c68fca6a451f7fcded90f98512e36c79c34d81:21)
+	at com.android.tools.r8.internal.gY.a(R8_8.4.26_77dfd09faba626680cedf50ad7c68fca6a451f7fcded90f98512e36c79c34d81:54)
+	at com.android.tools.r8.internal.gY.a(R8_8.4.26_77dfd09faba626680cedf50ad7c68fca6a451f7fcded90f98512e36c79c34d81:10)
+	at java.base/java.util.concurrent.ConcurrentHashMap.merge(Unknown Source)
+	at com.android.tools.r8.internal.gY.a(R8_8.4.26_77dfd09faba626680cedf50ad7c68fca6a451f7fcded90f98512e36c79c34d81:6)
+	at com.android.tools.r8.graph.p4$a.d(R8_8.4.26_77dfd09faba626680cedf50ad7c68fca6a451f7fcded90f98512e36c79c34d81:6)
+	at com.android.tools.r8.dex.c.a(R8_8.4.26_77dfd09faba626680cedf50ad7c68fca6a451f7fcded90f98512e36c79c34d81:95)
+	at com.android.tools.r8.dex.c.a(R8_8.4.26_77dfd09faba626680cedf50ad7c68fca6a451f7fcded90f98512e36c79c34d81:44)
+	at com.android.tools.r8.dex.c.a(R8_8.4.26_77dfd09faba626680cedf50ad7c68fca6a451f7fcded90f98512e36c79c34d81:9)
+	at com.android.tools.r8.D8.a(R8_8.4.26_77dfd09faba626680cedf50ad7c68fca6a451f7fcded90f98512e36c79c34d81:44)
+	at com.android.tools.r8.D8.d(R8_8.4.26_77dfd09faba626680cedf50ad7c68fca6a451f7fcded90f98512e36c79c34d81:17)
+	at com.android.tools.r8.D8.b(R8_8.4.26_77dfd09faba626680cedf50ad7c68fca6a451f7fcded90f98512e36c79c34d81:1)
+	at com.android.tools.r8.internal.qo.a(R8_8.4.26_77dfd09faba626680cedf50ad7c68fca6a451f7fcded90f98512e36c79c34d81:28)
+	... 41 more
+
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:mergeProjectDexDebug'.
+> A failure occurred while executing com.android.build.gradle.internal.tasks.DexMergingTaskDelegate
+   > There was a failure while executing work items
+      > A failure occurred while executing com.android.build.gradle.internal.tasks.DexMergingWorkAction
+         > com.android.builder.dexing.DexArchiveMergerException: Error while merging dex archives: 
+           Learn how to resolve the issue at https://developer.android.com/studio/build/dependencies#duplicate_classes.
+           Type androidx.lifecycle.viewmodel.savedstate.R is defined multiple times: E:\WPSDrive\WPS云盘\BabelStream-Android\app\build\intermediates\project_dex_archive\debug\dexBuilderDebug\out\6e75f5c79b4524e623ad29983eb7ec840c369694a22702ef94f0827b1cf3a5fe_0.jar:classes.dex, E:\WPSDrive\WPS云盘\BabelStream-Android\app\build\intermediates\project_dex_archive\debug\dexBuilderDebug\out\e4b6a374841329b1ceb6487009177d67aafc6f1c2b2607b6bed052dc113fb8ec_0.jar:classes.dex
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 12s
+31 actionable tasks: 5 executed, 26 up-to-date

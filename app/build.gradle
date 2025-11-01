@@ -10,8 +10,8 @@ android {
         applicationId "com.babelstream"
         minSdk 24
         targetSdk 34
-        versionCode 1
-        versionName "1.0"
+        versionCode 10
+        versionName "1.09"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -43,23 +43,47 @@ android {
 
 dependencies {
     // AndroidX 核心库
-    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation('androidx.appcompat:appcompat:1.6.1') {
+        exclude group: 'androidx.lifecycle', module: 'lifecycle-viewmodel-savedstate'
+    }
+    implementation('com.google.android.material:material:1.9.0') {
+        exclude group: 'androidx.lifecycle', module: 'lifecycle-viewmodel-savedstate'
+    }
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'com.google.android.material:material:1.9.0'
+    // 统一只保留一份 lifecycle-viewmodel-savedstate，避免 Dex 重复类
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0'
 
-    // 阿里云 DashScope Java SDK（实时语音识别/翻译）
-    implementation 'com.alibaba:dashscope-sdk-java:2.20.6'
-
-    // 网络库
-    implementation 'com.squareup.okhttp3:okhttp:4.11.0'
-    implementation 'com.google.code.gson:gson:2.10.1'
+    // 移除手动指定 lifecycle-viewmodel-savedstate，避免与 AAR/传递依赖产生重复 R 类
 
     // 日志库
     implementation 'org.slf4j:slf4j-api:2.0.7'
     implementation 'org.slf4j:slf4j-simple:2.0.7'
 
+    // 阿里云 Gummy Android SDK（本地 AAR）
+    implementation files('libs/nuisdk-release.aar')
+
     // 测试库
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
+
+// 注意：不要全局排除 lifecycle-viewmodel-savedstate，否则可能导致运行时缺类
+
+// 清理云盘/系统造成的编译产物“副本”文件，避免 Dex 重复类错误
+// 触发时机：每个 Java 编译任务完成后，删除 classes 目录下文件名包含“副本”的 .class
+afterEvaluate {
+    tasks.matching { it.name.endsWith('JavaWithJavac') && it.name.startsWith('compile') }.all { t ->
+        t.doLast {
+            def dir = file("$buildDir/intermediates/javac")
+            if (dir.exists()) {
+                def patterns = ["**/*-副本*.class", "**/*副本*.class"]
+                patterns.each { p ->
+                    fileTree(dir: dir, include: p).each { f ->
+                        try { f.delete() } catch (Throwable ignored) {}
+                    }
+                }
+            }
+        }
+    }
 }

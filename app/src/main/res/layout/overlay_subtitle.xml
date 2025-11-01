@@ -1,29 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp"
+    android:padding="16dp"
     android:background="@color/overlay_bg">
 
-    <!-- 原文（转写） -->
-    <TextView
-        android:id="@+id/overlay_transcript_text"
+    <LinearLayout
+        android:id="@+id/overlay_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/vscode_text"
-        android:textSize="28sp"
-        android:lineSpacingMultiplier="1.1"
-        android:text="等待识别…"/>
+        android:orientation="vertical">
+
+    <!-- 原文（转写） -->
+    <HorizontalScrollView
+        android:id="@+id/overlay_scroll_transcript"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+        <TextView
+            android:id="@+id/overlay_transcript_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/vscode_text"
+            android:textSize="14sp"
+            android:lineSpacingMultiplier="1.1"
+            android:singleLine="true"
+            android:text="等待识别…"/>
+    </HorizontalScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        android:background="@color/vscode_border" />
 
     <!-- 译文（翻译） -->
-    <TextView
-        android:id="@+id/overlay_translation_text"
+    <HorizontalScrollView
+        android:id="@+id/overlay_scroll_translation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/vscode_text_bright"
-        android:textSize="36sp"
-        android:lineSpacingMultiplier="1.2"
-        android:text="字幕悬浮窗已启动"/>
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+        <TextView
+            android:id="@+id/overlay_translation_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/vscode_text_bright"
+            android:textSize="20sp"
+            android:lineSpacingMultiplier="1.2"
+            android:singleLine="true"
+            android:text="字幕悬浮窗已启动"/>
+    </HorizontalScrollView>
 
-</LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/resize_handle"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:src="@drawable/ic_resize_triangle"
+        android:tint="@color/vscode_text_dim"
+        android:layout_gravity="bottom|end"
+        android:contentDescription="调整大小"
+        android:padding="0dp"
+        android:layout_margin="2dp"/>
+
+    <!-- 顶部右上角小型操作条（不占竖向高度） -->
+    <LinearLayout
+        android:id="@+id/top_actions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:orientation="horizontal"
+        android:gravity="end"
+        android:padding="0dp"
+        android:layout_margin="4dp">
+
+        <ImageView
+            android:id="@+id/btn_settings"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:tint="@color/vscode_text"
+            android:contentDescription="设置"
+            android:src="@android:drawable/ic_menu_preferences" />
+
+        <ImageView
+            android:id="@+id/btn_close"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:tint="@color/vscode_text"
+            android:contentDescription="关闭"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:layout_marginStart="6dp" />
+    </LinearLayout>
+
+</FrameLayout>

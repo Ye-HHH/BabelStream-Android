@@ -22,3 +22,6 @@ app/outputs/
 *.jks
 *.keystore
 
+# Local backups/junk
+.backup*/
+*.bak

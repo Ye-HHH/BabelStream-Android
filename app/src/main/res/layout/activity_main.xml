@@ -39,12 +39,22 @@
         android:id="@+id/audio_level"
         style="@android:style/Widget.ProgressBar.Horizontal"
         android:layout_width="match_parent"
-        android:layout_height="6dp"
+        android:layout_height="12dp"
         android:progress="0"
         android:max="100"
         android:progressTint="@color/vscode_success"
         android:indeterminate="false"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginBottom="4dp" />
+
+    <TextView
+        android:id="@+id/audio_level_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="电平: 0%"
+        android:textSize="12sp"
+        android:textColor="@color/vscode_text_dim"
+        android:layout_marginBottom="8dp"/>
+
 
     <!-- 字幕显示区域 -->
     <ScrollView
@@ -52,32 +62,55 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@color/vscode_bg_lighter"
-        android:padding="16dp">
+        android:padding="24dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/subtitle_transcript"
+            <HorizontalScrollView
+                android:id="@+id/scroll_subtitle_transcript"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="等待识别..."
-                android:textSize="28sp"
-                android:textColor="@color/vscode_text"
-                android:lineSpacingMultiplier="1.1"
-                android:gravity="center" />
+                android:fillViewport="true"
+                android:overScrollMode="never"
+                android:scrollbars="none">
+                <TextView
+                    android:id="@+id/subtitle_transcript"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="等待识别..."
+                    android:textSize="14sp"
+                    android:textColor="@color/vscode_text"
+                    android:lineSpacingMultiplier="1.1"
+                    android:singleLine="true" />
+            </HorizontalScrollView>
 
-            <TextView
-                android:id="@+id/subtitle_text"
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp"
+                android:background="@color/vscode_border" />
+
+            <HorizontalScrollView
+                android:id="@+id/scroll_subtitle_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:textSize="48sp"
-                android:textColor="@color/vscode_text_bright"
-                android:lineSpacingMultiplier="1.2"
-                android:gravity="center" />
+                android:fillViewport="true"
+                android:overScrollMode="never"
+                android:scrollbars="none">
+                <TextView
+                    android:id="@+id/subtitle_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="20sp"
+                    android:textColor="@color/vscode_text_bright"
+                    android:lineSpacingMultiplier="1.2"
+                    android:singleLine="true" />
+            </HorizontalScrollView>
 
         </LinearLayout>
 

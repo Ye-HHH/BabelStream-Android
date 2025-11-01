@@ -5,6 +5,8 @@ import android.media.AudioFormat;
 import android.media.AudioPlaybackCaptureConfiguration;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
+import android.media.AudioTrack;
+import android.media.AudioManager;
 import android.media.projection.MediaProjection;
 import android.os.Build;
 import android.util.Log;
@@ -23,7 +25,9 @@ public class PlaybackCaptureManager {
     }
 
     private final int targetSampleRate;
-    private final int inputSampleRate; // 采用48k优先
+    private int inputSampleRate; // 采用48k优先
+    private int inputChannelMask = AudioFormat.CHANNEL_IN_STEREO; // 优先立体声，必要时回退单声道
+    private boolean inputStereo = true;
     private AudioRecord audioRecord;
     private boolean isRecording = false;
     private Thread recordingThread;
@@ -33,7 +37,11 @@ public class PlaybackCaptureManager {
     public PlaybackCaptureManager(MediaProjection projection, int targetSampleRate) {
         this.mediaProjection = projection;
         this.targetSampleRate = targetSampleRate;
-        this.inputSampleRate = 48000; // 大多数设备输出48k
+        int nativeRate = 0;
+        try { nativeRate = AudioTrack.getNativeOutputSampleRate(AudioManager.STREAM_MUSIC); } catch (Throwable ignore) {}
+        if (nativeRate <= 0) nativeRate = 48000;
+        this.inputSampleRate = nativeRate; // 优先使用设备原生输出采样率
+        Log.i(TAG, "nativeOutputSampleRate=" + nativeRate);
     }
 
     public void setCallback(AudioDataCallback cb) {
@@ -58,12 +66,12 @@ public class PlaybackCaptureManager {
             AudioFormat inputFormat = new AudioFormat.Builder()
                     .setEncoding(AudioFormat.ENCODING_PCM_16BIT)
                     .setSampleRate(inputSampleRate)
-                    .setChannelMask(AudioFormat.CHANNEL_IN_STEREO)
+                    .setChannelMask(inputChannelMask)
                     .build();
 
             int bufferSize = AudioRecord.getMinBufferSize(
                     inputSampleRate,
-                    AudioFormat.CHANNEL_IN_STEREO,
+                    inputChannelMask,
                     AudioFormat.ENCODING_PCM_16BIT
             );
             bufferSize = Math.max(bufferSize, inputSampleRate * 2 * 2 / 10); // 至少100ms缓冲
@@ -75,11 +83,60 @@ public class PlaybackCaptureManager {
                     .build();
 
             if (audioRecord.getState() != AudioRecord.STATE_INITIALIZED) {
-                if (callback != null) callback.onError("AudioRecord初始化失败");
-                return false;
+                // 尝试按 44.1k 回退一次
+                try { audioRecord.release(); } catch (Throwable ignore) {}
+                int alt = (inputSampleRate == 48000 ? 44100 : 48000);
+                Log.w(TAG, "init failed at " + inputSampleRate + ", retry with " + alt);
+                inputSampleRate = alt;
+                inputFormat = new AudioFormat.Builder()
+                        .setEncoding(AudioFormat.ENCODING_PCM_16BIT)
+                        .setSampleRate(inputSampleRate)
+                        .setChannelMask(inputChannelMask)
+                        .build();
+                bufferSize = AudioRecord.getMinBufferSize(
+                        inputSampleRate,
+                        inputChannelMask,
+                        AudioFormat.ENCODING_PCM_16BIT
+                );
+                bufferSize = Math.max(bufferSize, inputSampleRate * 2 * 2 / 10);
+                audioRecord = new AudioRecord.Builder()
+                        .setAudioFormat(inputFormat)
+                        .setBufferSizeInBytes(bufferSize)
+                        .setAudioPlaybackCaptureConfig(config)
+                        .build();
+                if (audioRecord.getState() != AudioRecord.STATE_INITIALIZED) {
+                    // 回退到单声道再试一次
+                    try { audioRecord.release(); } catch (Throwable ignore) {}
+                    inputChannelMask = AudioFormat.CHANNEL_IN_MONO;
+                    inputStereo = false;
+                    inputFormat = new AudioFormat.Builder()
+                            .setEncoding(AudioFormat.ENCODING_PCM_16BIT)
+                            .setSampleRate(inputSampleRate)
+                            .setChannelMask(inputChannelMask)
+                            .build();
+                    bufferSize = AudioRecord.getMinBufferSize(
+                            inputSampleRate,
+                            inputChannelMask,
+                            AudioFormat.ENCODING_PCM_16BIT
+                    );
+                    bufferSize = Math.max(bufferSize, inputSampleRate * 2 / 10);
+                    audioRecord = new AudioRecord.Builder()
+                            .setAudioFormat(inputFormat)
+                            .setBufferSizeInBytes(bufferSize)
+                            .setAudioPlaybackCaptureConfig(config)
+                            .build();
+                    if (audioRecord.getState() != AudioRecord.STATE_INITIALIZED) {
+                        if (callback != null) callback.onError("AudioRecord初始化失败");
+                        return false;
+                    }
+                }
             }
 
             audioRecord.startRecording();
+            try {
+                android.media.AudioDeviceInfo dev = audioRecord.getRoutedDevice();
+                if (dev != null) { Log.i(TAG, "Routed device: type=" + dev.getType() + ", name=" + dev.getProductName()); }
+            } catch (Throwable ignore) {}
             isRecording = true;
             recordingThread = new Thread(this::recordingLoop, "PlaybackCaptureThread");
             recordingThread.start();
@@ -92,9 +149,9 @@ public class PlaybackCaptureManager {
     }
 
     private void recordingLoop() {
-        byte[] buffer = new byte[4096 * 4]; // stereo 16bit
+        byte[] buffer = new byte[4096 * (inputStereo ? 4 : 2)]; // 16bit * channels
         short[] shortBuf = new short[buffer.length / 2];
-        short[] monoBuf = new short[shortBuf.length / 2];
+        short[] monoBuf = new short[inputStereo ? shortBuf.length / 2 : shortBuf.length];
 
         Resampler resampler = new Resampler(inputSampleRate, targetSampleRate);
         short[] resampleOut = new short[monoBuf.length];
@@ -111,11 +168,17 @@ public class PlaybackCaptureManager {
                 shortBuf[i] = (short) (hi | lo);
             }
 
-            // stereo -> mono (平均)
-            int monoSamples = samples / 2;
-            for (int i = 0, j = 0; i < monoSamples; i++, j += 2) {
-                int s = (shortBuf[j] + shortBuf[j + 1]) / 2;
-                monoBuf[i] = (short) s;
+            int monoSamples;
+            if (inputStereo) {
+                // stereo -> mono (平均)
+                monoSamples = samples / 2;
+                for (int i = 0, j = 0; i < monoSamples; i++, j += 2) {
+                    int s = (shortBuf[j] + shortBuf[j + 1]) / 2;
+                    monoBuf[i] = (short) s;
+                }
+            } else {
+                monoSamples = samples;
+                System.arraycopy(shortBuf, 0, monoBuf, 0, monoSamples);
             }
 
             // 重采样到 targetSampleRate
@@ -172,4 +235,3 @@ public class PlaybackCaptureManager {
         }
     }
 }
-

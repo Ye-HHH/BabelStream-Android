@@ -1,0 +1,128 @@
+2025-11-01 03:52:10.252  2313-4109  InputDispatcher         system_server                        W  channel cee7a5f com.babelstream/com.babelstream.MainActivity (server)~ dropping inconsistent event: DispatchEntry{resolvedFlags=0, targetFlags=0x0, transform=transform (ROT_0) (SCALE )
+                                                                                                        0.7500  -0.0000  0.0000
+                                                                                                        -0.0000  0.7500  0.0000
+                                                                                                        0.0000  0.0000  1.0000
+                                                                                                    } original: MotionEvent(action=HOVER_EXIT)
+2025-11-01 03:52:10.259  2313-4109  MIUIInput               system_server                        I  [MotionEvent] publisher action=0x0, deviceId=-1, 163926544, channel 'cee7a5f com.babelstream/com.babelstream.MainActivity (server)'
+2025-11-01 03:52:10.260 31695-31695 MIUIInput               com.babelstream                      I  [MotionEvent] ViewRootImpl windowName 'com.babelstream/com.babelstream.MainActivity', { action=ACTION_DOWN, id[0]=0, pointerCount=1, eventTime=163926544, downTime=163926544, phoneEventTime=03:52:10.251 } moveCount:0
+2025-11-01 03:52:10.396  2313-4109  MIUIInput               system_server                        I  [MotionEvent] publisher action=0x1, deviceId=-1, 163926687, channel 'cee7a5f com.babelstream/com.babelstream.MainActivity (server)'
+2025-11-01 03:52:10.401 31695-31695 MIUIInput               com.babelstream                      I  [MotionEvent] ViewRootImpl windowName 'com.babelstream/com.babelstream.MainActivity', { action=ACTION_UP, id[0]=0, pointerCount=1, eventTime=163926687, downTime=163926544, phoneEventTime=03:52:10.394 } moveCount:0
+2025-11-01 03:52:10.407  2313-4028  ActivityManager         system_server                        I  Background started FGS: Allowed [callingPackage: com.babelstream; callingUid: 10429; uidState: TOP ; uidBFSL: [BFSL]; intent: Intent { act=com.babelstream.RECOGNITION_START cmp=com.babelstream/.RecognitionService }; code:PROC_STATE_TOP; tempAllowListReason:<,reasonCode:SYSTEM_ALLOW_LISTED,duration:9223372036854775807,callingUid:-1>; targetSdkVersion:34; callerTargetSdkVersion:34; startForegroundCount:0; bindFromPackage:null: isBindService:false]
+2025-11-01 03:52:10.426 31695-31695 AudioManager            com.babelstream                      D  getMode: mode=0, callApp=com.babelstream
+2025-11-01 03:52:10.426  2313-9478  AS.AudioService         system_server                        V  setMode(mode=3, pid=31695, uid=10429, caller=com.babelstream)
+2025-11-01 03:52:10.427 31695-31695 RecognitionService      com.babelstream                      I  micMuted(before)=false, audioMode=0
+2025-11-01 03:52:10.428 31695-31695 RecognitionService      com.babelstream                      I  micPrivacyBlocked=false
+2025-11-01 03:52:10.428 31695-31695 AudioRecordStub         com.babelstream                      D  AudioRecordStub() create
+2025-11-01 03:52:10.429 31695-31695 AudioRecordImpl         com.babelstream                      I  initAudioRecordImpl()
+2025-11-01 03:52:10.429 31695-31695 AudioRecord             com.babelstream                      D  set(): inputSource 7, sampleRate 48000, format 0x1, channelMask 0x10, frameCount 4096, notificationFrames 0, sessionId 0, transferType 0, flags 0, attributionSource AttributionSourceState{pid: 31695, uid: 10429, deviceId: 0, packageName: com.babelstream, attributionTag: (null), token: binder:0xb400007b840f4c90, renouncedPermissions: [], next: []}uid -1, pid -1
+2025-11-01 03:52:10.548  1910-4424  APM_AudioPolicyManager  audioserver                          D  getInputForAttr AudioPlayBackCapture not supported, appName: com.babelstream
+2025-11-01 03:52:10.549  1910-4424  AudioPolicyManagerImpl  audioserver                          D  binder call: getPackageName com.babelstream for uid 10429
+2025-11-01 03:52:10.574  2313-4310  AudioServiceStubImpl    system_server                        D  onUpdateAudioMode audiomode 3 package:com.babelstream
+2025-11-01 03:52:10.575 31695-31695 xlog_client             com.babelstream                      V  xlog_check_permission event name audio_track_message level 0
+2025-11-01 03:52:10.575 31695-31695 AudioCaptureManager     com.babelstream                      I  AudioRecord initialized: source=7, sampleRate=48000, buffer=8192
+2025-11-01 03:52:10.575 31695-31695 AudioCaptureManager     com.babelstream                      I  AudioRecord source selected: 7, sr=48000
+2025-11-01 03:52:10.575 31695-31695 AudioRecord             com.babelstream                      I  start mSessionID=7625 start(1914): sync event 0 trigger session 0  packageName: com.babelstream
+2025-11-01 03:52:10.579  8522-10456 MIUISafety-Monitor      com.miui.securitycenter.remote       W  sync com.babelstream,userId:0,op:27,active:true,isNote:false,isTerminal:false,notify:true
+2025-11-01 03:52:10.579  1910-4416  MiAudioPolicyManager    audioserver                          D  getPackageName: com.babelstream  uid 10429
+2025-11-01 03:52:10.580  1910-19597 AudioFlingerImpl        audioserver                          D  checkForGameParameter_l() set events appname=+com.babelstream
+2025-11-01 03:52:10.580  1584-30612 AHAL: AudioStream       android.hardware.audio.service_64    D  astream_in_set_parameters: 2049: Enter: appname=+com.babelstream
+2025-11-01 03:52:10.580  1584-30612 AHAL: AudioStreamCustom android.hardware.audio.service_64    D  SetParameters: 892: Enter: kvpairs is appname=+com.babelstream
+2025-11-01 03:52:10.580  1584-30612 AHAL: AudioStreamCustom android.hardware.audio.service_64    D  SetParameters: 963: [hal_apptype] SetParameters(), in: set app name +com.babelstream [11, 0x1 0x1]
+2025-11-01 03:52:10.580  1584-30612 AHAL: AudioStream       android.hardware.audio.service_64    D  SetParameters: 6352: enter: kvpairs: appname=+com.babelstream
+2025-11-01 03:52:10.580  1910-4416  APM_AudioPolicyManager  audioserver                          D  startInput input:1774, session:7625, portId:1914, appname com.babelstream, uid 10429)
+2025-11-01 03:52:10.587 31695-31695 AudioCaptureManager     com.babelstream                      I  Routed device: type=15, name=23116PN5BC
+2025-11-01 03:52:10.587 31695-31695 AudioCaptureManager     com.babelstream                      I  Resampling mic from 48000 to 16000
+2025-11-01 03:52:10.587 31695-31695 AudioCaptureManager     com.babelstream                      I  Recording started
+2025-11-01 03:52:10.587 31695-31695 RecognitionService      com.babelstream                      I  ACTION_STATUS: 麦克风采集已启动: 48000Hz
+2025-11-01 03:52:10.587 31695-31695 RealtimeRecognizer      com.babelstream                      I  start(): set DASHSCOPE_API_KEY, model=gummy-realtime-v1, sr=16000, transEnabled=true, tgt=zh
+2025-11-01 03:52:10.588 31695-31695 RecognitionService      com.babelstream                      I  status=未找到DashScope Realtime SDK类，请检查依赖版本
+2025-11-01 03:52:10.588 31695-31695 RecognitionService      com.babelstream                      I  ACTION_STATUS: 未找到DashScope Realtime SDK类，请检查依赖版本
+2025-11-01 03:52:10.588 31695-31695 RealtimeRecognizer      com.babelstream                      E  class lookup failed: Param=null, Recognizer=null
+2025-11-01 03:52:10.588 31695-31695 RecognitionService      com.babelstream                      I  recognizer.start returned=false
+2025-11-01 03:52:10.589 31695-31695 RecognitionService      com.babelstream                      I  ACTION_STATUS: 识别器未启动，仅电平测试
+2025-11-01 03:52:10.632  1584-19599 android.ha...service_64 android.hardware.audio.service_64    D  send_sound_recorder_data_to_xlog: msg input_device__type: mobile mic, recorder_app_name: com.babelstream
+2025-11-01 03:52:10.632  1584-19599 xlog_client             android.hardware.audio.service_64    D  _xlog_write_flat_msg: send msg {"name":"sound_recorder","audio_event":{"input_device_type":"mobile mic","recorder_app_name":"com.babelstream"},"dgt":"null","audio_ext":"null" }
+2025-11-01 03:52:10.643  6629-6629  SpaceNotif...ionService com.miui.securitycore.remote         D  onNotificationPosted pkgname:com.babelstream userId:0 currentUserId:0 isFloat: false
+2025-11-01 03:52:10.648  5110-5110  MiuiBubbleSettings      com.android.systemui                 I  com.babelstream 0isAppEnableBubbleNotification: false
+2025-11-01 03:52:10.650  9743-11525 NotifySync...9743_11525 com.mi.health                        I  onNotificationPosted Id:2 key:0|com.babelstream|2|null|10429 PackageName:com.babelstream IsOngoing:true PostTime:1761940330426 currentDeviceModel.connected: true
+2025-11-01 03:52:10.665  5110-5110  MiuiBubbleSettings      com.android.systemui                 I  com.babelstream 0isAppEnableBubbleNotification: false
+2025-11-01 03:52:10.668  5110-5110  AlertCoordinator        com.android.systemui                 D  onViewBound, buzzBeep for 0|com.babelstream|2|null|10429
+2025-11-01 03:52:10.676  5110-5110  AlertCoordinator        com.android.systemui                 D  onViewBound, buzzBeep for 0|com.babelstream|2147483647|ranker_group|10429|ranker_group
+2025-11-01 03:52:10.757 31695-19600 AudioCaptureManager     com.babelstream                      I  level=0
+2025-11-01 03:52:10.762 31695-19600 RecognitionService      com.babelstream                      I  level=0
+2025-11-01 03:52:10.769  2313-5392  PerfShielderService     system_server                        D  com.babelstream|com.babelstream/com.babelstream.MainActivity|203|163926912432153|175|0|2
+2025-11-01 03:52:10.770  8192-10414 MiuiPerfServiceClient   com.miui.daemon                      W  interceptAndQueuing:31695|com.babelstream|203|175|163926912432153|Slow main thread|2
+2025-11-01 03:52:10.887  6629-6629  SpaceNotif...ionService com.miui.securitycore.remote         D  onNotificationPosted pkgname:com.babelstream userId:0 currentUserId:0 isFloat: false
+2025-11-01 03:52:10.888  9743-11525 NotifySync...9743_11525 com.mi.health                        I  onNotificationPosted Id:2147483647 key:0|com.babelstream|2147483647|ranker_group|10429|ranker_group PackageName:com.babelstream IsOngoing:true PostTime:1761940294924 currentDeviceModel.connected: true
+2025-11-01 03:52:11.095  5110-5110  MiuiBubbleSettings      com.android.systemui                 I  com.babelstream 0isAppEnableBubbleNotification: false
+2025-11-01 03:52:11.119  5110-5110  AlertCoordinator        com.android.systemui                 D  onViewBound, buzzBeep for 0|com.babelstream|2147483647|ranker_group|10429|ranker_group
+2025-11-01 03:52:11.777 31695-19600 AudioCaptureManager     com.babelstream                      I  level=47
+2025-11-01 03:52:11.859 31695-19600 RecognitionService      com.babelstream                      I  level=46
+2025-11-01 03:52:12.800 31695-19600 AudioCaptureManager     com.babelstream                      I  level=55
+2025-11-01 03:52:12.985 31695-19600 RecognitionService      com.babelstream                      I  level=43
+2025-11-01 03:52:13.817 31695-19600 AudioCaptureManager     com.babelstream                      I  level=53
+2025-11-01 03:52:14.079 31695-19600 RecognitionService      com.babelstream                      I  level=40
+2025-11-01 03:52:14.661 31695-18989 RenderInspector         com.babelstream                      W  QueueBuffer time out on com.babelstream/com.babelstream.MainActivity, count=1, avg=10 ms, max=10 ms.
+2025-11-01 03:52:14.859 31695-19600 AudioCaptureManager     com.babelstream                      I  level=30
+2025-11-01 03:52:15.201 31695-19600 RecognitionService      com.babelstream                      I  level=37
+2025-11-01 03:52:15.879 31695-19600 AudioRecordImpl         com.babelstream                      D  [audioRecordData][fine] 5s(f:5043 m:79 s:0) : pid 31695 uid 10429 sessionId 7625 sr 48000 ch 1 fmt 1
+2025-11-01 03:52:15.879 31695-19600 AudioCaptureManager     com.babelstream                      I  level=39
+2025-11-01 03:52:16.218 31695-19600 RecognitionService      com.babelstream                      I  level=44
+2025-11-01 03:52:16.898 31695-19600 AudioCaptureManager     com.babelstream                      I  level=46
+2025-11-01 03:52:17.321 31695-19600 RecognitionService      com.babelstream                      I  level=51
+2025-11-01 03:52:17.868  2313-4109  InputDispatcher         system_server                        W  channel cee7a5f com.babelstream/com.babelstream.MainActivity (server)~ dropping inconsistent event: DispatchEntry{resolvedFlags=0, targetFlags=0x0, transform=transform (ROT_0) (SCALE )
+                                                                                                        0.7500  -0.0000  0.0000
+                                                                                                        -0.0000  0.7500  0.0000
+                                                                                                        0.0000  0.0000  1.0000
+                                                                                                    } original: MotionEvent(action=HOVER_EXIT)
+2025-11-01 03:52:17.881  2313-4109  MIUIInput               system_server                        I  [MotionEvent] publisher action=0x0, deviceId=-1, 163934165, channel 'cee7a5f com.babelstream/com.babelstream.MainActivity (server)'
+2025-11-01 03:52:17.883 31695-31695 MIUIInput               com.babelstream                      I  [MotionEvent] ViewRootImpl windowName 'com.babelstream/com.babelstream.MainActivity', { action=ACTION_DOWN, id[0]=0, pointerCount=1, eventTime=163934165, downTime=163934165, phoneEventTime=03:52:17.872 } moveCount:0
+2025-11-01 03:52:17.917 31695-19600 AudioCaptureManager     com.babelstream                      I  level=0
+2025-11-01 03:52:17.954  2313-4109  MIUIInput               system_server                        I  [MotionEvent] publisher action=0x1, deviceId=-1, 163934245, channel 'cee7a5f com.babelstream/com.babelstream.MainActivity (server)'
+2025-11-01 03:52:17.957 31695-31695 MIUIInput               com.babelstream                      I  [MotionEvent] ViewRootImpl windowName 'com.babelstream/com.babelstream.MainActivity', { action=ACTION_UP, id[0]=0, pointerCount=1, eventTime=163934245, downTime=163934165, phoneEventTime=03:52:17.952 } moveCount:0
+2025-11-01 03:52:18.002 31695-31695 AudioRecord             com.babelstream                      I  stop mSessionID=7625, packageName: com.babelstream
+2025-11-01 03:52:18.003 31695-31695 AudioRecord             com.babelstream                      D  stop(1914): mActive:1
+2025-11-01 03:52:18.106  8522-10456 MIUISafety-Monitor      com.miui.securitycenter.remote       W  sync com.babelstream,userId:0,op:27,active:false,isNote:false,isTerminal:false,notify:true
+2025-11-01 03:52:18.109  1910-19597 AudioFlingerImpl        audioserver                          D  checkForGameParameter_l() set events appname=-com.babelstream
+2025-11-01 03:52:18.110  1584-30612 AHAL: AudioStream       android.hardware.audio.service_64    D  astream_in_set_parameters: 2049: Enter: appname=-com.babelstream
+2025-11-01 03:52:18.110  1584-30612 AHAL: AudioStreamCustom android.hardware.audio.service_64    D  SetParameters: 892: Enter: kvpairs is appname=-com.babelstream
+2025-11-01 03:52:18.110  1584-30612 AHAL: AudioStreamCustom android.hardware.audio.service_64    D  SetParameters: 963: [hal_apptype] SetParameters(), in: set app name -com.babelstream [10, 0x1 0x0]
+2025-11-01 03:52:18.111  1584-30612 AHAL: AudioStream       android.hardware.audio.service_64    D  SetParameters: 6352: enter: kvpairs: appname=-com.babelstream
+2025-11-01 03:52:18.112 31695-31695 AudioRecord             com.babelstream                      I  stop mSessionID=7625, packageName: com.babelstream
+2025-11-01 03:52:18.112 31695-31695 AudioRecord             com.babelstream                      D  stop(1914): mActive:0
+2025-11-01 03:52:18.112 31695-31695 AudioRecord             com.babelstream                      I  stop mSessionID=7625, packageName: com.babelstream
+2025-11-01 03:52:18.112 31695-31695 AudioRecord             com.babelstream                      D  stop(1914): mActive:0
+2025-11-01 03:52:18.112  2313-4845  MediaFunctionStubImpl   system_server                        D  report record event.{"name":"recording_parameters","audio_event":{"device_name":"mic", "packg_name":"com.babelstream", "record_source":"VOICE_COMMUNICATION", "record_encoding":"2", "record_channel_num":"1", "record_sample_rate":"48000", "record_time_during":"8"},"dgt":"null","audio_ext":"null"}
+2025-11-01 03:52:18.113 31695-31695 AudioRecordStub         com.babelstream                      D  ~AudioRecordStub() destroy
+2025-11-01 03:52:18.114 31695-31695 AudioCaptureManager     com.babelstream                      I  Recording stopped
+2025-11-01 03:52:18.114 31695-31695 RecognitionService      com.babelstream                      I  status=识别已停止
+2025-11-01 03:52:18.115 31695-31695 RecognitionService      com.babelstream                      I  ACTION_STATUS: 识别已停止
+2025-11-01 03:52:18.115  2313-4028  AS.AudioService         system_server                        V  setMode(mode=0, pid=31695, uid=10429, caller=com.babelstream)
+2025-11-01 03:52:18.116  2313-4027  ActivityManager         system_server                        I  Cancel FGS notification userId: 0 definingUid: 10429 packageName: com.babelstream processName:com.babelstream ChannelId:recognition_channel foregroundNotiWhen:1761940330423 Notiflags:98
+2025-11-01 03:52:18.117  1726-1726  vendor.qti...dl-service ven...re.servicetrackeraidl-service  I  destroyService is called for service : com.babelstream/.RecognitionService
+2025-11-01 03:52:18.118  2313-2313  NotificationService     system_server                        I  Cancel FGS notification CallingUid: 10429 CallingPid: 31695 Pkg: com.babelstream Id:2 Tag:null UserId:0 MustHaveFlags:0 MustNotHaveFlags:0 Reason:8 foregroundNotiWhen:1761940330423 foregroundNotiFlags:98 foregroundNotiChannelId:recognition_channel
+2025-11-01 03:52:18.118  2313-4845  xlog_client             system_server                        V   xlog_send_java  JNI test, msg is {"name":"recording_parameters","audio_event":{"device_name":"mic", "packg_name":"com.babelstream", "record_source":"VOICE_COMMUNICATION", "record_encoding":"2", "record_channel_num":"1", "record_sample_rate":"48000", "record_time_during":"8"},"dgt":"null","audio_ext":"null"}
+2025-11-01 03:52:18.123  5110-5110  HideDelete...Controller com.android.systemui                 D  onNotificationRemoved 8 0|com.babelstream|2|null|10429
+2025-11-01 03:52:18.125  5110-5855  Notificati...iderPublic com.android.systemui                 D  call method=canShowFocus extras=Bundle[{package=com.babelstream}] uid=$s
+2025-11-01 03:52:18.125  5110-5855  DatabaseUtils           com.android.systemui                 E  Writing exception to parcel (Ask Gemini)
+                                                                                                    java.lang.SecurityException: Package com.babelstream is not owned by uid 10281
+                                                                                                    	at com.android.systemui.statusbar.notification.NotificationProviderPublic.call(go/retraceme 30683299122b2655f1793582b37c2c86310d813fe556c12dae2f66b99447f4d9:83)
+                                                                                                    	at android.content.ContentProvider.call(ContentProvider.java:2736)
+                                                                                                    	at android.content.ContentProvider$Transport.call(ContentProvider.java:639)
+                                                                                                    	at android.content.ContentProviderNative.onTransact(ContentProviderNative.java:310)
+                                                                                                    	at android.os.Binder.execTransactInternal(Binder.java:1507)
+                                                                                                    	at android.os.Binder.execTransact(Binder.java:1451)
+2025-11-01 03:52:18.125  5110-5855  NotificationProvider    com.android.systemui                 D  call method=canShowFocus extras=Bundle[{package=com.babelstream}]
+2025-11-01 03:52:18.125  9743-11525 FOCUS_NOTI...9743_11525 com.mi.health                        I  content://statusbar.notification/canShowFocus packageName = com.babelstream hasFocusPermission  =true
+2025-11-01 03:52:18.126  9743-11525 FOCUS_NOTI...9743_11525 com.mi.health                        I   packageName = com.babelstream hasFocusPermission  =true
+2025-11-01 03:52:18.126  9743-11525 NotifySync...9743_11525 com.mi.health                        I  onNotificationRemoved appID:com.babelstream uid:2 key:0|com.babelstream|2|null|10429  reason:REASON_APP_CANCEL
+2025-11-01 03:52:18.131  2313-4109  InputDispatcher         system_server                        W  channel cee7a5f com.babelstream/com.babelstream.MainActivity (server)~ dropping inconsistent event: DispatchEntry{resolvedFlags=0, targetFlags=0x0, transform=transform (ROT_0) (SCALE )
+                                                                                                        0.7500  -0.0000  0.0000
+                                                                                                        -0.0000  0.7500  0.0000
+                                                                                                        0.0000  0.0000  1.0000
+                                                                                                    } original: MotionEvent(action=HOVER_EXIT)
+2025-11-01 03:52:18.196  2313-4310  AudioServiceStubImpl    system_server                        D  onUpdateAudioMode audiomode 0 package:com.babelstream
+2025-11-01 03:52:18.330  6629-6629  SpaceNotif...ionService com.miui.securitycore.remote         D  onNotificationPosted pkgname:com.babelstream userId:0 currentUserId:0 isFloat: false
+2025-11-01 03:52:18.331  9743-11525 NotifySync...9743_11525 com.mi.health                        I  onNotificationPosted Id:2147483647 key:0|com.babelstream|2147483647|ranker_group|10429|ranker_group PackageName:com.babelstream IsOngoing:true PostTime:1761940294924 currentDeviceModel.connected: true
+2025-11-01 03:52:18.554  5110-5110  MiuiBubbleSettings      com.android.systemui                 I  com.babelstream 0isAppEnableBubbleNotification: false
+2025-11-01 03:52:18.628  4639-5241  Launcher.A...onsMessage com.miui.home                        I  update com.babelstream/ to null

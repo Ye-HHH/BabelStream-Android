@@ -61,6 +61,7 @@ public class SettingsActivity extends AppCompatActivity {
     private android.widget.RadioButton sourceMic;
 
     private ConfigManager configManager;
+    private EditText wsEndpointInput;
     private boolean hasChanges = false;
     private static final int REQUEST_MEDIA_PROJECTION = 1001;
     private MediaProjectionManager projectionManager;
@@ -109,6 +110,7 @@ public class SettingsActivity extends AppCompatActivity {
         textAlphaValue = findViewById(R.id.text_alpha_value);
         saveButton = findViewById(R.id.save_button);
         startFloatingButton = findViewById(R.id.start_floating_button);
+        wsEndpointInput = findViewById(R.id.ws_endpoint_input);
         audioSourceGroup = findViewById(R.id.audio_source_group);
         sourcePlayback = findViewById(R.id.source_playback);
         sourceMic = findViewById(R.id.source_mic);
@@ -279,6 +281,10 @@ public class SettingsActivity extends AppCompatActivity {
         } else {
             sourcePlayback.setChecked(true);
         }
+
+        // 高级：自定义服务地址
+        String ws = configManager.getWsEndpoint();
+        if (ws != null && !ws.isEmpty()) wsEndpointInput.setText(ws);
     }
 
     private void saveSettings() {
@@ -323,6 +329,9 @@ public class SettingsActivity extends AppCompatActivity {
         // 保存音频输入源
         configManager.setAudioSource(sourceMic.isChecked() ? "mic" : "playback");
 
+        // 保存自定义服务地址
+        configManager.setWsEndpoint(wsEndpointInput.getText() == null ? "" : wsEndpointInput.getText().toString().trim());
+
         // 提示保存成功
         Toast.makeText(this, "设置已保存", Toast.LENGTH_SHORT).show();
 
@@ -354,6 +363,8 @@ public class SettingsActivity extends AppCompatActivity {
 
         // 音频源
         configManager.setAudioSource(sourceMic.isChecked() ? "mic" : "playback");
+        // 自定义服务地址
+        configManager.setWsEndpoint(wsEndpointInput.getText() == null ? "" : wsEndpointInput.getText().toString().trim());
         boolean useMic = configManager.isAudioSourceMic();
 
         // 麦克风权限（仅在选择麦克风时检查）

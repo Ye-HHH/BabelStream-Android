@@ -1,0 +1,89 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        package="mit.alibaba.nuidemo">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <application
+        android:name=".MainApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".SpeechRecognizerActivity"
+            android:label="一句话识别" />
+        <activity
+            android:name=".WakeupAndSpeechRecognizerActivity"
+            android:label="唤醒识别" />
+        <activity
+            android:name=".OnlyWakeupActivity"
+            android:label="唤醒" />
+        <activity
+            android:name=".SpeechTranscriberActivity"
+            android:label="实时转写" />
+        <activity
+            android:name=".RealtimeMeetingActivity"
+            android:label="实时记录(听悟)" />
+        <activity
+            android:name=".TtsBasicActivity"
+            android:label="在线语音合成(流式输出)" />
+        <activity
+            android:name=".TtsLocalActivity"
+            android:label="离线语音合成(流式输出)" />
+        <activity
+            android:name=".TtsMixActivity"
+            android:label="离在线语音合成双实例(流式输出)" />
+        <activity
+            android:name=".StreamInputTtsBasicActivity"
+            android:label="在线流式语音合成(流式输入流式输出)" />
+        <activity
+            android:name=".FileTranscriberActivity"
+            android:label="录音文件转写" />
+        <activity
+            android:name=".WakeupAndTtsMixTestActivity"
+            android:label="多实例混合使用(重点在于测试)" />
+        <activity
+            android:name=".MainActivity"
+            android:label="智能语音交互(NLS)" />
+        <activity
+            android:name=".DashParaformerSpeechTranscriberActivity"
+            android:label="百炼Paraformer实时转写" />
+        <activity
+            android:name=".DashParaformerFileTranscriberActivity"
+            android:label="百炼Paraformer录音文件识别" />
+        <activity
+            android:name=".DashSambertTtsActivity"
+            android:label="百炼Sambert语音合成" />
+        <activity
+            android:name=".DashCosyVoiceStreamTtsActivity"
+            android:label="百炼CosyVoice流式语音合成" />
+        <activity
+            android:name=".DashGummySpeechRecognizerActivity"
+            android:label="百炼Gummy一句话识别、翻译" />
+        <activity
+            android:name=".DashGummySpeechTranscriberActivity"
+            android:label="百炼Gummy实时识别、翻译" />
+        <activity
+            android:name=".DashFunAsrSpeechTranscriberActivity"
+            android:label="百炼Fun-ASR实时转写" />
+        <activity
+            android:name=".DashFunAsrFileTranscriberActivity"
+            android:label="百炼FunASR录音文件识别" />
+        <activity
+            android:name=".DashScopeMainActivity"
+            android:label="百炼(DashScope)" />
+        <activity
+            android:name=".HomeActivity"
+            android:screenOrientation="portrait"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">
+        <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

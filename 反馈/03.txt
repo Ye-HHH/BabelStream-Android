@@ -1,0 +1,353 @@
+2025-11-01 04:36:44.945  4940-4940  ActivityThread          .qms                                 D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:36:44.946  4940-4940  ActivityThread          .qms                                 D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:36:44.950  8366-8366  ActivityThread          com.xiaomi.xmsfkeeper                D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:36:44.951  8366-8366  ActivityThread          com.xiaomi.xmsfkeeper                D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:36:44.952  8493-8493  ActivityThread          com.xiaomi.simactivate.service       D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:36:44.956 13886-13886 ActivityThread          com.android.vending                  D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:36:44.956 21994-21994 ActivityThread          com.android.vending                  D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:36:44.959  6604-6604  ActivityThread          com.google.android.ext.services      D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:36:44.959  6604-6604  ActivityThread          com.google.android.ext.services      D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:36:44.959 13886-13886 ActivityThread          com.android.vending                  D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:36:44.959 14306-14306 ActivityThread          com.xiaomi.ab                        D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:36:44.959 12441-12441 ActivityThread          com.mobiletools.systemhelper         D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:36:44.960 22512-22512 ActivityThread          com.android.adservices.api           D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:36:44.962 19749-19749 ActivityThread          com.android.vpndialogs               D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:36:44.962 29709-29709 ActivityThread          com.miui.contentextension            D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:36:44.963 12441-12441 ActivityThread          com.mobiletools.systemhelper         D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:36:44.963 22302-22302 ActivityThread          com.miui.carlink                     D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:36:44.964 27851-27851 ActivityThread          com.google.android.apps.photos       D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:36:44.964  4016-4016  ActivityThread          android.process.mediaUI              D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:36:44.964 14431-14431 ActivityThread          com.android.vending                  D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:36:44.964 29709-29709 ActivityThread          com.miui.contentextension            D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:36:44.964 19749-19749 ActivityThread          com.android.vpndialogs               D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:36:44.965 22512-22512 ActivityThread          com.android.adservices.api           D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:36:44.965 24132-24132 ActivityThread          com.miui.packageinstaller            D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:36:44.965 21994-21994 ActivityThread          com.android.vending                  D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:36:44.966 14306-14306 ActivityThread          com.xiaomi.ab                        D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:36:44.966 22302-22302 ActivityThread          com.miui.carlink                     D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:36:44.967 27851-27851 ActivityThread          com.google.android.apps.photos       D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:36:44.967  4016-4016  ActivityThread          android.process.mediaUI              D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:36:44.968 14431-14431 ActivityThread          com.android.vending                  D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:36:44.969  8493-8493  ActivityThread          com.xiaomi.simactivate.service       D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:36:44.969 27729-27729 ActivityThread          com.android.rkpdapp                  D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:36:44.970 24132-24132 ActivityThread          com.miui.packageinstaller            D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:36:44.971 27729-27729 ActivityThread          com.android.rkpdapp                  D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:36:45.000 14431-14431 Finsky                  com.android.vending                  I  [2] snw.aiv(67): IQ: onPackageRemoved com.babelstream, replacing=true, uninstallingFromPlay=false
+2025-11-01 04:36:45.006 14431-14431 Finsky                  com.android.vending                  I  [2] kuy.f(9): AIM: AppInfoCacheUpdater -> invalidating apps: [com.babelstream]
+2025-11-01 04:36:45.025 14431-14490 Finsky                  com.android.vending                  I  [12759] kwt.a(55): AIM: AppInfoManager-Perf > OnDeviceAppInfo > cacheHitCount=0, cacheMissCount=1. Missed  in cache (limit 10) : [com.babelstream]
+2025-11-01 04:36:45.029 32520-32522 artd                    artd                                 I  Dex parent of /data/app/~~CppTs5wr6lnyjTv8OkEaIg==/com.babelstream-iq51IwBORPYpffPg0oZp8Q==/base.apk is not writable: Permission denied
+2025-11-01 04:36:45.029 32520-32522 artd                    artd                                 I  GetBestInfo checking odex in dalvik-cache (/data/dalvik-cache/arm64/data@app@~~CppTs5wr6lnyjTv8OkEaIg==@com.babelstream-iq51IwBORPYpffPg0oZp8Q==@base.apk@classes.dex)
+2025-11-01 04:36:45.029 32520-32522 artd                    artd                                 I  Loading /data/dalvik-cache/arm64/data@app@~~CppTs5wr6lnyjTv8OkEaIg==@com.babelstream-iq51IwBORPYpffPg0oZp8Q==@base.apk@classes.dex with executable: 0
+2025-11-01 04:36:45.029 32520-32522 artd                    artd                                 I  OatFileAssistant test for existing oat file /data/dalvik-cache/arm64/data@app@~~CppTs5wr6lnyjTv8OkEaIg==@com.babelstream-iq51IwBORPYpffPg0oZp8Q==@base.apk@classes.dex: File /data/dalvik-cache/arm64/data@app@~~CppTs5wr6lnyjTv8OkEaIg==@com.babelstream-iq51IwBORPYpffPg0oZp8Q==@base.apk@classes.vdex does not exist.
+2025-11-01 04:36:45.029 32520-32522 artd                    artd                                 I  GetBestInfo checking odex next to the dex file (/data/app/~~CppTs5wr6lnyjTv8OkEaIg==/com.babelstream-iq51IwBORPYpffPg0oZp8Q==/oat/arm64/base.odex)
+2025-11-01 04:36:45.029 32520-32522 artd                    artd                                 I  Loading /data/app/~~CppTs5wr6lnyjTv8OkEaIg==/com.babelstream-iq51IwBORPYpffPg0oZp8Q==/oat/arm64/base.odex with executable: 0
+2025-11-01 04:36:45.029 32520-32522 artd                    artd                                 I  OatFileAssistant test for existing oat file /data/app/~~CppTs5wr6lnyjTv8OkEaIg==/com.babelstream-iq51IwBORPYpffPg0oZp8Q==/oat/arm64/base.odex: File /data/app/~~CppTs5wr6lnyjTv8OkEaIg==/com.babelstream-iq51IwBORPYpffPg0oZp8Q==/oat/arm64/base.vdex does not exist.
+2025-11-01 04:36:45.029 32520-32522 artd                    artd                                 I  GetBestInfo checking vdex in dalvik-cache (/data/dalvik-cache/arm64/data@app@~~CppTs5wr6lnyjTv8OkEaIg==@com.babelstream-iq51IwBORPYpffPg0oZp8Q==@base.apk@classes.vdex)
+2025-11-01 04:36:45.029 32520-32522 artd                    artd                                 I  unable to open vdex file /data/dalvik-cache/arm64/data@app@~~CppTs5wr6lnyjTv8OkEaIg==@com.babelstream-iq51IwBORPYpffPg0oZp8Q==@base.apk@classes.vdex: File /data/dalvik-cache/arm64/data@app@~~CppTs5wr6lnyjTv8OkEaIg==@com.babelstream-iq51IwBORPYpffPg0oZp8Q==@base.apk@classes.vdex does not exist.
+2025-11-01 04:36:45.029 32520-32522 artd                    artd                                 I  OatFileAssistant test for existing oat file /data/dalvik-cache/arm64/data@app@~~CppTs5wr6lnyjTv8OkEaIg==@com.babelstream-iq51IwBORPYpffPg0oZp8Q==@base.apk@classes.vdex: File /data/dalvik-cache/arm64/data@app@~~CppTs5wr6lnyjTv8OkEaIg==@com.babelstream-iq51IwBORPYpffPg0oZp8Q==@base.apk@classes.vdex does not exist.
+2025-11-01 04:36:45.029 32520-32522 artd                    artd                                 I  GetBestInfo checking vdex next to the dex file (/data/app/~~CppTs5wr6lnyjTv8OkEaIg==/com.babelstream-iq51IwBORPYpffPg0oZp8Q==/oat/arm64/base.vdex)
+2025-11-01 04:36:45.029 32520-32522 artd                    artd                                 I  unable to open vdex file /data/app/~~CppTs5wr6lnyjTv8OkEaIg==/com.babelstream-iq51IwBORPYpffPg0oZp8Q==/oat/arm64/base.vdex: File /data/app/~~CppTs5wr6lnyjTv8OkEaIg==/com.babelstream-iq51IwBORPYpffPg0oZp8Q==/oat/arm64/base.vdex does not exist.
+2025-11-01 04:36:45.029 32520-32522 artd                    artd                                 I  OatFileAssistant test for existing oat file /data/app/~~CppTs5wr6lnyjTv8OkEaIg==/com.babelstream-iq51IwBORPYpffPg0oZp8Q==/oat/arm64/base.vdex: File /data/app/~~CppTs5wr6lnyjTv8OkEaIg==/com.babelstream-iq51IwBORPYpffPg0oZp8Q==/oat/arm64/base.vdex does not exist.
+2025-11-01 04:36:45.029 32520-32522 artd                    artd                                 I  GetBestInfo checking dm (/data/app/~~CppTs5wr6lnyjTv8OkEaIg==/com.babelstream-iq51IwBORPYpffPg0oZp8Q==/base.dm)
+2025-11-01 04:36:45.029 32520-32522 ziparchive              artd                                 W  Unable to open '/data/app/~~CppTs5wr6lnyjTv8OkEaIg==/com.babelstream-iq51IwBORPYpffPg0oZp8Q==/base.dm': No such file or directory
+2025-11-01 04:36:45.029 32520-32522 artd                    artd                                 I  OatFileAssistant test for existing oat file /data/app/~~CppTs5wr6lnyjTv8OkEaIg==/com.babelstream-iq51IwBORPYpffPg0oZp8Q==/base.dm: I/O error
+2025-11-01 04:36:45.029 32520-32522 artd                    artd                                 I  GetBestInfo checking dm (/data/app/~~CppTs5wr6lnyjTv8OkEaIg==/com.babelstream-iq51IwBORPYpffPg0oZp8Q==/base.dm)
+2025-11-01 04:36:45.029 32520-32522 ziparchive              artd                                 W  Unable to open '/data/app/~~CppTs5wr6lnyjTv8OkEaIg==/com.babelstream-iq51IwBORPYpffPg0oZp8Q==/base.dm': No such file or directory
+2025-11-01 04:36:45.029 32520-32522 artd                    artd                                 I  OatFileAssistant test for existing oat file /data/app/~~CppTs5wr6lnyjTv8OkEaIg==/com.babelstream-iq51IwBORPYpffPg0oZp8Q==/base.dm: I/O error
+2025-11-01 04:36:45.037 14431-14431 Finsky                  com.android.vending                  I  [2] kuy.f(9): AIM: AppInfoCacheUpdater -> invalidating apps: [com.babelstream]
+2025-11-01 04:36:45.039 14431-14494 Finsky                  com.android.vending                  I  [12761] kwt.a(55): AIM: AppInfoManager-Perf > OnDeviceAppInfo > cacheHitCount=0, cacheMissCount=1. Missed  in cache (limit 10) : [com.babelstream]
+2025-11-01 04:36:45.039 32520-32522 artd                    artd                                 I  Dex parent of /data/app/~~CppTs5wr6lnyjTv8OkEaIg==/com.babelstream-iq51IwBORPYpffPg0oZp8Q==/base.apk is not writable: Permission denied
+2025-11-01 04:36:45.039 32520-32522 artd                    artd                                 I  GetBestInfo checking odex in dalvik-cache (/data/dalvik-cache/arm64/data@app@~~CppTs5wr6lnyjTv8OkEaIg==@com.babelstream-iq51IwBORPYpffPg0oZp8Q==@base.apk@classes.dex)
+2025-11-01 04:36:45.039 32520-32522 artd                    artd                                 I  Loading /data/dalvik-cache/arm64/data@app@~~CppTs5wr6lnyjTv8OkEaIg==@com.babelstream-iq51IwBORPYpffPg0oZp8Q==@base.apk@classes.dex with executable: 0
+2025-11-01 04:36:45.039 32520-32522 artd                    artd                                 I  OatFileAssistant test for existing oat file /data/dalvik-cache/arm64/data@app@~~CppTs5wr6lnyjTv8OkEaIg==@com.babelstream-iq51IwBORPYpffPg0oZp8Q==@base.apk@classes.dex: File /data/dalvik-cache/arm64/data@app@~~CppTs5wr6lnyjTv8OkEaIg==@com.babelstream-iq51IwBORPYpffPg0oZp8Q==@base.apk@classes.vdex does not exist.
+2025-11-01 04:36:45.039 32520-32522 artd                    artd                                 I  GetBestInfo checking odex next to the dex file (/data/app/~~CppTs5wr6lnyjTv8OkEaIg==/com.babelstream-iq51IwBORPYpffPg0oZp8Q==/oat/arm64/base.odex)
+2025-11-01 04:36:45.039 32520-32522 artd                    artd                                 I  Loading /data/app/~~CppTs5wr6lnyjTv8OkEaIg==/com.babelstream-iq51IwBORPYpffPg0oZp8Q==/oat/arm64/base.odex with executable: 0
+2025-11-01 04:36:45.039 32520-32522 artd                    artd                                 I  OatFileAssistant test for existing oat file /data/app/~~CppTs5wr6lnyjTv8OkEaIg==/com.babelstream-iq51IwBORPYpffPg0oZp8Q==/oat/arm64/base.odex: File /data/app/~~CppTs5wr6lnyjTv8OkEaIg==/com.babelstream-iq51IwBORPYpffPg0oZp8Q==/oat/arm64/base.vdex does not exist.
+2025-11-01 04:36:45.039 32520-32522 artd                    artd                                 I  GetBestInfo checking vdex in dalvik-cache (/data/dalvik-cache/arm64/data@app@~~CppTs5wr6lnyjTv8OkEaIg==@com.babelstream-iq51IwBORPYpffPg0oZp8Q==@base.apk@classes.vdex)
+2025-11-01 04:36:45.039 32520-32522 artd                    artd                                 I  unable to open vdex file /data/dalvik-cache/arm64/data@app@~~CppTs5wr6lnyjTv8OkEaIg==@com.babelstream-iq51IwBORPYpffPg0oZp8Q==@base.apk@classes.vdex: File /data/dalvik-cache/arm64/data@app@~~CppTs5wr6lnyjTv8OkEaIg==@com.babelstream-iq51IwBORPYpffPg0oZp8Q==@base.apk@classes.vdex does not exist.
+2025-11-01 04:36:45.039 32520-32522 artd                    artd                                 I  OatFileAssistant test for existing oat file /data/dalvik-cache/arm64/data@app@~~CppTs5wr6lnyjTv8OkEaIg==@com.babelstream-iq51IwBORPYpffPg0oZp8Q==@base.apk@classes.vdex: File /data/dalvik-cache/arm64/data@app@~~CppTs5wr6lnyjTv8OkEaIg==@com.babelstream-iq51IwBORPYpffPg0oZp8Q==@base.apk@classes.vdex does not exist.
+2025-11-01 04:36:45.039 32520-32522 artd                    artd                                 I  GetBestInfo checking vdex next to the dex file (/data/app/~~CppTs5wr6lnyjTv8OkEaIg==/com.babelstream-iq51IwBORPYpffPg0oZp8Q==/oat/arm64/base.vdex)
+2025-11-01 04:36:45.039 32520-32522 artd                    artd                                 I  unable to open vdex file /data/app/~~CppTs5wr6lnyjTv8OkEaIg==/com.babelstream-iq51IwBORPYpffPg0oZp8Q==/oat/arm64/base.vdex: File /data/app/~~CppTs5wr6lnyjTv8OkEaIg==/com.babelstream-iq51IwBORPYpffPg0oZp8Q==/oat/arm64/base.vdex does not exist.
+2025-11-01 04:36:45.039 32520-32522 artd                    artd                                 I  OatFileAssistant test for existing oat file /data/app/~~CppTs5wr6lnyjTv8OkEaIg==/com.babelstream-iq51IwBORPYpffPg0oZp8Q==/oat/arm64/base.vdex: File /data/app/~~CppTs5wr6lnyjTv8OkEaIg==/com.babelstream-iq51IwBORPYpffPg0oZp8Q==/oat/arm64/base.vdex does not exist.
+2025-11-01 04:36:45.039 32520-32522 artd                    artd                                 I  GetBestInfo checking dm (/data/app/~~CppTs5wr6lnyjTv8OkEaIg==/com.babelstream-iq51IwBORPYpffPg0oZp8Q==/base.dm)
+2025-11-01 04:36:45.039 32520-32522 ziparchive              artd                                 W  Unable to open '/data/app/~~CppTs5wr6lnyjTv8OkEaIg==/com.babelstream-iq51IwBORPYpffPg0oZp8Q==/base.dm': No such file or directory
+2025-11-01 04:36:45.039 32520-32522 artd                    artd                                 I  OatFileAssistant test for existing oat file /data/app/~~CppTs5wr6lnyjTv8OkEaIg==/com.babelstream-iq51IwBORPYpffPg0oZp8Q==/base.dm: I/O error
+2025-11-01 04:36:45.039 32520-32522 artd                    artd                                 I  GetBestInfo checking dm (/data/app/~~CppTs5wr6lnyjTv8OkEaIg==/com.babelstream-iq51IwBORPYpffPg0oZp8Q==/base.dm)
+2025-11-01 04:36:45.039 32520-32522 ziparchive              artd                                 W  Unable to open '/data/app/~~CppTs5wr6lnyjTv8OkEaIg==/com.babelstream-iq51IwBORPYpffPg0oZp8Q==/base.dm': No such file or directory
+2025-11-01 04:36:45.039 32520-32522 artd                    artd                                 I  OatFileAssistant test for existing oat file /data/app/~~CppTs5wr6lnyjTv8OkEaIg==/com.babelstream-iq51IwBORPYpffPg0oZp8Q==/base.dm: I/O error
+2025-11-01 04:36:45.313 20604-20604 RenderThread            com.babelstream                      W  type=1400 audit(0.0:132774): avc:  denied  { getattr } for  path="/sys/module/metis/parameters/minor_window_app" dev="sysfs" ino=77906 scontext=u:r:untrusted_app:s0:c173,c257,c512,c768 tcontext=u:object_r:sysfs_migt:s0 tclass=file permissive=0 app=com.babelstream
+2025-11-01 04:36:45.323  2313-4109  InputDispatcher         system_server                        W  channel 3531114 com.babelstream/com.babelstream.MainActivity (server)~ dropping inconsistent event: DispatchEntry{resolvedFlags=0, targetFlags=0x0, transform=transform (ROT_0) (SCALE )
+                                                                                                        0.7500  -0.0000  0.0000
+                                                                                                        -0.0000  0.7500  0.0000
+                                                                                                        0.0000  0.0000  1.0000
+                                                                                                    } original: MotionEvent(action=HOVER_EXIT)
+2025-11-01 04:36:45.329 20604-20604 RenderThread            com.babelstream                      W  type=1400 audit(0.0:132775): avc:  denied  { getattr } for  path="/sys/module/metis/parameters/minor_window_app" dev="sysfs" ino=77906 scontext=u:r:untrusted_app:s0:c173,c257,c512,c768 tcontext=u:object_r:sysfs_migt:s0 tclass=file permissive=0 app=com.babelstream
+2025-11-01 04:36:45.333 20604-20604 RenderThread            com.babelstream                      W  type=1400 audit(0.0:132776): avc:  denied  { getattr } for  path="/sys/module/metis/parameters/minor_window_app" dev="sysfs" ino=77906 scontext=u:r:untrusted_app:s0:c173,c257,c512,c768 tcontext=u:object_r:sysfs_migt:s0 tclass=file permissive=0 app=com.babelstream
+2025-11-01 04:36:45.341 20604-20604 RenderThread            com.babelstream                      W  type=1400 audit(0.0:132777): avc:  denied  { getattr } for  path="/sys/module/metis/parameters/minor_window_app" dev="sysfs" ino=77906 scontext=u:r:untrusted_app:s0:c173,c257,c512,c768 tcontext=u:object_r:sysfs_migt:s0 tclass=file permissive=0 app=com.babelstream
+2025-11-01 04:36:45.349 20604-20604 RenderThread            com.babelstream                      W  type=1400 audit(0.0:132778): avc:  denied  { getattr } for  path="/sys/module/metis/parameters/minor_window_app" dev="sysfs" ino=77906 scontext=u:r:untrusted_app:s0:c173,c257,c512,c768 tcontext=u:object_r:sysfs_migt:s0 tclass=file permissive=0 app=com.babelstream
+2025-11-01 04:36:46.400  2313-4109  InputDispatcher         system_server                        W  channel 3531114 com.babelstream/com.babelstream.MainActivity (server)~ dropping inconsistent event: DispatchEntry{resolvedFlags=0, targetFlags=0x0, transform=transform (ROT_0) (SCALE )
+                                                                                                        0.7500  -0.0000  0.0000
+                                                                                                        -0.0000  0.7500  0.0000
+                                                                                                        0.0000  0.0000  1.0000
+                                                                                                    } original: MotionEvent(action=HOVER_EXIT)
+2025-11-01 04:36:46.409 20604-20604 RenderThread            com.babelstream                      W  type=1400 audit(0.0:132814): avc:  denied  { getattr } for  path="/sys/module/metis/parameters/minor_window_app" dev="sysfs" ino=77906 scontext=u:r:untrusted_app:s0:c173,c257,c512,c768 tcontext=u:object_r:sysfs_migt:s0 tclass=file permissive=0 app=com.babelstream
+2025-11-01 04:36:46.413 20604-20604 RenderThread            com.babelstream                      W  type=1400 audit(0.0:132815): avc:  denied  { getattr } for  path="/sys/module/metis/parameters/minor_window_app" dev="sysfs" ino=77906 scontext=u:r:untrusted_app:s0:c173,c257,c512,c768 tcontext=u:object_r:sysfs_migt:s0 tclass=file permissive=0 app=com.babelstream
+2025-11-01 04:36:46.425 20604-20604 RenderThread            com.babelstream                      W  type=1400 audit(0.0:132816): avc:  denied  { getattr } for  path="/sys/module/metis/parameters/minor_window_app" dev="sysfs" ino=77906 scontext=u:r:untrusted_app:s0:c173,c257,c512,c768 tcontext=u:object_r:sysfs_migt:s0 tclass=file permissive=0 app=com.babelstream
+2025-11-01 04:36:46.433 20604-20604 RenderThread            com.babelstream                      W  type=1400 audit(0.0:132817): avc:  denied  { getattr } for  path="/sys/module/metis/parameters/minor_window_app" dev="sysfs" ino=77906 scontext=u:r:untrusted_app:s0:c173,c257,c512,c768 tcontext=u:object_r:sysfs_migt:s0 tclass=file permissive=0 app=com.babelstream
+2025-11-01 04:36:46.441 20604-20604 RenderThread            com.babelstream                      W  type=1400 audit(0.0:132818): avc:  denied  { getattr } for  path="/sys/module/metis/parameters/minor_window_app" dev="sysfs" ino=77906 scontext=u:r:untrusted_app:s0:c173,c257,c512,c768 tcontext=u:object_r:sysfs_migt:s0 tclass=file permissive=0 app=com.babelstream
+2025-11-01 04:36:47.883 20604-32670 com.babelstream         com.babelstream                      I  ProcessProfilingInfo new_methods=11 is saved saved_to_disk=1 resolve_classes_delay=8000
+2025-11-01 04:36:49.942  2313-29676 ziparchive              system_server                        W  Unable to open '/data/app/~~CppTs5wr6lnyjTv8OkEaIg==/com.babelstream-iq51IwBORPYpffPg0oZp8Q==/base.dm': No such file or directory
+2025-11-01 04:36:49.943  2313-29676 DexOptHelperImpl        system_server                        D  FirstUseActivity packageName = com.babelstream success = false
+2025-11-01 04:36:49.943  2313-29676 DexOptHelperImpl        system_server                        I  FirstUseActivity Pinning optimized code com.babelstream
+2025-11-01 04:36:51.665 20604-20604 MiInputConsumer         com.babelstream                      I  optimized resample latency: 1738519 ns
+2025-11-01 04:36:52.562  2313-4109  InputDispatcher         system_server                        W  channel 3531114 com.babelstream/com.babelstream.MainActivity (server)~ dropping inconsistent event: DispatchEntry{resolvedFlags=0, targetFlags=0x0, transform=transform (ROT_0) (SCALE )
+                                                                                                        0.7500  -0.0000  0.0000
+                                                                                                        -0.0000  0.7500  0.0000
+                                                                                                        0.0000  0.0000  1.0000
+                                                                                                    } original: MotionEvent(action=HOVER_EXIT)
+2025-11-01 04:36:52.571  2313-4109  MIUIInput               system_server                        I  [MotionEvent] publisher action=0x0, deviceId=-1, 166608858, channel '3531114 com.babelstream/com.babelstream.MainActivity (server)'
+2025-11-01 04:36:52.575 20604-20604 MIUIInput               com.babelstream                      I  [MotionEvent] ViewRootImpl windowName 'com.babelstream/com.babelstream.MainActivity', { action=ACTION_DOWN, id[0]=0, pointerCount=1, eventTime=166608858, downTime=166608858, phoneEventTime=04:36:52.565 } moveCount:0
+2025-11-01 04:36:52.658  2313-4109  MIUIInput               system_server                        I  [MotionEvent] publisher action=0x1, deviceId=-1, 166608949, channel '3531114 com.babelstream/com.babelstream.MainActivity (server)'
+2025-11-01 04:36:52.659 20604-20604 MIUIInput               com.babelstream                      I  [MotionEvent] ViewRootImpl windowName 'com.babelstream/com.babelstream.MainActivity', { action=ACTION_UP, id[0]=0, pointerCount=1, eventTime=166608949, downTime=166608858, phoneEventTime=04:36:52.656 } moveCount:0
+2025-11-01 04:36:52.664  2313-5735  ActivityManager         system_server                        I  Background started FGS: Allowed [callingPackage: com.babelstream; callingUid: 10429; uidState: TOP ; uidBFSL: [BFSL]; intent: Intent { cmp=com.babelstream/.OverlayService }; code:PROC_STATE_TOP; tempAllowListReason:<,reasonCode:SYSTEM_ALLOW_LISTED,duration:9223372036854775807,callingUid:-1>; targetSdkVersion:34; callerTargetSdkVersion:34; startForegroundCount:0; bindFromPackage:null: isBindService:false]
+2025-11-01 04:36:52.694 20604-20604 ViewRootImpl            com.babelstream                      I   use first frame acceleration
+2025-11-01 04:36:52.697 20604-20604 AppOpsManager           com.babelstream                      D  Noted app header size: 36
+2025-11-01 04:36:52.697  2313-4226  MiuiNetworkPolicy       system_server                        D  onOpActiveChanged op:android:system_alert_window, uid:10429, packageName:com.babelstream, active:true
+2025-11-01 04:36:52.702 20604-20604 Choreographer           com.babelstream                      I  first vsync insert message into MessageQueue Head
+2025-11-01 04:36:52.704  2313-10328 CoreBackPreview         system_server                        D  Window{f92b9db u0 com.babelstream}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@fa9a7bc, mPriority=0, mIsAnimationCallback=false}
+2025-11-01 04:36:52.709 20604-20604 libc                    com.babelstream                      W  Access denied finding property "vendor.gpp.create_frc_extension"
+2025-11-01 04:36:52.710 20604-20604 VRI[]                   com.babelstream                      D  vri.reportNextDraw android.view.ViewRootImpl.performTraversals:4949 android.view.ViewRootImpl.doTraversal:3549 android.view.ViewRootImpl$TraversalRunnable.run:11526 android.view.Choreographer$CallbackRecord.run:1717 android.view.Choreographer$CallbackRecord.run:1726 
+2025-11-01 04:36:52.710 20604-20604 VRI[]                   com.babelstream                      D  vri.Setup new sync=wmsSync-VRI[]#2
+2025-11-01 04:36:52.711 20604-32680 HWUI                    com.babelstream                      D  makeCurrent grContext:0xb400007bd410b270 reset mTextureAvailable
+2025-11-01 04:36:52.713 20604-20604 VRI[]                   com.babelstream                      D  vri.reportDrawFinished
+2025-11-01 04:36:52.714  2313-5862  WindowManager           system_server                        D  wms.finishDrawingLocked: mDrawState=COMMIT_DRAW_PENDING Window{f92b9db u0 com.babelstream} in Surface(name=#73319)/@0x3bfe345
+2025-11-01 04:36:52.720  2313-2454  WindowManager           system_server                        I  wms.showSurfaceRobustly mWin:Window{f92b9db u0 com.babelstream}
+2025-11-01 04:36:52.950  9743-11525 NotifySync...9743_11525 com.mi.health                        I  onNotificationPosted Id:0 key:0|android|0|com.android.server.wm.AlertWindowNotification - com.babelstream|1000 PackageName:android IsOngoing:true PostTime:1761943012734 currentDeviceModel.connected: true
+2025-11-01 04:36:52.990  5110-5110  AlertCoordinator        com.android.systemui                 D  onViewBound, buzzBeep for 0|android|0|com.android.server.wm.AlertWindowNotification - com.babelstream|1000
+2025-11-01 04:36:53.643  2313-4109  InputDispatcher         system_server                        W  channel 3531114 com.babelstream/com.babelstream.MainActivity (server)~ dropping inconsistent event: DispatchEntry{resolvedFlags=0, targetFlags=0x0, transform=transform (ROT_0) (SCALE )
+                                                                                                        0.7500  -0.0000  0.0000
+                                                                                                        -0.0000  0.7500  0.0000
+                                                                                                        0.0000  0.0000  1.0000
+                                                                                                    } original: MotionEvent(action=HOVER_EXIT)
+2025-11-01 04:36:53.648  2313-4109  MIUIInput               system_server                        I  [MotionEvent] publisher action=0x0, deviceId=-1, 166609935, channel '3531114 com.babelstream/com.babelstream.MainActivity (server)'
+2025-11-01 04:36:53.650 20604-20604 MIUIInput               com.babelstream                      I  [MotionEvent] ViewRootImpl windowName 'com.babelstream/com.babelstream.MainActivity', { action=ACTION_DOWN, id[0]=0, pointerCount=1, eventTime=166609935, downTime=166609935, phoneEventTime=04:36:53.642 } moveCount:0
+2025-11-01 04:36:53.721  2313-4109  MIUIInput               system_server                        I  [MotionEvent] publisher action=0x1, deviceId=-1, 166610014, channel '3531114 com.babelstream/com.babelstream.MainActivity (server)'
+2025-11-01 04:36:53.722 20604-20604 MIUIInput               com.babelstream                      I  [MotionEvent] ViewRootImpl windowName 'com.babelstream/com.babelstream.MainActivity', { action=ACTION_UP, id[0]=0, pointerCount=1, eventTime=166610014, downTime=166609935, phoneEventTime=04:36:53.721 } moveCount:0
+2025-11-01 04:36:53.724  2313-10328 ActivityManager         system_server                        I  Background started FGS: Allowed [callingPackage: com.babelstream; callingUid: 10429; uidState: TOP ; uidBFSL: [BFSL]; intent: Intent { act=com.babelstream.RECOGNITION_START cmp=com.babelstream/.RecognitionService }; code:PROC_STATE_TOP; tempAllowListReason:<,reasonCode:SYSTEM_ALLOW_LISTED,duration:9223372036854775807,callingUid:-1>; targetSdkVersion:34; callerTargetSdkVersion:34; startForegroundCount:0; bindFromPackage:null: isBindService:false]
+2025-11-01 04:36:53.735 20604-20604 AudioManager            com.babelstream                      D  getMode: mode=0, callApp=com.babelstream
+2025-11-01 04:36:53.735  2313-5735  AS.AudioService         system_server                        V  setMode(mode=3, pid=20604, uid=10429, caller=com.babelstream)
+2025-11-01 04:36:53.745 20604-20604 RecognitionService      com.babelstream                      I  micMuted(before)=false, audioMode=0
+2025-11-01 04:36:53.748 20604-20604 RecognitionService      com.babelstream                      I  micPrivacyBlocked=false
+2025-11-01 04:36:53.793 20604-20604 AudioRecordStub         com.babelstream                      D  AudioRecordStub() create
+2025-11-01 04:36:53.793 20604-20604 AudioRecordImpl         com.babelstream                      I  initAudioRecordImpl()
+2025-11-01 04:36:53.793 20604-20604 AudioRecord             com.babelstream                      D  set(): inputSource 7, sampleRate 48000, format 0x1, channelMask 0x10, frameCount 4096, notificationFrames 0, sessionId 0, transferType 0, flags 0, attributionSource AttributionSourceState{pid: 20604, uid: 10429, deviceId: 0, packageName: com.babelstream, attributionTag: (null), token: binder:0xb400007b840f1870, renouncedPermissions: [], next: []}uid -1, pid -1
+2025-11-01 04:36:53.921  1910-4421  APM_AudioPolicyManager  audioserver                          D  getInputForAttr AudioPlayBackCapture not supported, appName: com.babelstream
+2025-11-01 04:36:53.922  1910-4421  AudioPolicyManagerImpl  audioserver                          D  binder call: getPackageName com.babelstream for uid 10429
+2025-11-01 04:36:53.938  2313-4310  AudioServiceStubImpl    system_server                        D  onUpdateAudioMode audiomode 3 package:com.babelstream
+2025-11-01 04:36:53.952  6629-6629  SpaceNotif...ionService com.miui.securitycore.remote         D  onNotificationPosted pkgname:com.babelstream userId:0 currentUserId:0 isFloat: false
+2025-11-01 04:36:53.956  5110-5110  MiuiBubbleSettings      com.android.systemui                 I  com.babelstream 0isAppEnableBubbleNotification: false
+2025-11-01 04:36:53.958  9743-11525 NotifySync...9743_11525 com.mi.health                        I  onNotificationPosted Id:2 key:0|com.babelstream|2|null|10429 PackageName:com.babelstream IsOngoing:true PostTime:1761943013734 currentDeviceModel.connected: true
+2025-11-01 04:36:53.962 20604-20604 xlog_client             com.babelstream                      V  xlog_check_permission event name audio_track_message level 0
+2025-11-01 04:36:53.963 20604-20604 AudioCaptureManager     com.babelstream                      I  AudioRecord initialized: source=7, sampleRate=48000, buffer=8192
+2025-11-01 04:36:53.964 20604-20604 AudioCaptureManager     com.babelstream                      I  AudioRecord source selected: 7, sr=48000
+2025-11-01 04:36:53.964 20604-20604 EpFrameworkFactory      com.babelstream                      W  activated: false jar exist: false
+2025-11-01 04:36:53.964 20604-20604 AudioRecord             com.babelstream                      I  start mSessionID=7649 start(1929): sync event 0 trigger session 0  packageName: com.babelstream
+2025-11-01 04:36:53.968  1910-4399  MiAudioPolicyManager    audioserver                          D  getPackageName: com.babelstream  uid 10429
+2025-11-01 04:36:53.969  8522-10456 MIUISafety-Monitor      com.miui.securitycenter.remote       W  sync com.babelstream,userId:0,op:27,active:true,isNote:false,isTerminal:false,notify:true
+2025-11-01 04:36:53.970  1910-622   AudioFlingerImpl        audioserver                          D  checkForGameParameter_l() set events appname=+com.babelstream
+2025-11-01 04:36:53.971  1584-1627  AHAL: AudioStream       android.hardware.audio.service_64    D  astream_in_set_parameters: 2049: Enter: appname=+com.babelstream
+2025-11-01 04:36:53.971  1584-1627  AHAL: AudioStreamCustom android.hardware.audio.service_64    D  SetParameters: 892: Enter: kvpairs is appname=+com.babelstream
+2025-11-01 04:36:53.971  1584-1627  AHAL: AudioStreamCustom android.hardware.audio.service_64    D  SetParameters: 963: [hal_apptype] SetParameters(), in: set app name +com.babelstream [11, 0x1 0x1]
+2025-11-01 04:36:53.971  1584-1627  AHAL: AudioStream       android.hardware.audio.service_64    D  SetParameters: 6352: enter: kvpairs: appname=+com.babelstream
+2025-11-01 04:36:53.971  1910-4399  APM_AudioPolicyManager  audioserver                          D  startInput input:1798, session:7649, portId:1929, appname com.babelstream, uid 10429)
+2025-11-01 04:36:53.977 20604-20604 EpFrameworkFactory      com.babelstream                      W  activated: false jar exist: false
+2025-11-01 04:36:53.982  5110-5110  AlertCoordinator        com.android.systemui                 D  onViewBound, buzzBeep for 0|com.babelstream|2|null|10429
+2025-11-01 04:36:53.983 20604-20604 AudioCaptureManager     com.babelstream                      I  Routed device: type=15, name=23116PN5BC
+2025-11-01 04:36:53.983 20604-20604 AudioCaptureManager     com.babelstream                      I  Resampling mic from 48000 to 16000
+2025-11-01 04:36:53.983 20604-20604 AudioCaptureManager     com.babelstream                      I  Recording started
+2025-11-01 04:36:53.985 20604-20604 RecognitionService      com.babelstream                      I  ACTION_STATUS: 麦克风采集已启动: 48000Hz
+2025-11-01 04:36:53.993 20604-20604 RealtimeRecognizer      com.babelstream                      I  ws url=wss://dashscope.aliyuncs.com/api-ws/v1/inference, sr=16000, model=gummy-realtime-v1
+2025-11-01 04:36:54.022 20604-20604 RecognitionService      com.babelstream                      I  status=连接识别服务...
+2025-11-01 04:36:54.023 20604-20604 RecognitionService      com.babelstream                      I  ACTION_STATUS: 连接识别服务...
+2025-11-01 04:36:54.026 20604-20604 RecognitionService      com.babelstream                      I  recognizer.start returned=true
+2025-11-01 04:36:54.027 20604-20604 RecognitionService      com.babelstream                      I  ACTION_STATUS: 识别中...
+2025-11-01 04:36:54.033 20604-20604 Choreographer           com.babelstream                      I  Skipped 36 frames!  The application may be doing too much work on its main thread.
+2025-11-01 04:36:54.036  2793-2891  misight_perf            misight                              E   [902001003, com.babelstream, 20604, doframe latency due to msg]
+2025-11-01 04:36:54.049  1584-636   android.ha...service_64 android.hardware.audio.service_64    D  send_sound_recorder_data_to_xlog: msg input_device__type: mobile mic, recorder_app_name: com.babelstream
+2025-11-01 04:36:54.050  1584-636   xlog_client             android.hardware.audio.service_64    D  _xlog_write_flat_msg: send msg {"name":"sound_recorder","audio_event":{"input_device_type":"mobile mic","recorder_app_name":"com.babelstream"},"dgt":"null","audio_ext":"null" }
+2025-11-01 04:36:54.050  2313-4317  MQSserver               system_server                        I  getData len: 512 content: {"name":"sound_recorder","audio_event":{"input_device_type":"mobile mic","recorder_app_name":"com.babelstream"},"dgt":"null","audio_ext":"null" }??????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+2025-11-01 04:36:54.050  2313-4317  MQSserver               system_server                        D  update RBI json: {"name":"sound_recorder","audio_event":{"input_device_type":"mobile mic","recorder_app_name":"com.babelstream"},"dgt":"null","audio_ext":"null","onetrack_count":"22"}
+2025-11-01 04:36:54.050  2313-4317  MQSserver               system_server                        D  updateCount: name: sound_recorder/audio_event : {"input_device_type":"mobile mic","recorder_app_name":"com.babelstream"}
+2025-11-01 04:36:54.063 20604-653   TrafficStats            com.babelstream                      D  tagSocket(182) with statsTag=0xffffffff, statsUid=-1
+2025-11-01 04:36:54.198 20604-633   AudioCaptureManager     com.babelstream                      I  level=0
+2025-11-01 04:36:54.203 20604-633   RecognitionService      com.babelstream                      I  level=0
+2025-11-01 04:36:54.210  2313-2876  PerfShielderService     system_server                        D  com.babelstream|com.babelstream/com.babelstream.MainActivity|307|166610329829879|307|0|1
+2025-11-01 04:36:54.211  8192-10084 MiuiPerfServiceClient   com.miui.daemon                      W  interceptAndQueuing:20604|com.babelstream|307|307|166610329829879|Slow main thread|1
+2025-11-01 04:36:54.421  2313-4109  InputDispatcher         system_server                        W  channel f92b9db com.babelstream (server)~ dropping inconsistent event: DispatchEntry{resolvedFlags=0, targetFlags=0x0, transform=transform (ROT_0) (SCALE TRANSLATE)
+                                                                                                        0.7500  -0.0000  0.0000
+                                                                                                        -0.0000  0.7500  -110.0000
+                                                                                                        0.0000  0.0000  1.0000
+                                                                                                    } original: MotionEvent(action=HOVER_EXIT)
+2025-11-01 04:36:54.429  2313-4109  MIUIInput               system_server                        I  [MotionEvent] publisher action=0x0, deviceId=-1, 166610715, channel 'f92b9db com.babelstream (server)'
+2025-11-01 04:36:54.430 20604-20604 MIUIInput               com.babelstream                      I  [MotionEvent] ViewRootImpl windowName '', { action=ACTION_DOWN, id[0]=0, pointerCount=1, eventTime=166610715, downTime=166610715, phoneEventTime=04:36:54.422 } moveCount:0
+2025-11-01 04:36:54.555 20604-653   RecognitionService      com.babelstream                      I  status=已连接识别服务
+2025-11-01 04:36:54.556 20604-653   RecognitionService      com.babelstream                      I  ACTION_STATUS: 已连接识别服务
+2025-11-01 04:36:54.564 20604-653   RealtimeRecognizer      com.babelstream                      I  sent start cfg: {"type":"start","model":"gummy-realtime-v1","audio":{"format":"pcm_s16le","sample_rate":16000,"channels":1},"transcription":{"enabled":true,"source_language":"auto"},"translation_languages":["zh"]}
+2025-11-01 04:36:54.610 20604-653   RecognitionService      com.babelstream                      I  status=连接关闭中: 1007/Invalid payload data
+2025-11-01 04:36:54.611 20604-653   RecognitionService      com.babelstream                      I  ACTION_STATUS: 连接关闭中: 1007/Invalid payload data
+2025-11-01 04:36:54.611 20604-659   RecognitionService      com.babelstream                      I  status=连接已关闭: 1007/Invalid payload data
+2025-11-01 04:36:54.612 20604-659   RecognitionService      com.babelstream                      I  ACTION_STATUS: 连接已关闭: 1007/Invalid payload data
+2025-11-01 04:36:54.701 20604-32637 com.babelstream         com.babelstream                      I  This is non sticky GC, maxfree is 16777216 minfree is 8388608
+2025-11-01 04:36:54.701 20604-20604 FinalizerDaemon         com.babelstream                      W  type=1400 audit(0.0:132842): avc:  denied  { getopt } for  path="/dev/socket/usap_pool_primary" scontext=u:r:untrusted_app:s0:c173,c257,c512,c768 tcontext=u:r:zygote:s0 tclass=unix_stream_socket permissive=0 app=com.babelstream
+2025-11-01 04:36:54.704 20604-32640 com.babelstream         com.babelstream                      W  ApkAssets: Deleting an ApkAssets object '<empty> and /product/app/ContentCatcherOS2/ContentCatcherOS2.apk' with 1 weak references
+2025-11-01 04:36:54.704 20604-32640 com.babelstream         com.babelstream                      W  ApkAssets: Deleting an ApkAssets object '<empty> and /system_ext/priv-app/RtMiCloudSDK/RtMiCloudSDK.apk' with 1 weak references
+2025-11-01 04:36:54.705 20604-32640 com.babelstream         com.babelstream                      W  ApkAssets: Deleting an ApkAssets object '<empty> and /system_ext/app/miuisystem/miuisystem.apk' with 1 weak references
+2025-11-01 04:36:55.124  2313-4109  MIUIInput               system_server                        I  [MotionEvent] publisher action=0x1, deviceId=-1, 166611416, channel 'f92b9db com.babelstream (server)'
+2025-11-01 04:36:55.125 20604-20604 MIUIInput               com.babelstream                      I  [MotionEvent] ViewRootImpl windowName '', { action=ACTION_UP, id[0]=0, pointerCount=1, eventTime=166611416, downTime=166610715, phoneEventTime=04:36:55.123 } moveCount:46
+2025-11-01 04:36:55.217 20604-633   AudioCaptureManager     com.babelstream                      I  level=47
+2025-11-01 04:36:55.301 20604-633   RecognitionService      com.babelstream                      I  level=49
+2025-11-01 04:36:56.237 20604-633   AudioCaptureManager     com.babelstream                      I  level=38
+2025-11-01 04:36:56.428 20604-633   RecognitionService      com.babelstream                      I  level=45
+2025-11-01 04:36:57.257 20604-633   AudioCaptureManager     com.babelstream                      I  level=0
+2025-11-01 04:36:57.521 20604-633   RecognitionService      com.babelstream                      I  level=36
+2025-11-01 04:36:58.296 20604-633   AudioCaptureManager     com.babelstream                      I  level=13
+2025-11-01 04:36:58.547 20604-633   RecognitionService      com.babelstream                      I  level=0
+2025-11-01 04:36:59.317 20604-633   AudioRecordImpl         com.babelstream                      D  [audioRecordData][fine] 5s(f:5040 m:79 s:0) : pid 20604 uid 10429 sessionId 7649 sr 48000 ch 1 fmt 1
+2025-11-01 04:36:59.318 20604-633   AudioCaptureManager     com.babelstream                      I  level=40
+2025-11-01 04:36:59.584 20604-633   RecognitionService      com.babelstream                      I  level=35
+2025-11-01 04:37:00.337 20604-633   AudioCaptureManager     com.babelstream                      I  level=25
+2025-11-01 04:37:00.600 20604-633   RecognitionService      com.babelstream                      I  level=34
+2025-11-01 04:37:01.357 20604-633   AudioCaptureManager     com.babelstream                      I  level=0
+2025-11-01 04:37:01.624 20604-633   RecognitionService      com.babelstream                      I  level=0
+2025-11-01 04:37:01.676 14193-14193 ActivityThread          com.tencent.mobileqq                 D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:37:01.680 14193-14193 ActivityThread          com.tencent.mobileqq                 D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:37:01.688 19785-19785 ActivityThread          com.tencent.mobileqq                 D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:37:01.689 19785-19785 ActivityThread          com.tencent.mobileqq                 D  Package [com.babelstream] reported as REPLACED, but missing application info. Assuming REMOVED.
+2025-11-01 04:37:02.378 20604-633   AudioCaptureManager     com.babelstream                      I  level=34
+2025-11-01 04:37:02.643 20604-633   RecognitionService      com.babelstream                      I  level=38
+2025-11-01 04:37:02.926  9743-11525 NotifySync...9743_11525 com.mi.health                        I  onNotificationPosted Id:1 key:0|com.babelstream|1|null|10429 PackageName:com.babelstream IsOngoing:true PostTime:1761943022687 currentDeviceModel.connected: true
+2025-11-01 04:37:02.924  6629-6629  SpaceNotif...ionService com.miui.securitycore.remote         D  onNotificationPosted pkgname:com.babelstream userId:0 currentUserId:0 isFloat: false
+2025-11-01 04:37:02.931  5110-5110  MiuiBubbleSettings      com.android.systemui                 I  com.babelstream 0isAppEnableBubbleNotification: false
+2025-11-01 04:37:02.974  5110-5110  AlertCoordinator        com.android.systemui                 D  onViewBound, buzzBeep for 0|com.babelstream|1|null|10429
+2025-11-01 04:37:03.182  6629-6629  SpaceNotif...ionService com.miui.securitycore.remote         D  onNotificationPosted pkgname:com.babelstream userId:0 currentUserId:0 isFloat: false
+2025-11-01 04:37:03.190  9743-11525 NotifySync...9743_11525 com.mi.health                        I  onNotificationPosted Id:2147483647 key:0|com.babelstream|2147483647|ranker_group|10429|ranker_group PackageName:com.babelstream IsOngoing:true PostTime:1761943022928 currentDeviceModel.connected: true
+2025-11-01 04:37:03.385  5110-5110  MiuiBubbleSettings      com.android.systemui                 I  com.babelstream 0isAppEnableBubbleNotification: false
+2025-11-01 04:37:03.417 20604-633   AudioCaptureManager     com.babelstream                      I  level=9
+2025-11-01 04:37:03.429  5110-5110  AlertCoordinator        com.android.systemui                 D  onViewBound, buzzBeep for 0|com.babelstream|2147483647|ranker_group|10429|ranker_group
+2025-11-01 04:37:03.764 20604-633   RecognitionService      com.babelstream                      I  level=12
+2025-11-01 04:37:04.337 20604-633   AudioRecordImpl         com.babelstream                      D  [audioRecordData][fine] 10s(f:10060 m:79 s:0) : pid 20604 uid 10429 sessionId 7649 sr 48000 ch 1 fmt 1
+2025-11-01 04:37:04.439 20604-633   AudioCaptureManager     com.babelstream                      I  level=13
+2025-11-01 04:37:04.782 20604-633   RecognitionService      com.babelstream                      I  level=32
+2025-11-01 04:37:05.459 20604-633   AudioCaptureManager     com.babelstream                      I  level=18
+2025-11-01 04:37:05.802 20604-633   RecognitionService      com.babelstream                      I  level=13
+2025-11-01 04:37:06.478 20604-633   AudioCaptureManager     com.babelstream                      I  level=0
+2025-11-01 04:37:06.823 20604-633   RecognitionService      com.babelstream                      I  level=34
+2025-11-01 04:37:07.498 20604-633   AudioCaptureManager     com.babelstream                      I  level=10
+2025-11-01 04:37:07.938 20604-633   RecognitionService      com.babelstream                      I  level=15
+2025-11-01 04:37:08.537 20604-633   AudioCaptureManager     com.babelstream                      I  level=21
+2025-11-01 04:37:08.959 20604-633   RecognitionService      com.babelstream                      I  level=15
+2025-11-01 04:37:09.296 20604-633   AudioRecordImpl         com.babelstream                      D  [audioRecordData][fine] 15s(f:15020 m:79 s:0) : pid 20604 uid 10429 sessionId 7649 sr 48000 ch 1 fmt 1
+2025-11-01 04:37:09.558 20604-633   AudioCaptureManager     com.babelstream                      I  level=39
+2025-11-01 04:37:10.058 20604-633   RecognitionService      com.babelstream                      I  level=16
+2025-11-01 04:37:10.380 14431-14448 android.vending         com.android.vending                  W  ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~CppTs5wr6lnyjTv8OkEaIg==/com.babelstream-iq51IwBORPYpffPg0oZp8Q==/base.apk' with 1 weak references
+2025-11-01 04:37:10.576 20604-633   AudioCaptureManager     com.babelstream                      I  level=0
+2025-11-01 04:37:11.098 20604-633   RecognitionService      com.babelstream                      I  level=38
+2025-11-01 04:37:11.220  2313-4109  InputDispatcher         system_server                        W  channel 3531114 com.babelstream/com.babelstream.MainActivity (server)~ dropping inconsistent event: DispatchEntry{resolvedFlags=0, targetFlags=0x0, transform=transform (ROT_0) (SCALE )
+                                                                                                        0.7500  -0.0000  0.0000
+                                                                                                        -0.0000  0.7500  0.0000
+                                                                                                        0.0000  0.0000  1.0000
+                                                                                                    } original: MotionEvent(action=HOVER_EXIT)
+2025-11-01 04:37:11.599 20604-633   AudioCaptureManager     com.babelstream                      I  level=39
+2025-11-01 04:37:12.121 20604-633   RecognitionService      com.babelstream                      I  level=0
+2025-11-01 04:37:12.616 20604-633   AudioCaptureManager     com.babelstream                      I  level=0
+2025-11-01 04:37:13.223 20604-633   RecognitionService      com.babelstream                      I  level=52
+2025-11-01 04:37:13.657 20604-633   AudioCaptureManager     com.babelstream                      I  level=37
+2025-11-01 04:37:14.338 20604-633   AudioRecordImpl         com.babelstream                      D  [audioRecordData][fine] 20s(f:20061 m:79 s:0) : pid 20604 uid 10429 sessionId 7649 sr 48000 ch 1 fmt 1
+2025-11-01 04:37:14.344 20604-633   RecognitionService      com.babelstream                      I  level=0
+2025-11-01 04:37:14.677 20604-633   AudioCaptureManager     com.babelstream                      I  level=0
+2025-11-01 04:37:15.443 20604-633   RecognitionService      com.babelstream                      I  level=0
+2025-11-01 04:37:15.698 20604-633   AudioCaptureManager     com.babelstream                      I  level=45
+2025-11-01 04:37:16.561 20604-633   RecognitionService      com.babelstream                      I  level=0
+2025-11-01 04:37:16.717 20604-633   AudioCaptureManager     com.babelstream                      I  level=0
+2025-11-01 04:37:17.660 20604-633   RecognitionService      com.babelstream                      I  level=0
+2025-11-01 04:37:17.737 20604-633   AudioCaptureManager     com.babelstream                      I  level=0
+2025-11-01 04:37:18.684 20604-633   RecognitionService      com.babelstream                      I  level=0
+2025-11-01 04:37:18.776 20604-633   AudioCaptureManager     com.babelstream                      I  level=0
+2025-11-01 04:37:19.277 20604-633   AudioRecordImpl         com.babelstream                      D  [audioRecordData][fine] 25s(f:25000 m:79 s:0) : pid 20604 uid 10429 sessionId 7649 sr 48000 ch 1 fmt 1
+2025-11-01 04:37:19.798 20604-633   AudioCaptureManager     com.babelstream                      I  level=25
+2025-11-01 04:37:19.804 20604-633   RecognitionService      com.babelstream                      I  level=25
+2025-11-01 04:37:20.816 20604-633   AudioCaptureManager     com.babelstream                      I  level=18
+2025-11-01 04:37:20.900 20604-633   RecognitionService      com.babelstream                      I  level=2
+2025-11-01 04:37:21.839 20604-633   AudioCaptureManager     com.babelstream                      I  level=43
+2025-11-01 04:37:22.023 20604-633   RecognitionService      com.babelstream                      I  level=36
+2025-11-01 04:37:22.858 20604-633   AudioCaptureManager     com.babelstream                      I  level=0
+2025-11-01 04:37:23.125 20604-633   RecognitionService      com.babelstream                      I  level=25
+2025-11-01 04:37:23.896 20604-633   AudioCaptureManager     com.babelstream                      I  level=19
+2025-11-01 04:37:24.144 20604-633   RecognitionService      com.babelstream                      I  level=0
+2025-11-01 04:37:24.319 20604-633   AudioRecordImpl         com.babelstream                      D  [audioRecordData][fine] 30s(f:30042 m:79 s:0) : pid 20604 uid 10429 sessionId 7649 sr 48000 ch 1 fmt 1
+2025-11-01 04:37:24.917 20604-633   AudioCaptureManager     com.babelstream                      I  level=0
+2025-11-01 04:37:25.183 20604-633   RecognitionService      com.babelstream                      I  level=2
+2025-11-01 04:37:25.344  2313-4109  InputDispatcher         system_server                        W  channel 3531114 com.babelstream/com.babelstream.MainActivity (server)~ dropping inconsistent event: DispatchEntry{resolvedFlags=0, targetFlags=0x0, transform=transform (ROT_0) (SCALE )
+                                                                                                        0.7500  -0.0000  0.0000
+                                                                                                        -0.0000  0.7500  0.0000
+                                                                                                        0.0000  0.0000  1.0000
+                                                                                                    } original: MotionEvent(action=HOVER_EXIT)
+2025-11-01 04:37:25.355  2313-4109  MIUIInput               system_server                        I  [MotionEvent] publisher action=0x0, deviceId=-1, 166641639, channel '3531114 com.babelstream/com.babelstream.MainActivity (server)'
+2025-11-01 04:37:25.356 20604-20604 MIUIInput               com.babelstream                      I  [MotionEvent] ViewRootImpl windowName 'com.babelstream/com.babelstream.MainActivity', { action=ACTION_DOWN, id[0]=0, pointerCount=1, eventTime=166641639, downTime=166641639, phoneEventTime=04:37:25.346 } moveCount:0
+2025-11-01 04:37:25.440  2313-4109  MIUIInput               system_server                        I  [MotionEvent] publisher action=0x1, deviceId=-1, 166641732, channel '3531114 com.babelstream/com.babelstream.MainActivity (server)'
+2025-11-01 04:37:25.442 20604-20604 MIUIInput               com.babelstream                      I  [MotionEvent] ViewRootImpl windowName 'com.babelstream/com.babelstream.MainActivity', { action=ACTION_UP, id[0]=0, pointerCount=1, eventTime=166641732, downTime=166641639, phoneEventTime=04:37:25.439 } moveCount:0
+2025-11-01 04:37:25.521 20604-20604 AudioRecord             com.babelstream                      I  stop mSessionID=7649, packageName: com.babelstream
+2025-11-01 04:37:25.522 20604-20604 AudioRecord             com.babelstream                      D  stop(1929): mActive:1
+2025-11-01 04:37:25.632  8522-10456 MIUISafety-Monitor      com.miui.securitycenter.remote       W  sync com.babelstream,userId:0,op:27,active:false,isNote:false,isTerminal:false,notify:true
+2025-11-01 04:37:25.638  1910-622   AudioFlingerImpl        audioserver                          D  checkForGameParameter_l() set events appname=-com.babelstream
+2025-11-01 04:37:25.638  1584-30612 AHAL: AudioStream       android.hardware.audio.service_64    D  astream_in_set_parameters: 2049: Enter: appname=-com.babelstream
+2025-11-01 04:37:25.638  1584-30612 AHAL: AudioStreamCustom android.hardware.audio.service_64    D  SetParameters: 892: Enter: kvpairs is appname=-com.babelstream
+2025-11-01 04:37:25.638  1584-30612 AHAL: AudioStreamCustom android.hardware.audio.service_64    D  SetParameters: 963: [hal_apptype] SetParameters(), in: set app name -com.babelstream [10, 0x1 0x0]
+2025-11-01 04:37:25.638  1584-30612 AHAL: AudioStream       android.hardware.audio.service_64    D  SetParameters: 6352: enter: kvpairs: appname=-com.babelstream
+2025-11-01 04:37:25.640 20604-20604 AudioRecord             com.babelstream                      I  stop mSessionID=7649, packageName: com.babelstream
+2025-11-01 04:37:25.640 20604-20604 AudioRecord             com.babelstream                      D  stop(1929): mActive:0
+2025-11-01 04:37:25.640 20604-20604 AudioRecord             com.babelstream                      I  stop mSessionID=7649, packageName: com.babelstream
+2025-11-01 04:37:25.640 20604-20604 AudioRecord             com.babelstream                      D  stop(1929): mActive:0
+2025-11-01 04:37:25.641  2313-5862  MediaFunctionStubImpl   system_server                        D  report record event.{"name":"recording_parameters","audio_event":{"device_name":"mic", "packg_name":"com.babelstream", "record_source":"VOICE_COMMUNICATION", "record_encoding":"2", "record_channel_num":"1", "record_sample_rate":"48000", "record_time_during":"32"},"dgt":"null","audio_ext":"null"}
+2025-11-01 04:37:25.642 20604-20604 AudioRecordStub         com.babelstream                      D  ~AudioRecordStub() destroy
+2025-11-01 04:37:25.642 20604-20604 AudioCaptureManager     com.babelstream                      I  Recording stopped
+2025-11-01 04:37:25.647  2313-5862  xlog_client             system_server                        V   xlog_send_java  JNI test, msg is {"name":"recording_parameters","audio_event":{"device_name":"mic", "packg_name":"com.babelstream", "record_source":"VOICE_COMMUNICATION", "record_encoding":"2", "record_channel_num":"1", "record_sample_rate":"48000", "record_time_during":"32"},"dgt":"null","audio_ext":"null"}
+2025-11-01 04:37:25.649  2313-4317  MQSserver               system_server                        I  getData len: 512 content: {"name":"recording_parameters","audio_event":{"device_name":"mic", "packg_name":"com.babelstream", "record_source":"VOICE_COMMUNICATION", "record_encoding":"2", "record_channel_num":"1", "record_sample_rate":"48000", "record_time_during":"32"},"dgt":"null","audio_ext":"null"}????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+2025-11-01 04:37:25.649  2313-4317  MQSserver               system_server                        D  add count to List : {"name":"recording_parameters","audio_event":{"device_name":"mic","packg_name":"com.babelstream","record_source":"VOICE_COMMUNICATION","record_encoding":"2","record_channel_num":"1","record_sample_rate":"48000","record_time_during":"32"},"dgt":"null","audio_ext":"null","onetrack_count":"1"}
+2025-11-01 04:37:25.680  2313-4109  InputDispatcher         system_server                        W  channel 3531114 com.babelstream/com.babelstream.MainActivity (server)~ dropping inconsistent event: DispatchEntry{resolvedFlags=0, targetFlags=0x0, transform=transform (ROT_0) (SCALE )
+                                                                                                        0.7500  -0.0000  0.0000
+                                                                                                        -0.0000  0.7500  0.0000
+                                                                                                        0.0000  0.0000  1.0000
+                                                                                                    } original: MotionEvent(action=HOVER_EXIT)
+2025-11-01 04:37:26.019 20604-20604 RecognitionService      com.babelstream                      I  status=识别已停止
+2025-11-01 04:37:26.022 20604-20604 RecognitionService      com.babelstream                      I  ACTION_STATUS: 识别已停止
+2025-11-01 04:37:26.023  2313-5735  AS.AudioService         system_server                        V  setMode(mode=0, pid=20604, uid=10429, caller=com.babelstream)
+2025-11-01 04:37:26.024  2313-5862  ActivityManager         system_server                        I  Cancel FGS notification userId: 0 definingUid: 10429 packageName: com.babelstream processName:com.babelstream ChannelId:recognition_channel foregroundNotiWhen:1761943013732 Notiflags:98
+2025-11-01 04:37:26.025  2313-2313  NotificationService     system_server                        I  Cancel FGS notification CallingUid: 10429 CallingPid: 20604 Pkg: com.babelstream Id:2 Tag:null UserId:0 MustHaveFlags:0 MustNotHaveFlags:0 Reason:8 foregroundNotiWhen:1761943013732 foregroundNotiFlags:98 foregroundNotiChannelId:recognition_channel
+2025-11-01 04:37:26.026  1726-1726  vendor.qti...dl-service ven...re.servicetrackeraidl-service  I  destroyService is called for service : com.babelstream/.RecognitionService
+2025-11-01 04:37:26.033  2793-2891  misight_perf            misight                              E   [902002003, com.babelstream, 20604, inputevent , latency]
+2025-11-01 04:37:26.036  2793-2891  misight_perf            misight                              E   [902002003, com.babelstream, 20604, inputevent , latency]
+2025-11-01 04:37:26.038  2793-2891  misight_perf            misight                              E   [902002003, com.babelstream, 20604, inputevent , latency]
+2025-11-01 04:37:26.039  5110-5110  HideDelete...Controller com.android.systemui                 D  onNotificationRemoved 8 0|com.babelstream|2|null|10429
+2025-11-01 04:37:26.041 20604-20604 Choreographer           com.babelstream                      I  Skipped 70 frames!  The application may be doing too much work on its main thread.
+2025-11-01 04:37:26.043  2793-2891  misight_perf            misight                              E   [902002003, com.babelstream, 20604, inputevent , latency]
+2025-11-01 04:37:26.044  2793-2891  misight_perf            misight                              E   [902002003, com.babelstream, 20604, inputevent , latency]
+2025-11-01 04:37:26.044  5110-6626  Notificati...iderPublic com.android.systemui                 D  call method=canShowFocus extras=Bundle[{package=com.babelstream}] uid=$s
+2025-11-01 04:37:26.044  5110-6626  DatabaseUtils           com.android.systemui                 E  Writing exception to parcel (Ask Gemini)
+                                                                                                    java.lang.SecurityException: Package com.babelstream is not owned by uid 10281
+                                                                                                    	at com.android.systemui.statusbar.notification.NotificationProviderPublic.call(go/retraceme 30683299122b2655f1793582b37c2c86310d813fe556c12dae2f66b99447f4d9:83)
+                                                                                                    	at android.content.ContentProvider.call(ContentProvider.java:2736)
+                                                                                                    	at android.content.ContentProvider$Transport.call(ContentProvider.java:639)
+                                                                                                    	at android.content.ContentProviderNative.onTransact(ContentProviderNative.java:310)
+                                                                                                    	at android.os.Binder.execTransactInternal(Binder.java:1507)
+                                                                                                    	at android.os.Binder.execTransact(Binder.java:1451)
+2025-11-01 04:37:26.045  2793-2891  misight_perf            misight                              E   [902001003, com.babelstream, 20604, doframe latency due to msg]
+2025-11-01 04:37:26.045  5110-6626  NotificationProvider    com.android.systemui                 D  call method=canShowFocus extras=Bundle[{package=com.babelstream}]
+2025-11-01 04:37:26.045  9743-11525 FOCUS_NOTI...9743_11525 com.mi.health                        I  content://statusbar.notification/canShowFocus packageName = com.babelstream hasFocusPermission  =true
+2025-11-01 04:37:26.046  9743-11525 FOCUS_NOTI...9743_11525 com.mi.health                        I   packageName = com.babelstream hasFocusPermission  =true
+2025-11-01 04:37:26.046  9743-11525 NotifySync...9743_11525 com.mi.health                        I  onNotificationRemoved appID:com.babelstream uid:2 key:0|com.babelstream|2|null|10429  reason:REASON_APP_CANCEL
+2025-11-01 04:37:26.093  2313-4310  AudioServiceStubImpl    system_server                        D  onUpdateAudioMode audiomode 0 package:com.babelstream
+2025-11-01 04:37:26.247  6629-6629  SpaceNotif...ionService com.miui.securitycore.remote         D  onNotificationPosted pkgname:com.babelstream userId:0 currentUserId:0 isFloat: false
+2025-11-01 04:37:26.249  9743-11525 NotifySync...9743_11525 com.mi.health                        I  onNotificationPosted Id:2147483647 key:0|com.babelstream|2147483647|ranker_group|10429|ranker_group PackageName:com.babelstream IsOngoing:true PostTime:1761943022928 currentDeviceModel.connected: true
+2025-11-01 04:37:26.457  5110-5110  MiuiBubbleSettings      com.android.systemui                 I  com.babelstream 0isAppEnableBubbleNotification: false
+2025-11-01 04:37:26.548  4639-5241  Launcher.A...onsMessage com.miui.home                        I  update com.babelstream/ to null

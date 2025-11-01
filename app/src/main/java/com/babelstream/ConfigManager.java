@@ -26,7 +26,14 @@ public class ConfigManager {
     private static final String KEY_OVERLAY_ELEVATION_DP = "overlay_elev_dp";    // 0-16
     private static final String KEY_OVERLAY_POSITION = "overlay_position";       // top/bottom
     private static final String KEY_OVERLAY_MARGIN_DP = "overlay_margin_dp";     // 0-200
+    // 悬浮窗持久化：位置/宽度/字号
+    private static final String KEY_OVERLAY_X = "overlay_x";                     // px, -1=未保存
+    private static final String KEY_OVERLAY_Y = "overlay_y";                     // px, -1=未保存
+    private static final String KEY_OVERLAY_WIDTH_PX = "overlay_width_px";       // px, -1=未保存
+    private static final String KEY_OVERLAY_FONT_TRANSLATION_PX = "overlay_font_translation_px"; // px, -1=未保存
+    private static final String KEY_OVERLAY_FONT_TRANSCRIPT_PX = "overlay_font_transcript_px";   // px, -1=未保存
     private static final String KEY_AUDIO_SOURCE = "audio_source";               // playback|mic
+    private static final String KEY_WS_ENDPOINT = "ws_endpoint";                 // 可选：自定义Realtime WS地址
 
     private final SharedPreferences prefs;
 
@@ -58,12 +65,13 @@ public class ConfigManager {
 
     public int getFontSizePixels() {
         String size = getFontSize();
+        // 调整体感：略增一档，接近系统字幕默认
         switch (size) {
-            case "小号": return 32;
-            case "中号": return 48;
-            case "大号": return 64;
-            case "特大号": return 80;
-            default: return 48;
+            case "小号": return 18;
+            case "中号": return 22;
+            case "大号": return 26;
+            case "特大号": return 30;
+            default: return 22;
         }
     }
 
@@ -166,6 +174,19 @@ public class ConfigManager {
     public int getOverlayMarginDp() { return prefs.getInt(KEY_OVERLAY_MARGIN_DP, 100); }
     public void setOverlayMarginDp(int dp) { prefs.edit().putInt(KEY_OVERLAY_MARGIN_DP, dp).apply(); }
 
+    // ========== 悬浮窗持久化：位置/宽度/字号 ==========
+    public int getOverlayX() { return prefs.getInt(KEY_OVERLAY_X, -1); }
+    public int getOverlayY() { return prefs.getInt(KEY_OVERLAY_Y, -1); }
+    public int getOverlayWidthPx() { return prefs.getInt(KEY_OVERLAY_WIDTH_PX, -1); }
+    public float getOverlayFontTranslationPx() { return prefs.getFloat(KEY_OVERLAY_FONT_TRANSLATION_PX, -1f); }
+    public float getOverlayFontTranscriptPx() { return prefs.getFloat(KEY_OVERLAY_FONT_TRANSCRIPT_PX, -1f); }
+
+    public void setOverlayX(int x) { prefs.edit().putInt(KEY_OVERLAY_X, Math.max(0, x)).apply(); }
+    public void setOverlayY(int y) { prefs.edit().putInt(KEY_OVERLAY_Y, Math.max(0, y)).apply(); }
+    public void setOverlayWidthPx(int w) { prefs.edit().putInt(KEY_OVERLAY_WIDTH_PX, Math.max(0, w)).apply(); }
+    public void setOverlayFontTranslationPx(float px) { prefs.edit().putFloat(KEY_OVERLAY_FONT_TRANSLATION_PX, Math.max(0f, px)).apply(); }
+    public void setOverlayFontTranscriptPx(float px) { prefs.edit().putFloat(KEY_OVERLAY_FONT_TRANSCRIPT_PX, Math.max(0f, px)).apply(); }
+
     // ========== 清除所有配置 ==========
     public void clearAll() {
         prefs.edit().clear().apply();
@@ -185,4 +206,9 @@ public class ConfigManager {
 
     public boolean isAudioSourceMic() { return "mic".equals(getAudioSource()); }
     public boolean isAudioSourcePlayback() { return !isAudioSourceMic(); }
+
+    // ========== 可选：自定义 Realtime WS Endpoint ==========
+    public String getWsEndpoint() { return prefs.getString(KEY_WS_ENDPOINT, ""); }
+    public void setWsEndpoint(String url) { prefs.edit().putString(KEY_WS_ENDPOINT, url == null ? "" : url.trim()).apply(); }
+
 }
