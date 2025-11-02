@@ -17,13 +17,18 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    // 仅当本地存在 release.keystore 或配置了环境变量时启用 release 签名
+    def keystoreFile = rootProject.file('signing/release.keystore')
+    def hasKeystore = keystoreFile.exists()
+
     signingConfigs {
-        release {
-            // 统一项目内签名，便于开箱即用
-            storeFile file(rootProject.file('signing/release.keystore'))
-            storePassword 'babelstream'
-            keyAlias 'babelstream'
-            keyPassword 'babelstream'
+        if (hasKeystore) {
+            release {
+                storeFile keystoreFile
+                storePassword System.getenv('BS_KEYSTORE_PASSWORD') ?: 'babelstream'
+                keyAlias System.getenv('BS_KEY_ALIAS') ?: 'babelstream'
+                keyPassword System.getenv('BS_KEY_PASSWORD') ?: 'babelstream'
+            }
         }
     }
 
@@ -31,7 +36,9 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
+            if (hasKeystore) {
+                signingConfig signingConfigs.release
+            }
         }
     }
 

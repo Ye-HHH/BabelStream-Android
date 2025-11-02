@@ -18,6 +18,20 @@ captures/
 app/reports/
 app/outputs/
 
+# Build artifacts
+APK/
+samples/
+
+# Vendor SDK extras (keep only required AAR)
+app/libs/gummy-android-sdk/
+app/libs/*.zip
+app/libs/*.apk
+
+# Local tools/cache
+tools/
+hs_err_pid*.log
+replay_pid*.log
+
 # Keystores (placeholder; manage securely)
 *.jks
 *.keystore

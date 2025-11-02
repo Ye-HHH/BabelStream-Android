@@ -1,0 +1,526 @@
+Executing tasks: [:app:assembleDebug] in project E:\ToolStudio\BabelStream-Android
+
+Starting Gradle Daemon...
+Gradle Daemon started in 1 s 184 ms
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest
+> Task :app:processDebugManifest
+> Task :app:mergeDebugShaders UP-TO-DATE
+> Task :app:compileDebugShaders NO-SOURCE
+> Task :app:generateDebugAssets UP-TO-DATE
+> Task :app:mergeDebugAssets UP-TO-DATE
+> Task :app:compressDebugAssets UP-TO-DATE
+> Task :app:desugarDebugFileDependencies UP-TO-DATE
+> Task :app:processDebugJavaRes NO-SOURCE
+> Task :app:mergeDebugJavaResource UP-TO-DATE
+> Task :app:checkDebugDuplicateClasses UP-TO-DATE
+> Task :app:mergeDebugStartupProfile UP-TO-DATE
+> Task :app:mergeExtDexDebug UP-TO-DATE
+> Task :app:mergeLibDexDebug UP-TO-DATE
+> Task :app:mergeDebugJniLibFolders UP-TO-DATE
+> Task :app:mergeDebugNativeLibs UP-TO-DATE
+> Task :app:stripDebugDebugSymbols UP-TO-DATE
+> Task :app:validateSigningDebug UP-TO-DATE
+> Task :app:processDebugManifestForPackage
+> Task :app:writeDebugAppMetadata UP-TO-DATE
+> Task :app:writeDebugSigningConfigVersions UP-TO-DATE
+> Task :app:processDebugResources
+
+> Task :app:compileDebugJavaWithJavac FAILED
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:345: 错误: 非法的表达式开始
+    private void copySdkAssetsIfNeeded(java.io.File destRoot) {
+    ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:430: 错误: 需要 class、interface、enum 或 record
+    private static String deepFindText(org.json.JSONObject obj) {
+                   ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:432: 错误: 需要 class、interface、enum 或 record
+        stack.push(obj);
+        ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:433: 错误: 需要 class、interface、enum 或 record
+        while (!stack.isEmpty()) {
+        ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:435: 错误: 需要 class、interface、enum 或 record
+            if (cur instanceof org.json.JSONObject) {
+            ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:437: 错误: 需要 class、interface、enum 或 record
+                String v = firstNonEmpty(jo, "text", "result", "transcript", "display_text");
+                ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:438: 错误: 需要 class、interface、enum 或 record
+                if (v != null && !v.isEmpty()) return v;
+                ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:439: 错误: 需要 class、interface、enum 或 record
+                java.util.Iterator<String> it = jo.keys();
+                ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:440: 错误: 需要 class、interface、enum 或 record
+                while (it.hasNext()) {
+                ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:442: 错误: 需要 class、interface、enum 或 record
+                    Object nv = jo.opt(k);
+                    ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:443: 错误: 需要 class、interface、enum 或 record
+                    if (nv instanceof org.json.JSONObject || nv instanceof org.json.JSONArray) stack.push(nv);
+                    ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:444: 错误: 需要 class、interface、enum 或 record
+                }
+                ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:447: 错误: 需要 class、interface、enum 或 record
+                for (int i = 0; i < arr.length(); i++) {
+                ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:447: 错误: 需要 class、interface、enum 或 record
+                for (int i = 0; i < arr.length(); i++) {
+                                ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:447: 错误: 需要 class、interface、enum 或 record
+                for (int i = 0; i < arr.length(); i++) {
+                                                  ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:449: 错误: 需要 class、interface、enum 或 record
+                    if (nv instanceof org.json.JSONObject || nv instanceof org.json.JSONArray) stack.push(nv);
+                    ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:450: 错误: 需要 class、interface、enum 或 record
+                    else if (nv instanceof String) {
+                    ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:452: 错误: 需要 class、interface、enum 或 record
+                        if (!sv.isEmpty() && sv.length() < 4096) return sv;
+                        ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:453: 错误: 需要 class、interface、enum 或 record
+                    }
+                    ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:458: 错误: 需要 class、interface、enum 或 record
+    }
+    ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:463: 错误: 需要 class、interface、enum 或 record
+        int n = key.length();
+        ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:464: 错误: 需要 class、interface、enum 或 record
+        if (n <= 6) return key;
+        ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:465: 错误: 需要 class、interface、enum 或 record
+        return key.substring(0, 6) + "***" + key.substring(n - 2);
+        ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:466: 错误: 需要 class、interface、enum 或 record
+    }
+    ^
+24 个错误
+
+[Incubating] Problems report is available at: file:///E:/ToolStudio/BabelStream-Android/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:compileDebugJavaWithJavac'.
+> Compilation failed; see the compiler output below.
+  E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:430: 错误: 需要 class、interface、enum 或 record
+      private static String deepFindText(org.json.JSONObject obj) {
+                     ^
+  E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:432: 错误: 需要 class、interface、enum 或 record
+          stack.push(obj);
+          ^
+  E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:433: 错误: 需要 class、interface、enum 或 record
+          while (!stack.isEmpty()) {
+          ^
+  E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:435: 错误: 需要 class、interface、enum 或 record
+              if (cur instanceof org.json.JSONObject) {
+              ^
+  E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:437: 错误: 需要 class、interface、enum 或 record
+                  String v = firstNonEmpty(jo, "text", "result", "transcript", "display_text");
+                  ^
+  E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:438: 错误: 需要 class、interface、enum 或 record
+                  if (v != null && !v.isEmpty()) return v;
+                  ^
+  E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:439: 错误: 需要 class、interface、enum 或 record
+                  java.util.Iterator<String> it = jo.keys();
+                  ^
+  E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:440: 错误: 需要 class、interface、enum 或 record
+                  while (it.hasNext()) {
+                  ^
+  E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:442: 错误: 需要 class、interface、enum 或 record
+                      Object nv = jo.opt(k);
+                      ^
+  E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:443: 错误: 需要 class、interface、enum 或 record
+                      if (nv instanceof org.json.JSONObject || nv instanceof org.json.JSONArray) stack.push(nv);
+                      ^
+  E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:444: 错误: 需要 class、interface、enum 或 record
+                  }
+                  ^
+  E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:447: 错误: 需要 class、interface、enum 或 record
+                  for (int i = 0; i < arr.length(); i++) {
+                  ^
+  E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:447: 错误: 需要 class、interface、enum 或 record
+                  for (int i = 0; i < arr.length(); i++) {
+                                  ^
+  E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:447: 错误: 需要 class、interface、enum 或 record
+                  for (int i = 0; i < arr.length(); i++) {
+                                                    ^
+  E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:449: 错误: 需要 class、interface、enum 或 record
+                      if (nv instanceof org.json.JSONObject || nv instanceof org.json.JSONArray) stack.push(nv);
+                      ^
+  E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:450: 错误: 需要 class、interface、enum 或 record
+                      else if (nv instanceof String) {
+                      ^
+  E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:452: 错误: 需要 class、interface、enum 或 record
+                          if (!sv.isEmpty() && sv.length() < 4096) return sv;
+                          ^
+  E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:453: 错误: 需要 class、interface、enum 或 record
+                      }
+                      ^
+  E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:458: 错误: 需要 class、interface、enum 或 record
+      }
+      ^
+  E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:463: 错误: 需要 class、interface、enum 或 record
+          int n = key.length();
+          ^
+  E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:464: 错误: 需要 class、interface、enum 或 record
+          if (n <= 6) return key;
+          ^
+  E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:465: 错误: 需要 class、interface、enum 或 record
+          return key.substring(0, 6) + "***" + key.substring(n - 2);
+          ^
+  E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:466: 错误: 需要 class、interface、enum 或 record
+      }
+      ^
+  E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:345: 错误: 非法的表达式开始
+      private void copySdkAssetsIfNeeded(java.io.File destRoot) {
+      ^
+  24 个错误
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to get full insights.
+
+* Exception is:
+org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:compileDebugJavaWithJavac'.
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.lambda$executeIfValid$1(ExecuteActionsTaskExecuter.java:130)
+	at org.gradle.internal.Try$Failure.ifSuccessfulOrElse(Try.java:289)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:128)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:116)
+	at org.gradle.api.internal.tasks.execution.ProblemsTaskPathTrackingTaskExecuter.execute(ProblemsTaskPathTrackingTaskExecuter.java:41)
+	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
+	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
+	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
+	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
+	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+	at org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:42)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:331)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:318)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:314)
+	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:84)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:314)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:303)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:459)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
+	at org.gradle.execution.plan.DefaultPlanExecutor.process(DefaultPlanExecutor.java:111)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph.executeWithServices(DefaultTaskExecutionGraph.java:138)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph.execute(DefaultTaskExecutionGraph.java:123)
+	at org.gradle.execution.SelectedTaskExecutionAction.execute(SelectedTaskExecutionAction.java:35)
+	at org.gradle.execution.DryRunBuildExecutionAction.execute(DryRunBuildExecutionAction.java:51)
+	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor$ExecuteTasks.call(BuildOperationFiringBuildWorkerExecutor.java:54)
+	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor$ExecuteTasks.call(BuildOperationFiringBuildWorkerExecutor.java:43)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor.execute(BuildOperationFiringBuildWorkerExecutor.java:40)
+	at org.gradle.internal.build.DefaultBuildLifecycleController.lambda$executeTasks$10(DefaultBuildLifecycleController.java:313)
+	at org.gradle.internal.model.StateTransitionController.doTransition(StateTransitionController.java:266)
+	at org.gradle.internal.model.StateTransitionController.lambda$tryTransition$8(StateTransitionController.java:177)
+	at org.gradle.internal.work.DefaultSynchronizer.withLock(DefaultSynchronizer.java:45)
+	at org.gradle.internal.model.StateTransitionController.tryTransition(StateTransitionController.java:177)
+	at org.gradle.internal.build.DefaultBuildLifecycleController.executeTasks(DefaultBuildLifecycleController.java:304)
+	at org.gradle.internal.build.DefaultBuildWorkGraphController$DefaultBuildWorkGraph.runWork(DefaultBuildWorkGraphController.java:220)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:263)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:127)
+	at org.gradle.composite.internal.DefaultBuildController.doRun(DefaultBuildController.java:181)
+	at org.gradle.composite.internal.DefaultBuildController.access$000(DefaultBuildController.java:50)
+	at org.gradle.composite.internal.DefaultBuildController$BuildOpRunnable.lambda$run$0(DefaultBuildController.java:198)
+	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:84)
+	at org.gradle.composite.internal.DefaultBuildController$BuildOpRunnable.run(DefaultBuildController.java:198)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
+Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Compilation failed; see the compiler output below.
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:430: 错误: 需要 class、interface、enum 或 record
+    private static String deepFindText(org.json.JSONObject obj) {
+                   ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:432: 错误: 需要 class、interface、enum 或 record
+        stack.push(obj);
+        ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:433: 错误: 需要 class、interface、enum 或 record
+        while (!stack.isEmpty()) {
+        ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:435: 错误: 需要 class、interface、enum 或 record
+            if (cur instanceof org.json.JSONObject) {
+            ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:437: 错误: 需要 class、interface、enum 或 record
+                String v = firstNonEmpty(jo, "text", "result", "transcript", "display_text");
+                ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:438: 错误: 需要 class、interface、enum 或 record
+                if (v != null && !v.isEmpty()) return v;
+                ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:439: 错误: 需要 class、interface、enum 或 record
+                java.util.Iterator<String> it = jo.keys();
+                ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:440: 错误: 需要 class、interface、enum 或 record
+                while (it.hasNext()) {
+                ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:442: 错误: 需要 class、interface、enum 或 record
+                    Object nv = jo.opt(k);
+                    ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:443: 错误: 需要 class、interface、enum 或 record
+                    if (nv instanceof org.json.JSONObject || nv instanceof org.json.JSONArray) stack.push(nv);
+                    ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:444: 错误: 需要 class、interface、enum 或 record
+                }
+                ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:447: 错误: 需要 class、interface、enum 或 record
+                for (int i = 0; i < arr.length(); i++) {
+                ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:447: 错误: 需要 class、interface、enum 或 record
+                for (int i = 0; i < arr.length(); i++) {
+                                ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:447: 错误: 需要 class、interface、enum 或 record
+                for (int i = 0; i < arr.length(); i++) {
+                                                  ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:449: 错误: 需要 class、interface、enum 或 record
+                    if (nv instanceof org.json.JSONObject || nv instanceof org.json.JSONArray) stack.push(nv);
+                    ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:450: 错误: 需要 class、interface、enum 或 record
+                    else if (nv instanceof String) {
+                    ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:452: 错误: 需要 class、interface、enum 或 record
+                        if (!sv.isEmpty() && sv.length() < 4096) return sv;
+                        ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:453: 错误: 需要 class、interface、enum 或 record
+                    }
+                    ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:458: 错误: 需要 class、interface、enum 或 record
+    }
+    ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:463: 错误: 需要 class、interface、enum 或 record
+        int n = key.length();
+        ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:464: 错误: 需要 class、interface、enum 或 record
+        if (n <= 6) return key;
+        ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:465: 错误: 需要 class、interface、enum 或 record
+        return key.substring(0, 6) + "***" + key.substring(n - 2);
+        ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:466: 错误: 需要 class、interface、enum 或 record
+    }
+    ^
+E:\ToolStudio\BabelStream-Android\app\src\main\java\com\babelstream\SdkGummyClient.java:345: 错误: 非法的表达式开始
+    private void copySdkAssetsIfNeeded(java.io.File destRoot) {
+    ^
+24 个错误
+	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:89)
+	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:50)
+	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.delegateAndHandleErrors(NormalizingJavaCompiler.java:98)
+	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:52)
+	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:38)
+	at org.gradle.api.internal.tasks.compile.AnnotationProcessorDiscoveringCompiler.execute(AnnotationProcessorDiscoveringCompiler.java:52)
+	at org.gradle.api.internal.tasks.compile.AnnotationProcessorDiscoveringCompiler.execute(AnnotationProcessorDiscoveringCompiler.java:38)
+	at org.gradle.api.internal.tasks.compile.ModuleApplicationNameWritingCompiler.execute(ModuleApplicationNameWritingCompiler.java:46)
+	at org.gradle.api.internal.tasks.compile.ModuleApplicationNameWritingCompiler.execute(ModuleApplicationNameWritingCompiler.java:36)
+	at org.gradle.jvm.toolchain.internal.DefaultToolchainJavaCompiler.execute(DefaultToolchainJavaCompiler.java:57)
+	at org.gradle.api.tasks.compile.JavaCompile.lambda$createToolchainCompiler$3(JavaCompile.java:206)
+	at org.gradle.api.internal.tasks.compile.CleaningJavaCompiler.execute(CleaningJavaCompiler.java:53)
+	at org.gradle.api.internal.tasks.compile.incremental.IncrementalCompilerFactory.lambda$createRebuildAllCompiler$0(IncrementalCompilerFactory.java:55)
+	at org.gradle.api.internal.tasks.compile.incremental.SelectiveCompiler.execute(SelectiveCompiler.java:70)
+	at org.gradle.api.internal.tasks.compile.incremental.SelectiveCompiler.execute(SelectiveCompiler.java:44)
+	at org.gradle.api.internal.tasks.compile.incremental.IncrementalResultStoringCompiler.execute(IncrementalResultStoringCompiler.java:66)
+	at org.gradle.api.internal.tasks.compile.incremental.IncrementalResultStoringCompiler.execute(IncrementalResultStoringCompiler.java:52)
+	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler$1.call(CompileJavaBuildOperationReportingCompiler.java:64)
+	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler$1.call(CompileJavaBuildOperationReportingCompiler.java:48)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler.execute(CompileJavaBuildOperationReportingCompiler.java:48)
+	at org.gradle.api.tasks.compile.JavaCompile.performCompilation(JavaCompile.java:224)
+	at org.gradle.api.tasks.compile.JavaCompile.performIncrementalCompilation(JavaCompile.java:165)
+	at org.gradle.api.tasks.compile.JavaCompile.compile(JavaCompile.java:150)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)
+	at org.gradle.internal.reflect.JavaMethod.invoke(JavaMethod.java:125)
+	at org.gradle.api.internal.project.taskfactory.IncrementalTaskAction.doExecute(IncrementalTaskAction.java:45)
+	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:51)
+	at org.gradle.api.internal.project.taskfactory.IncrementalTaskAction.execute(IncrementalTaskAction.java:26)
+	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:29)
+	at org.gradle.api.internal.tasks.execution.TaskExecution$3.run(TaskExecution.java:244)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:29)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:26)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:47)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.executeAction(TaskExecution.java:229)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.executeActions(TaskExecution.java:212)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.executeWithPreviousOutputFiles(TaskExecution.java:195)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.execute(TaskExecution.java:162)
+	at org.gradle.internal.execution.steps.ExecuteStep.executeInternal(ExecuteStep.java:105)
+	at org.gradle.internal.execution.steps.ExecuteStep.access$000(ExecuteStep.java:44)
+	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:59)
+	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:56)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:56)
+	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:44)
+	at org.gradle.internal.execution.steps.CancelExecutionStep.execute(CancelExecutionStep.java:42)
+	at org.gradle.internal.execution.steps.TimeoutStep.executeWithoutTimeout(TimeoutStep.java:75)
+	at org.gradle.internal.execution.steps.TimeoutStep.execute(TimeoutStep.java:55)
+	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:50)
+	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:28)
+	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:67)
+	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:37)
+	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:61)
+	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:26)
+	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:69)
+	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:46)
+	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:39)
+	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:28)
+	at org.gradle.internal.execution.steps.BuildCacheStep.executeWithoutCache(BuildCacheStep.java:189)
+	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$execute$1(BuildCacheStep.java:75)
+	at org.gradle.internal.Either$Right.fold(Either.java:176)
+	at org.gradle.internal.execution.caching.CachingState.fold(CachingState.java:62)
+	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:73)
+	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:48)
+	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:46)
+	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:35)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.executeBecause(SkipUpToDateStep.java:75)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.lambda$execute$2(SkipUpToDateStep.java:53)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:53)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:35)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:37)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:27)
+	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:49)
+	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:27)
+	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:71)
+	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:39)
+	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:64)
+	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:35)
+	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:107)
+	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:56)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:64)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:43)
+	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.executeWithNonEmptySources(AbstractSkipEmptyWorkStep.java:125)
+	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:61)
+	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:36)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)
+	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:36)
+	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:23)
+	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:75)
+	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:41)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.lambda$execute$0(AssignMutableWorkspaceStep.java:35)
+	at org.gradle.api.internal.tasks.execution.TaskExecution$4.withWorkspace(TaskExecution.java:289)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:31)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:22)
+	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:40)
+	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:23)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.lambda$execute$2(ExecuteWorkBuildOperationFiringStep.java:67)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:67)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:39)
+	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:46)
+	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:34)
+	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:47)
+	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:34)
+	at org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:64)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:127)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:116)
+	at org.gradle.api.internal.tasks.execution.ProblemsTaskPathTrackingTaskExecuter.execute(ProblemsTaskPathTrackingTaskExecuter.java:41)
+	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
+	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
+	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
+	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
+	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+	at org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:42)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:331)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:318)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:314)
+	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:84)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:314)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:303)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:459)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
+	at org.gradle.execution.plan.DefaultPlanExecutor.process(DefaultPlanExecutor.java:111)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph.executeWithServices(DefaultTaskExecutionGraph.java:138)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph.execute(DefaultTaskExecutionGraph.java:123)
+	at org.gradle.execution.SelectedTaskExecutionAction.execute(SelectedTaskExecutionAction.java:35)
+	at org.gradle.execution.DryRunBuildExecutionAction.execute(DryRunBuildExecutionAction.java:51)
+	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor$ExecuteTasks.call(BuildOperationFiringBuildWorkerExecutor.java:54)
+	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor$ExecuteTasks.call(BuildOperationFiringBuildWorkerExecutor.java:43)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor.execute(BuildOperationFiringBuildWorkerExecutor.java:40)
+	at org.gradle.internal.build.DefaultBuildLifecycleController.lambda$executeTasks$10(DefaultBuildLifecycleController.java:313)
+	at org.gradle.internal.model.StateTransitionController.doTransition(StateTransitionController.java:266)
+	at org.gradle.internal.model.StateTransitionController.lambda$tryTransition$8(StateTransitionController.java:177)
+	at org.gradle.internal.work.DefaultSynchronizer.withLock(DefaultSynchronizer.java:45)
+	at org.gradle.internal.model.StateTransitionController.tryTransition(StateTransitionController.java:177)
+	at org.gradle.internal.build.DefaultBuildLifecycleController.executeTasks(DefaultBuildLifecycleController.java:304)
+	at org.gradle.internal.build.DefaultBuildWorkGraphController$DefaultBuildWorkGraph.runWork(DefaultBuildWorkGraphController.java:220)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:263)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:127)
+	at org.gradle.composite.internal.DefaultBuildController.doRun(DefaultBuildController.java:181)
+	at org.gradle.composite.internal.DefaultBuildController.access$000(DefaultBuildController.java:50)
+	at org.gradle.composite.internal.DefaultBuildController$BuildOpRunnable.lambda$run$0(DefaultBuildController.java:198)
+	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:84)
+	at org.gradle.composite.internal.DefaultBuildController$BuildOpRunnable.run(DefaultBuildController.java:198)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
+
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.0-milestone-1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 11s
+30 actionable tasks: 5 executed, 25 up-to-date
