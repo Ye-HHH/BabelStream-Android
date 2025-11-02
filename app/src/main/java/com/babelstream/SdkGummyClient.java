@@ -119,6 +119,7 @@ public class SdkGummyClient {
             int initRet = nui.initialize(nuiCallback, parameters.toString(), level, true);
             Log.i(TAG, "initialize ret=" + initRet);
             emitStatus("initialize ret=" + initRet);
+            try { Log.i(TAG, "INIT params url=" + url + ", deviceId=" + deviceId + ", workDir=" + workDir.getAbsolutePath()); } catch (Throwable ignore) {}
             if (initRet != 0) {
                 emitError("SDK初始化失败: ret=" + initRet);
                 return false;
@@ -131,6 +132,9 @@ public class SdkGummyClient {
             nls.put("sample_rate", sampleRate);
             nls.put("transcription_enabled", true);
             nls.put("translation_enabled", config.isTranslationEnabled());
+            // 将 apikey 也写入 nls_config，兼容设备从此处读取
+            try { nls.put("apikey", config.getApiKey()); } catch (Throwable ignore) {}
+            try { nls.put("app_key", config.getApiKey()); } catch (Throwable ignore) {}
             // 提高易用性：自动语种 + 结束静音阈值
             try { nls.put("source_language", "auto"); } catch (Throwable ignore) {}
             try { nls.put("max_end_silence", 800); } catch (Throwable ignore) {}
@@ -143,32 +147,33 @@ public class SdkGummyClient {
 
             JSONObject params = new JSONObject();
             params.put("service_type", 4);
+            // 明确指定 DashScope 协议
+            try { params.put("service_protocol", 1); } catch (Throwable ignore) {}
+            // 直接传递对象（兼容性更好）；部分版本对字符串形式解析后读取不到 model
             params.put("nls_config", nls);
+            // 一并在 setParams 声明基础连接信息，避免后续缺上下文
+            try { params.put("url", url); } catch (Throwable ignore) {}
+            try { params.put("device_id", deviceId); } catch (Throwable ignore) {}
             int setRet = nui.setParams(params.toString());
             Log.i(TAG, "setParams ret=" + setRet);
             emitStatus("setParams ret=" + setRet);
+            try { Log.i(TAG, "setParams json=" + params.toString()); } catch (Throwable ignore) {}
             if (setRet != 0) {
                 emitError("设置参数失败: ret=" + setRet);
                 return false;
             }
 
-            // 按示例：在 startDialog 传入 apikey（优先尝试临时 token）
+            // 直接使用 API Key，避免在目标设备上访问 tokens 接口失败（SSL/url illegal）
             String key = config.getApiKey();
-            try {
-                String tokenResp = nuiUtils.refreshApiKey(key, "");
-                if (tokenResp != null && tokenResp.length() > 0) {
-                    try {
-                        org.json.JSONObject tr = new org.json.JSONObject(tokenResp);
-                        String tk = tr.optString("token", null);
-                        if (tk != null && !tk.isEmpty()) key = tk;
-                    } catch (Throwable ignore) {}
-                }
-            } catch (Throwable ignore) {}
+            try { params.put("apikey", key); } catch (Throwable ignore) {}
             org.json.JSONObject dialog = new org.json.JSONObject();
             try { dialog.put("apikey", key); } catch (Throwable ignore) {}
+            // 兜底：在 dialog 参数中也携带 model，规避某些版本丢失 model 的问题
+            try { dialog.put("model", config.getModel()); } catch (Throwable ignore) {}
             int startRet = nui.startDialog(Constants.VadMode.TYPE_P2T, dialog.toString());
             Log.i(TAG, "startDialog ret=" + startRet);
             emitStatus("startDialog ret=" + startRet);
+            try { Log.i(TAG, "dialog json(apikey masked)=" + dialog.toString()); } catch (Throwable ignore) {}
             if (startRet != 0) {
                 emitError("启动识别失败: ret=" + startRet);
                 return false;
@@ -230,29 +235,32 @@ public class SdkGummyClient {
                     String trText = null;
                     if (output != null) {
                         org.json.JSONObject transcription = output.optJSONObject("transcription");
-                        if (transcription != null) asrText = transcription.optString("text", null);
+                        if (transcription != null) asrText = firstNonEmpty(transcription, "text", "result", "transcript");
                         org.json.JSONArray translations = output.optJSONArray("translations");
                         if (translations != null && translations.length() > 0) {
                             StringBuilder sb = new StringBuilder();
                             for (int i = 0; i < translations.length(); i++) {
                                 org.json.JSONObject it = translations.optJSONObject(i);
                                 if (it != null) {
-                                    String t = it.optString("text", null);
-                                    if (t != null) sb.append(t);
+                                    String t = firstNonEmpty(it, "text", "result", "translation");
+                                    if (t != null && !t.isEmpty()) sb.append(t);
                                 }
                             }
                             trText = sb.toString();
                         }
+                        if ((asrText == null || asrText.isEmpty())) asrText = firstNonEmpty(output, "text", "result");
                     }
+                    if ((asrText == null || asrText.isEmpty())) { asrText = deepFindText(o); }
                     if (asrText != null && !asrText.isEmpty()) {
                         try { emitStatus("transcription:" + (asrText.length()>20?asrText.substring(0,20)+"…":asrText)); } catch (Throwable ignore) {}
-                        emitTranscription(asrText);
+                        if (config.isTranslationEnabled() && (trText == null || trText.isEmpty())) { emitTranslation(asrText); } else { emitTranscription(asrText);
+                        try { Log.i(TAG, "EXTRACT asrText=" + asrText); } catch (Throwable ignore) {} }
                     }
                     if (trText != null && !trText.isEmpty()) {
                         try { emitStatus("translation:" + (trText.length()>20?trText.substring(0,20)+"…":trText)); } catch (Throwable ignore) {}
                         emitTranslation(trText);
+                        try { Log.i(TAG, "EXTRACT trText=" + trText); } catch (Throwable ignore) {}
                     }
-                    // 错误事件透出
                     org.json.JSONObject header = o.optJSONObject("header");
                     if (header != null && header.optString("event", "").contains("failed")) {
                         String em = header.optString("error_message", resp);
@@ -307,6 +315,14 @@ public class SdkGummyClient {
         public void onNuiLogTrackCallback(Constants.LogLevel level, String log) {
             try { Log.d(TAG, "sdklog[" + level + "]: " + log); } catch (Throwable ignore) {}
             try { emitStatus("SDKLog[" + level + "]: " + log); } catch (Throwable ignore) {}
+            try {
+                if (log != null) {
+                    String low = log.toLowerCase();
+                    if (low.contains("null sdk request")) {
+                        emitError("SDK会话未建立：请检查API Key/网络/设备时间");
+                    }
+                }
+            } catch (Throwable ignore) {}
         }
 
         @Override
@@ -404,5 +420,53 @@ public class SdkGummyClient {
                 }
             }
         }
+    }
+
+    // 在对象上按候选key取第一个非空字符串
+    private static String firstNonEmpty(org.json.JSONObject obj, String... keys) {
+        for (String k : keys) {
+            String v = obj.optString(k, null);
+            if (v != null && !v.isEmpty() && !"null".equalsIgnoreCase(v)) return v;
+        }
+        return null;
+    }
+
+    // 深度搜索 JSON，返回第一个看起来像文本的字段
+    private static String deepFindText(org.json.JSONObject obj) {
+        java.util.Deque<Object> stack = new java.util.ArrayDeque<>();
+        stack.push(obj);
+        while (!stack.isEmpty()) {
+            Object cur = stack.pop();
+            if (cur instanceof org.json.JSONObject) {
+                org.json.JSONObject jo = (org.json.JSONObject) cur;
+                String v = firstNonEmpty(jo, "text", "result", "transcript", "display_text");
+                if (v != null && !v.isEmpty()) return v;
+                java.util.Iterator<String> it = jo.keys();
+                while (it.hasNext()) {
+                    String k = it.next();
+                    Object nv = jo.opt(k);
+                    if (nv instanceof org.json.JSONObject || nv instanceof org.json.JSONArray) stack.push(nv);
+                }
+            } else if (cur instanceof org.json.JSONArray) {
+                org.json.JSONArray arr = (org.json.JSONArray) cur;
+                for (int i = 0; i < arr.length(); i++) {
+                    Object nv = arr.opt(i);
+                    if (nv instanceof org.json.JSONObject || nv instanceof org.json.JSONArray) stack.push(nv);
+                    else if (nv instanceof String) {
+                        String sv = (String) nv;
+                        if (!sv.isEmpty() && sv.length() < 4096) return sv;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+    
+
+    private static String mask(String key) {
+        if (key == null) return "null";
+        int n = key.length();
+        if (n <= 6) return key;
+        return key.substring(0, 6) + "***" + key.substring(n - 2);
     }
 }

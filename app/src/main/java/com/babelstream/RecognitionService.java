@@ -112,7 +112,9 @@ public class RecognitionService extends Service {
             int sampleRate = config.getSampleRate();
             boolean useMic = config.isAudioSourceMic();
             try {
-                android.util.Log.i(TAG, "startPipeline: useMic=" + useMic + ", cfgSampleRate=" + sampleRate + ", model=" + config.getModel() + ", wsEndpoint=" + config.getWsEndpoint());
+                String endpoint = config.getWsEndpoint();
+            android.util.Log.i(TAG, "startPipeline: useMic=" + useMic + ", cfgSampleRate=" + sampleRate + ", model=" + config.getModel() + ", wsEndpoint=" + endpoint);
+            sendStatus("启动参数: useMic=" + useMic + ", sr=" + sampleRate + ", endpoint=" + (endpoint==null?"":endpoint));
             } catch (Throwable ignore) {}
 
             // 1) 先构建采集链路

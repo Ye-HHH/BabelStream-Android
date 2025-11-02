@@ -10,16 +10,28 @@ android {
         applicationId "com.babelstream"
         minSdk 24
         targetSdk 34
-        versionCode 10
-        versionName "1.09"
+        // 使用语义化版本：versionName=主.次.修订，versionCode=递增整数
+        versionCode 10000
+        versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        release {
+            // 统一项目内签名，便于开箱即用
+            storeFile file(rootProject.file('signing/release.keystore'))
+            storePassword 'babelstream'
+            keyAlias 'babelstream'
+            keyPassword 'babelstream'
+        }
     }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 
@@ -38,6 +50,12 @@ android {
         exclude 'META-INF/notice.txt'
         exclude 'META-INF/ASL2.0'
         exclude 'META-INF/*.kotlin_module'
+    }
+
+    // 关闭发布版 Lint Vital 以便离线构建
+    lint {
+        checkReleaseBuilds false
+        abortOnError false
     }
 }
 
